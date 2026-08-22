@@ -631,12 +631,12 @@ button:active {
 
 .pink-lily {
     position: relative;
-    width: 190px;
-    height: 300px;
+    width: 220px;
+    height: 330px;
     margin: 0 auto;
     display: flex;
     justify-content: center;
-    animation: lilySway 5s ease-in-out infinite;
+    animation: lilySway 6s ease-in-out infinite;
 }
 
 /* Flower head */
@@ -644,78 +644,99 @@ button:active {
     position: absolute;
     top: 15px;
     left: 50%;
-    width: 170px;
-    height: 160px;
+    width: 210px;
+    height: 190px;
     transform: translateX(-50%);
 }
 
-/* Petals */
+/* Lily petals */
 .lily-petal {
     position: absolute;
     left: 50%;
-    top: 25px;
+    top: 45px;
 
     width: 58px;
-    height: 115px;
+    height: 145px;
 
-    transform-origin: 50% 90%;
+    transform-origin: 50% 92%;
 
-    border-radius: 70% 70% 45% 45%;
+    border-radius: 70% 70% 48% 48%;
 
     background:
         radial-gradient(
-            ellipse at 50% 20%,
+            ellipse at 50% 22%,
             rgba(255,255,255,.95) 0%,
-            rgba(255,255,255,.25) 18%,
+            rgba(255,255,255,.35) 16%,
             transparent 38%
         ),
         linear-gradient(
             170deg,
-            #ffd1df 0%,
-            #ff9fbd 48%,
-            #ed6f9b 100%
+            #fff0f5 0%,
+            #ffc1d7 28%,
+            #f58faf 65%,
+            #d95783 100%
         );
 
     box-shadow:
-        inset 0 -8px 15px rgba(190,55,100,.12),
-        0 5px 12px rgba(210,80,125,.12);
+        inset 0 -10px 16px rgba(190,55,100,.15),
+        0 6px 15px rgba(210,80,125,.13);
 }
 
-/* Petal arrangement */
+/* Six elegant lily petals */
+
 .lily-petal:nth-child(1) {
-    transform: translateX(-50%) rotate(0deg);
+    transform:
+        translateX(-50%)
+        rotate(0deg)
+        scaleY(1.05);
 }
 
 .lily-petal:nth-child(2) {
-    transform: translateX(-50%) rotate(60deg);
+    transform:
+        translateX(-50%)
+        rotate(58deg)
+        scaleY(1.02);
 }
 
 .lily-petal:nth-child(3) {
-    transform: translateX(-50%) rotate(120deg);
+    transform:
+        translateX(-50%)
+        rotate(116deg)
+        scaleY(.98);
 }
 
 .lily-petal:nth-child(4) {
-    transform: translateX(-50%) rotate(180deg);
+    transform:
+        translateX(-50%)
+        rotate(180deg)
+        scaleY(1.05);
 }
 
 .lily-petal:nth-child(5) {
-    transform: translateX(-50%) rotate(240deg);
+    transform:
+        translateX(-50%)
+        rotate(238deg)
+        scaleY(.98);
 }
 
 .lily-petal:nth-child(6) {
-    transform: translateX(-50%) rotate(300deg);
+    transform:
+        translateX(-50%)
+        rotate(302deg)
+        scaleY(1.02);
 }
 
-/* Soft center */
+/* Soft lily center */
+
 .lily-center {
     position: absolute;
-    z-index: 20;
+    z-index: 30;
 
     left: 50%;
-    top: 83px;
+    top: 92px;
 
-    width: 31px;
-    height: 31px;
+    width: 34px;
+    height: 34px;
 
     transform: translate(-50%, -50%);
 
@@ -724,33 +745,34 @@ button:active {
     background:
         radial-gradient(
             circle at 35% 30%,
-            #fff8bd 0%,
-            #ffe36d 35%,
-            #efb83e 75%,
+            #fffbd0 0%,
+            #ffe779 35%,
+            #f4bf42 70%,
             #d99a2f 100%
         );
 
     box-shadow:
-        0 0 18px rgba(255,211,90,.55);
+        0 0 20px rgba(255,215,90,.6);
 }
 
-/* Stamens */
+/* Golden stamens */
+
 .stamen {
     position: absolute;
-    z-index: 15;
+    z-index: 25;
 
     left: 50%;
-    top: 40px;
+    top: 45px;
 
     width: 3px;
-    height: 58px;
+    height: 65px;
 
     transform-origin: 50% 100%;
 
     background: linear-gradient(
         to top,
-        #e3a33d,
-        #f5c45e
+        #d99332,
+        #f7c65b
     );
 
     border-radius: 5px;
@@ -761,95 +783,106 @@ button:active {
 
     position: absolute;
 
-    top: -5px;
+    top: -6px;
     left: 50%;
 
-    width: 8px;
-    height: 8px;
+    width: 9px;
+    height: 9px;
 
     transform: translateX(-50%);
 
     border-radius: 50%;
 
-    background: #c98535;
+    background: #c7832d;
+
+    box-shadow:
+        0 1px 3px rgba(120,70,20,.25);
 }
 
-/* Individual stamens */
 .stamen:nth-child(7) {
-    transform: translateX(-50%) rotate(-28deg);
+    transform: translateX(-50%) rotate(-30deg);
 }
 
 .stamen:nth-child(8) {
-    transform: translateX(-50%) rotate(-10deg);
+    transform: translateX(-50%) rotate(-15deg);
 }
 
 .stamen:nth-child(9) {
-    transform: translateX(-50%) rotate(10deg);
+    transform: translateX(-50%) rotate(0deg);
 }
 
 .stamen:nth-child(10) {
-    transform: translateX(-50%) rotate(28deg);
+    transform: translateX(-50%) rotate(15deg);
+}
+
+.stamen:nth-child(11) {
+    transform: translateX(-50%) rotate(30deg);
 }
 
 /* Stem */
+
 .lily-stem {
     position: absolute;
     z-index: 3;
 
-    top: 140px;
+    top: 155px;
     left: 50%;
 
-    width: 9px;
-    height: 150px;
+    width: 10px;
+    height: 160px;
 
     transform: translateX(-50%);
 
     border-radius: 10px;
 
-    background: linear-gradient(
-        90deg,
-        #438c4d,
-        #76c86d,
-        #4d9c54
-    );
+    background:
+        linear-gradient(
+            90deg,
+            #3f8748,
+            #78c96d,
+            #4d9d55
+        );
 
     box-shadow:
-        inset 2px 0 3px rgba(255,255,255,.3);
+        inset 2px 0 4px rgba(255,255,255,.35);
 }
 
-/* Leaves — move them BELOW the flower */
+/* Leaves */
+
 .lily-leaf {
     position: absolute;
     z-index: 4;
 
-    width: 70px;
-    height: 27px;
+    width: 82px;
+    height: 30px;
 
-    top: 205px;
+    top: 225px;
 
     border-radius: 100% 0 100% 0;
 
-    background: linear-gradient(
-        135deg,
-        #8bd477,
-        #4a9b52
-    );
+    background:
+        linear-gradient(
+            135deg,
+            #91d982,
+            #4c9d55
+        );
 
     box-shadow:
         inset 2px 2px 5px rgba(255,255,255,.25);
 }
 
 .lily-leaf.left {
-    left: 25px;
-    transform: rotate(-28deg);
+    left: 12px;
+    transform: rotate(-30deg);
 }
 
 .lily-leaf.right {
-    right: 25px;
-    transform: scaleX(-1) rotate(-28deg);
+    right: 12px;
+    transform: scaleX(-1) rotate(-30deg);
 }
 
-/* Gentle movement */
+/* Gentle flower movement */
+
 @keyframes lilySway {
     0%, 100% {
         transform: rotate(-1deg) translateY(0);
@@ -889,6 +922,7 @@ button:active {
             <div class="lily-petal"></div>
             <div class="lily-petal"></div>
 
+            <div class="stamen"></div>
             <div class="stamen"></div>
             <div class="stamen"></div>
             <div class="stamen"></div>
