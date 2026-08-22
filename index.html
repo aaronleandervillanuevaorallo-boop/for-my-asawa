@@ -2700,6 +2700,45 @@ if (lockScreenFix) {
 }
 
 </script>
+    <!-- =====================================================
+     CHAPTER 01 — THE BEGINNING
+     ===================================================== -->
+
+<section id="chapter-beginning" class="chapter-page">
+
+    <div class="chapter-content">
+
+        <div class="chapter-number">
+            CHAPTER 01
+        </div>
+
+        <div class="chapter-line"></div>
+
+        <h1 class="chapter-title">
+            This is the beginning<br>
+            of our chapter.
+        </h1>
+
+        <p class="chapter-subtitle">
+            Not the beginning of a perfect story,
+            but the beginning of ours.
+        </p>
+
+        <p class="chapter-date">
+            03 • 06 • 2026
+        </p>
+
+        <button
+            type="button"
+            class="chapter-button"
+            onclick="continueToLetter()"
+        >
+            BEGIN OUR STORY →
+        </button>
+
+    </div>
+
+</section>
 </body>
 
 <div class="container">
@@ -3626,9 +3665,55 @@ document.addEventListener(
 );
 
 </script>
+<script>
 
-</body>
-</html>
+/* =====================================================
+   CHAPTER 01 — SHOW AFTER DIGITAL LOCK
+   ===================================================== */
+
+const chapterBeginning =
+    document.getElementById("chapter-beginning");
+
+
+function showBeginningChapter() {
+
+    if (!chapterBeginning) return;
+
+    chapterBeginning.classList.add("show");
+
+}
+
+
+/* =====================================================
+   CONTINUE TO LETTER
+   ===================================================== */
+
+function continueToLetter() {
+
+    if (!chapterBeginning) return;
+
+    chapterBeginning.classList.remove("show");
+
+    setTimeout(function () {
+
+        const letter =
+            document.querySelector(".letter-content");
+
+        if (letter) {
+
+            letter.style.display = "block";
+
+            letter.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+
+    }, 1000);
+
+}
+
 </script>
 
 </body>
