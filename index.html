@@ -1,1082 +1,781 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>For My Asawa 🩷</title>
 
+
 <style>
-    /* =========================
-   FANCY FLOWERY OPENING
-========================= */
 
-.flower-opening {
-    position: relative;
-    text-align: center;
-    padding: 20px 10px 10px;
-}
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
-/* Soft glow behind the flower */
-.flower-glow {
-    position: absolute;
-    width: 190px;
-    height: 190px;
-    left: 50%;
-    top: 5px;
-    transform: translateX(-50%);
-    background: radial-gradient(
-        circle,
-        rgba(255, 150, 190, 0.28) 0%,
-        rgba(255, 190, 215, 0.15) 45%,
-        transparent 72%
-    );
-    filter: blur(5px);
-    animation: flowerGlow 3s ease-in-out infinite;
-}
-
-@keyframes flowerGlow {
-    0%, 100% {
-        transform: translateX(-50%) scale(0.95);
-        opacity: 0.7;
-    }
-
-    50% {
-        transform: translateX(-50%) scale(1.12);
-        opacity: 1;
-    }
-}
-
-/* Pink Lily */
-.pink-lily {
-    position: relative;
-    width: 150px;
-    height: 175px;
-    margin: 0 auto 15px;
-    z-index: 2;
-    animation: lilyFloat 4s ease-in-out infinite;
-}
-
-@keyframes lilyFloat {
-    0%, 100% {
-        transform: translateY(0) rotate(-1deg);
-    }
-
-    50% {
-        transform: translateY(-8px) rotate(1deg);
-    }
-}
-
-/* Lily flower */
-.lily-flower {
-    position: absolute;
-    width: 115px;
-    height: 105px;
-    left: 17px;
-    top: 5px;
-}
-
-/* Individual petals */
-.lily-petal {
-    position: absolute;
-    width: 48px;
-    height: 78px;
-    left: 34px;
-    top: 12px;
-    background: linear-gradient(
-        135deg,
-        #ffb4c9,
-        #f66f9b 55%,
-        #d93d70
-    );
-    border-radius: 65% 35% 65% 35%;
-    transform-origin: bottom center;
-    box-shadow:
-        inset 4px 5px 8px rgba(255,255,255,0.45),
-        0 4px 10px rgba(190,60,100,0.15);
-}
-
-/* Six petals */
-.lily-petal:nth-child(1) {
-    transform: rotate(0deg);
-}
-
-.lily-petal:nth-child(2) {
-    transform: rotate(60deg);
-}
-
-.lily-petal:nth-child(3) {
-    transform: rotate(120deg);
-}
-
-.lily-petal:nth-child(4) {
-    transform: rotate(180deg);
-}
-
-.lily-petal:nth-child(5) {
-    transform: rotate(240deg);
-}
-
-.lily-petal:nth-child(6) {
-    transform: rotate(300deg);
-}
-
-/* Lily center */
-.lily-center {
-    position: absolute;
-    width: 28px;
-    height: 28px;
-    background: radial-gradient(
-        circle,
-        #ffd76a 0%,
-        #f4a62a 45%,
-        #d87818 100%
-    );
-    border-radius: 50%;
-    left: 43px;
-    top: 51px;
-    z-index: 5;
-    box-shadow: 0 2px 8px rgba(200,120,20,0.25);
-}
-
-/* Stamens */
-.stamen {
-    position: absolute;
-    width: 5px;
-    height: 35px;
-    background: #d99227;
-    border-radius: 5px;
-    left: 55px;
-    top: 30px;
-    transform-origin: bottom;
-    z-index: 4;
-}
-
-.stamen:nth-child(2) {
-    transform: rotate(-28deg);
-}
-
-.stamen:nth-child(3) {
-    transform: rotate(28deg);
-}
-
-.stamen:nth-child(4) {
-    transform: rotate(-55deg);
-}
-
-.stamen:nth-child(5) {
-    transform: rotate(55deg);
-}
-
-/* Lily stem */
-.lily-stem {
-    position: absolute;
-    width: 8px;
-    height: 92px;
-    background: linear-gradient(
-        to right,
-        #4c963b,
-        #83c95a,
-        #397b32
-    );
-    left: 71px;
-    top: 82px;
-    border-radius: 10px;
-    z-index: 1;
-}
-
-/* Leaves */
-.lily-leaf {
-    position: absolute;
-    width: 65px;
-    height: 25px;
-    background: linear-gradient(
-        135deg,
-        #8fd45d,
-        #4c963b
-    );
-    border-radius: 100% 0 100% 0;
-    z-index: 0;
-}
-
-.lily-leaf.left {
-    left: 13px;
-    top: 117px;
-    transform: rotate(-28deg);
-}
-
-.lily-leaf.right {
-    right: 8px;
-    top: 105px;
-    transform: scaleX(-1) rotate(-25deg);
-}
-
-/* Little flower sparkles */
-.flower-sparkle {
-    position: absolute;
-    color: #e98aaa;
-    font-size: 18px;
-    opacity: 0.7;
-    animation: sparkle 3s ease-in-out infinite;
-}
-
-.sparkle-one {
-    left: 18%;
-    top: 20px;
-}
-
-.sparkle-two {
-    right: 18%;
-    top: 55px;
-    animation-delay: 1s;
-}
-
-.sparkle-three {
-    left: 10%;
-    top: 115px;
-    animation-delay: 1.8s;
-}
-
-.sparkle-four {
-    right: 10%;
-    top: 130px;
-    animation-delay: 0.7s;
-}
-
-@keyframes sparkle {
-    0%, 100% {
-        opacity: 0.25;
-        transform: scale(0.8) rotate(0deg);
-    }
-
-    50% {
-        opacity: 1;
-        transform: scale(1.25) rotate(15deg);
-    }
-}
 * {
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
+
     margin: 0;
+
     min-height: 100vh;
+
     font-family: Georgia, serif;
-    background: 
-        radial-gradient(circle at 20% 20%, rgba(255, 190, 210, 0.45), transparent 30%),
-        radial-gradient(circle at 80% 80%, rgba(255, 220, 230, 0.55), transparent 35%),
-        linear-gradient(135deg, #fff7fa, #fce8ef, #fff9f5);
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 190, 210, 0.45),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 220, 230, 0.55),
+            transparent 35%
+        ),
+        linear-gradient(
+            135deg,
+            #fff7fa,
+            #fce8ef,
+            #fff9f5
+        );
+
     color: #5b3745;
+
     overflow-x: hidden;
 }
 
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
 .container {
+
     min-height: 100vh;
+
     display: flex;
+
     justify-content: center;
-    align-items: center;
-    padding: 30px 20px;
+
+    align-items: flex-start;
+
+    padding: 40px 20px 80px;
+
     position: relative;
 }
+
 
 .card {
+
     width: 100%;
+
     max-width: 600px;
-    background: rgba(255,255,255,0.82);
-    padding: 45px 28px;
-    border-radius: 30px;
-    text-align: center;
-    box-shadow: 0 15px 45px rgba(120, 50, 80, 0.15);
-    position: relative;
-    z-index: 2;
-}
 
-.small {
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #a66a7c;
-}
-
-h1 {
-    font-size: 42px;
-    margin: 15px 0;
-    color: #9d4f69;
-}
-
-.subtitle {
-    font-size: 18px;
-    line-height: 1.7;
-    color: #76505d;
-}
-
-.flower {
-    font-size: 55px;
-    animation: float 3s ease-in-out infinite;
-    margin-bottom: 10px;
-}
-
-button {
-    border: none;
-    background: #b85c78;
-    color: white;
-    padding: 14px 30px;
-    border-radius: 30px;
-    font-size: 16px;
-    font-family: Georgia, serif;
-    cursor: pointer;
-    margin-top: 20px;
-    box-shadow: 0 8px 20px rgba(184,92,120,0.25);
-}
-
-button:active {
-    transform: scale(0.96);
-}
-
-.letter {
-    display: none;
-    margin-top: 30px;
-    text-align: left;
-    line-height: 1.9;
-    font-size: 17px;
-    animation: fadeIn 1s ease;
-}
-
-.letter h2 {
-    text-align: center;
-    color: #9d4f69;
-}
-
-.signature {
-    text-align: right;
-    margin-top: 30px;
-    font-style: italic;
-}
-
-.petal {
-    position: fixed;
-    top: -20px;
-    pointer-events: none;
-    animation: fall linear forwards;
-    z-index: 1;
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0;
-    }
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@media (max-width: 480px) {
-    .card {
-        padding: 35px 22px;
-    }
-
-    h1 {
-        font-size: 34px;
-    }
-
-    .letter {
-        font-size: 16px;
-    }
-}
-    /* =========================
-   PINK LILY
-   ========================= */
-
-.pink-lily {
-    position: relative;
-    width: 180px;
-    height: 300px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    animation: lilyFloat 4s ease-in-out infinite;
-    filter: drop-shadow(0 15px 20px rgba(190, 80, 120, 0.18));
-}
-
-/* Flower */
-.lily-flower {
-    position: absolute;
-    top: 25px;
-    left: 50%;
-    width: 150px;
-    height: 145px;
-    transform: translateX(-50%);
-}
-
-/* Petals */
-.lily-petal {
-    position: absolute;
-    width: 55px;
-    height: 105px;
-    left: 50%;
-    top: 20px;
-    transform-origin: 50% 90%;
-    border-radius: 55% 55% 45% 45%;
     background:
-        radial-gradient(circle at 50% 25%, #fff8fb 0%, transparent 20%),
-        linear-gradient(
-            to bottom,
-            #ffb6c9 0%,
-            #ff91b0 45%,
-            #e95b83 100%
-        );
+        rgba(255,255,255,0.82);
+
+    padding: 45px 28px;
+
+    border-radius: 30px;
+
+    text-align: center;
+
     box-shadow:
-        inset 0 0 12px rgba(255,255,255,0.65),
-        0 5px 12px rgba(205,70,110,0.15);
-}
+        0 15px 45px
+        rgba(120, 50, 80, 0.15);
 
-/* Six lily petals */
-.lily-petal:nth-child(1) {
-    transform: translateX(-50%) rotate(0deg);
-}
+    position: relative;
 
-.lily-petal:nth-child(2) {
-    transform: translateX(-50%) rotate(60deg);
-}
-
-.lily-petal:nth-child(3) {
-    transform: translateX(-50%) rotate(120deg);
-}
-
-.lily-petal:nth-child(4) {
-    transform: translateX(-50%) rotate(180deg);
-}
-
-.lily-petal:nth-child(5) {
-    transform: translateX(-50%) rotate(240deg);
-}
-
-.lily-petal:nth-child(6) {
-    transform: translateX(-50%) rotate(300deg);
-}
-
-/* Lily center */
-.lily-center {
-    position: absolute;
-    z-index: 10;
-    width: 30px;
-    height: 30px;
-    left: 50%;
-    top: 82px;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        #ffe89b 0%,
-        #f5c85b 45%,
-        #d99a32 100%
-    );
-    box-shadow:
-        0 0 15px rgba(255, 210, 100, 0.65);
-}
-
-/* Stamens */
-.stamen {
-    position: absolute;
-    z-index: 9;
-    width: 4px;
-    height: 58px;
-    left: 50%;
-    top: 42px;
-    transform-origin: 50% 100%;
-    background: linear-gradient(
-        to top,
-        #d99545,
-        #f0b45a
-    );
-    border-radius: 5px;
-}
-
-.stamen::after {
-    content: "";
-    position: absolute;
-    top: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 9px;
-    height: 9px;
-    border-radius: 50%;
-    background: #d68a48;
-    box-shadow: 0 0 5px rgba(214,138,72,0.5);
-}
-
-.stamen:nth-child(7) {
-    transform: translateX(-50%) rotate(-25deg);
-}
-
-.stamen:nth-child(8) {
-    transform: translateX(-50%) rotate(-8deg);
-}
-
-.stamen:nth-child(9) {
-    transform: translateX(-50%) rotate(8deg);
-}
-
-.stamen:nth-child(10) {
-    transform: translateX(-50%) rotate(25deg);
-}
-
-/* Stem */
-.lily-stem {
-    position: absolute;
     z-index: 2;
-    top: 145px;
-    left: 50%;
-    width: 11px;
-    height: 145px;
-    transform: translateX(-50%);
-    border-radius: 10px;
-    background: linear-gradient(
-        to right,
-        #4f9b55,
-        #76c66d,
-        #3d8148
-    );
-    box-shadow:
-        inset 2px 0 4px rgba(255,255,255,0.3);
 }
 
-/* Leaves */
-.lily-leaf {
-    position: absolute;
-    z-index: 1;
-    width: 75px;
-    height: 30px;
-    top: 190px;
-    background: linear-gradient(
-        135deg,
-        #8bd477,
-        #438f4b
-    );
-    border-radius: 100% 0 100% 0;
+
+/* =========================================================
+   OPENING
+   ========================================================= */
+
+.flower-opening {
+
+    position: relative;
+
+    text-align: center;
+
+    padding: 20px 10px 10px;
 }
 
-.lily-leaf.left {
-    left: 18px;
-    transform: rotate(-25deg);
-    transform-origin: right center;
-}
 
-.lily-leaf.right {
-    right: 18px;
-    transform: rotate(25deg) scaleX(-1);
-    transform-origin: left center;
-}
-
-/* Gentle floating animation */
-@keyframes lilyFloat {
-    0%, 100% {
-        transform: translateY(0) rotate(-1deg);
-    }
-
-    50% {
-        transform: translateY(-8px) rotate(1deg);
-    }
-}
-
-/* Soft glow behind flower */
 .flower-glow {
+
     position: absolute;
+
     width: 220px;
     height: 220px;
+
+    left: 50%;
+    top: 5px;
+
+    transform: translateX(-50%);
+
     border-radius: 50%;
-    background: radial-gradient(
-        circle,
-        rgba(255, 170, 200, 0.35) 0%,
-        rgba(255, 190, 215, 0.15) 35%,
-        transparent 70%
-    );
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 170, 200, 0.35) 0%,
+            rgba(255, 190, 215, 0.15) 35%,
+            transparent 70%
+        );
+
     filter: blur(8px);
-    animation: flowerGlow 3s ease-in-out infinite;
+
+    animation:
+        flowerGlow 3s ease-in-out infinite;
+
+    pointer-events: none;
 }
 
+
 @keyframes flowerGlow {
+
     0%, 100% {
-        transform: scale(0.9);
+
+        transform:
+            translateX(-50%)
+            scale(0.9);
+
         opacity: 0.65;
     }
 
     50% {
-        transform: scale(1.1);
+
+        transform:
+            translateX(-50%)
+            scale(1.1);
+
         opacity: 1;
     }
 }
-/* =================================
-   ELEGANT PINK LILY
-   ================================= */
+
+
+/* =========================================================
+   FLOWER SPARKLES
+   ========================================================= */
+
+.flower-sparkle {
+
+    position: absolute;
+
+    color: #e98aaa;
+
+    font-size: 18px;
+
+    opacity: 0.7;
+
+    animation:
+        sparkle 3s ease-in-out infinite;
+
+    pointer-events: none;
+}
+
+
+.sparkle-one {
+
+    left: 8%;
+
+    top: 20px;
+}
+
+
+.sparkle-two {
+
+    right: 8%;
+
+    top: 55px;
+
+    animation-delay: 1s;
+}
+
+
+.sparkle-three {
+
+    left: 4%;
+
+    top: 115px;
+
+    animation-delay: 1.8s;
+}
+
+
+.sparkle-four {
+
+    right: 4%;
+
+    top: 130px;
+
+    animation-delay: 0.7s;
+}
+
+
+@keyframes sparkle {
+
+    0%, 100% {
+
+        opacity: 0.25;
+
+        transform:
+            scale(0.8)
+            rotate(0deg);
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.25)
+            rotate(15deg);
+    }
+}
+
+
+/* =========================================================
+   PINK LILY
+   DO NOT CHANGE
+   ========================================================= */
 
 .pink-lily {
+
     position: relative;
-    width: 220px;
-    height: 330px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    animation: lilySway 6s ease-in-out infinite;
-}
 
-/* Flower head */
-.lily-flower {
-    position: absolute;
-    top: 15px;
-    left: 50%;
-    width: 210px;
-    height: 190px;
-    transform: translateX(-50%);
-}
+    animation:
+        lilySway 6s ease-in-out infinite;
 
-/* Lily petals */
-.lily-petal {
-    position: absolute;
-    left: 50%;
-    top: 45px;
-
-    width: 58px;
-    height: 145px;
-
-    transform-origin: 50% 92%;
-
-    border-radius: 70% 70% 48% 48%;
-
-    background:
-        radial-gradient(
-            ellipse at 50% 22%,
-            rgba(255,255,255,.95) 0%,
-            rgba(255,255,255,.35) 16%,
-            transparent 38%
-        ),
-        linear-gradient(
-            170deg,
-            #fff0f5 0%,
-            #ffc1d7 28%,
-            #f58faf 65%,
-            #d95783 100%
+    filter:
+        drop-shadow(
+            0 15px 20px
+            rgba(190, 80, 120, 0.18)
         );
-
-    box-shadow:
-        inset 0 -10px 16px rgba(190,55,100,.15),
-        0 6px 15px rgba(210,80,125,.13);
 }
 
-/* Six elegant lily petals */
 
-.lily-petal:nth-child(1) {
-    transform:
-        translateX(-50%)
-        rotate(0deg)
-        scaleY(1.05);
+@keyframes lilySway {
+
+    0%, 100% {
+
+        transform:
+            rotate(-1deg)
+            translateY(0);
+    }
+
+    50% {
+
+        transform:
+            rotate(1deg)
+            translateY(-5px);
+    }
 }
 
-.lily-petal:nth-child(2) {
-    transform:
-        translateX(-50%)
-        rotate(58deg)
-        scaleY(1.02);
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.small {
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: #a66a7c;
 }
 
-.lily-petal:nth-child(3) {
-    transform:
-        translateX(-50%)
-        rotate(116deg)
-        scaleY(.98);
+
+h1 {
+
+    font-size: 42px;
+
+    margin: 15px 0;
+
+    color: #9d4f69;
 }
 
-.lily-petal:nth-child(4) {
-    transform:
-        translateX(-50%)
-        rotate(180deg)
-        scaleY(1.05);
+
+.subtitle {
+
+    font-size: 18px;
+
+    line-height: 1.7;
+
+    color: #76505d;
 }
 
-.lily-petal:nth-child(5) {
-    transform:
-        translateX(-50%)
-        rotate(238deg)
-        scaleY(.98);
+
+/* =========================================================
+   LETTER
+   ========================================================= */
+
+.letter-content {
+
+    display: none;
+
+    margin-top: 35px;
+
+    text-align: left;
+
+    line-height: 1.9;
+
+    font-size: 17px;
+
+    animation:
+        fadeIn 1s ease;
+
+    position: relative;
+
+    z-index: 20;
+
+    pointer-events: auto;
 }
 
-.lily-petal:nth-child(6) {
-    transform:
-        translateX(-50%)
-        rotate(302deg)
-        scaleY(1.02);
+
+.letter-content h2 {
+
+    text-align: center;
+
+    color: #9d4f69;
+
+    margin-bottom: 30px;
 }
 
-/* Soft lily center */
 
-.lily-center {
-    position: absolute;
-    z-index: 30;
+.letter-content p {
 
-    left: 50%;
-    top: 92px;
-
-    width: 34px;
-    height: 34px;
-
-    transform: translate(-50%, -50%);
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle at 35% 30%,
-            #fffbd0 0%,
-            #ffe779 35%,
-            #f4bf42 70%,
-            #d99a2f 100%
-        );
-
-    box-shadow:
-        0 0 20px rgba(255,215,90,.6);
+    margin-bottom: 24px;
 }
 
-/* Golden stamens */
 
-.stamen {
-    position: absolute;
-    z-index: 25;
+@keyframes fadeIn {
 
-    left: 50%;
-    top: 45px;
+    from {
 
-    width: 3px;
-    height: 65px;
+        opacity: 0;
 
-    transform-origin: 50% 100%;
+        transform:
+            translateY(15px);
+    }
 
-    background: linear-gradient(
-        to top,
-        #d99332,
-        #f7c65b
-    );
+    to {
 
-    border-radius: 5px;
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
 }
 
-.stamen::after {
-    content: "";
 
-    position: absolute;
+/* =========================================================
+   OPEN LETTER BUTTON
+   ========================================================= */
 
-    top: -6px;
-    left: 50%;
+#open-letter-button {
 
-    width: 9px;
-    height: 9px;
+    display: block;
 
-    transform: translateX(-50%);
+    margin: 30px auto 10px;
 
-    border-radius: 50%;
+    padding: 14px 28px;
 
-    background: #c7832d;
+    border: none;
 
-    box-shadow:
-        0 1px 3px rgba(120,70,20,.25);
-}
-
-.stamen:nth-child(7) {
-    transform: translateX(-50%) rotate(-30deg);
-}
-
-.stamen:nth-child(8) {
-    transform: translateX(-50%) rotate(-15deg);
-}
-
-.stamen:nth-child(9) {
-    transform: translateX(-50%) rotate(0deg);
-}
-
-.stamen:nth-child(10) {
-    transform: translateX(-50%) rotate(15deg);
-}
-
-.stamen:nth-child(11) {
-    transform: translateX(-50%) rotate(30deg);
-}
-
-/* Stem */
-
-.lily-stem {
-    position: absolute;
-    z-index: 3;
-
-    top: 155px;
-    left: 50%;
-
-    width: 10px;
-    height: 160px;
-
-    transform: translateX(-50%);
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #3f8748,
-            #78c96d,
-            #4d9d55
-        );
-
-    box-shadow:
-        inset 2px 0 4px rgba(255,255,255,.35);
-}
-
-/* Leaves */
-
-.lily-leaf {
-    position: absolute;
-    z-index: 4;
-
-    width: 82px;
-    height: 30px;
-
-    top: 225px;
-
-    border-radius: 100% 0 100% 0;
+    border-radius: 30px;
 
     background:
         linear-gradient(
             135deg,
-            #91d982,
-            #4c9d55
+            #d95c8a,
+            #9d4f69
         );
 
+    color: white;
+
+    font-family: Georgia, serif;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
     box-shadow:
-        inset 2px 2px 5px rgba(255,255,255,.25);
+        0 8px 20px
+        rgba(184,92,120,0.25);
+
+    transition:
+        0.3s ease;
 }
 
-.lily-leaf.left {
-    left: 12px;
-    transform: rotate(-30deg);
+
+#open-letter-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 12px 25px
+        rgba(184,92,120,0.3);
 }
 
-.lily-leaf.right {
-    right: 12px;
-    transform: scaleX(-1) rotate(-30deg);
+
+#open-letter-button:active {
+
+    transform:
+        scale(0.96);
 }
 
-/* Gentle flower movement */
 
-@keyframes lilySway {
-    0%, 100% {
-        transform: rotate(-1deg) translateY(0);
-    }
+/* =========================================================
+   BIRTHDAY WISHES
+   ========================================================= */
 
-    50% {
-        transform: rotate(1deg) translateY(-5px);
-    }
+.wishes-title {
+
+    margin-top: 45px;
+
+    margin-bottom: 25px;
+
+    text-align: center;
+
+    color: #9d4f69;
+
+    font-size: 25px;
 }
-  
-   /* =================================
+
+
+.birthday-wishes {
+
+    margin: 20px 0 35px;
+
+    padding-left: 30px;
+}
+
+
+.birthday-wishes li {
+
+    margin-bottom: 18px;
+
+    padding-left: 8px;
+
+    line-height: 1.7;
+
+    color: inherit;
+}
+
+
+.birthday-wishes li::marker {
+
+    color: #b06a82;
+
+    font-weight: bold;
+}
+
+
+.final-message {
+
+    margin-top: 35px;
+
+    line-height: 1.8;
+}
+
+
+.signature {
+
+    margin-top: 35px;
+
+    text-align: right;
+
+    font-style: italic;
+}
+
+
+/* =========================================================
    OUR SONG
-   ================================= */
+   ========================================================= */
 
 .song-section {
+
     margin-top: 70px;
+
     padding: 40px 20px;
+
     text-align: center;
 }
 
+
 .song-title {
+
     font-size: 32px;
+
     color: #9d4f69;
+
     margin-bottom: 8px;
 }
 
+
 .song-subtitle {
+
     color: #76505d;
+
     font-size: 15px;
+
     line-height: 1.6;
+
     margin-bottom: 25px;
 }
 
+
 .song-card {
-    max-width: 420px;
+
+    max-width: 450px;
+
     margin: 0 auto;
+
     padding: 25px;
+
     border-radius: 25px;
-    background: rgba(255, 255, 255, 0.88);
-    box-shadow: 0 10px 30px rgba(150, 70, 100, 0.15);
+
+    background:
+        rgba(255,255,255,0.88);
+
+    box-shadow:
+        0 10px 30px
+        rgba(150,70,100,0.15);
 }
 
+
 .song-icon {
+
     font-size: 45px;
+
     margin-bottom: 10px;
 }
 
+
 .song-name {
+
     font-size: 22px;
+
     color: #9d4f69;
+
     margin: 8px 0 4px;
 }
 
+
 .song-artist {
+
     color: #76505d;
+
     font-size: 14px;
+
     margin-bottom: 20px;
 }
 
-.youtube-player {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    border: none;
-    border-radius: 16px;
+
+/* =========================================================
+   YOUTUBE PLAYER
+   ========================================================= */
+
+.youtube-player-container {
+
+    display: none;
+
+    margin-top: 25px;
+
+    animation:
+        fadeIn 0.8s ease;
+}
+
+
+.youtube-player-container.show {
+
     display: block;
 }
-/* =================================
-   FLOATING PETALS & HEARTS
-   ================================= */
+
+
+.youtube-player {
+
+    width: 100%;
+
+    aspect-ratio: 16 / 9;
+
+    border: none;
+
+    border-radius: 16px;
+
+    display: block;
+
+    box-shadow:
+        0 10px 25px
+        rgba(100,40,70,0.15);
+}
+
+
+/* =========================================================
+   SONG BUTTON
+   ========================================================= */
+
+.song-button {
+
+    display: inline-block;
+
+    padding: 13px 22px;
+
+    background:
+        #9d4f69;
+
+    color: white;
+
+    border: none;
+
+    text-decoration: none;
+
+    border-radius: 30px;
+
+    font-family: Georgia, serif;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition:
+        0.3s ease;
+}
+
+
+.song-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 18px
+        rgba(150,70,100,0.2);
+}
+
+
+.song-button:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+/* =========================================================
+   FLOATING LOVE
+   ========================================================= */
 
 .floating-love {
+
     position: fixed;
+
     top: -30px;
+
     z-index: 999;
+
     pointer-events: none;
-    animation: fallingLove linear forwards;
+
+    animation:
+        fallingLove linear forwards;
+
     opacity: 0.75;
 }
+
 
 @keyframes fallingLove {
 
     0% {
-        transform: translateY(0) rotate(0deg);
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
         opacity: 0;
     }
 
     10% {
+
         opacity: 0.8;
     }
 
     90% {
+
         opacity: 0.6;
     }
 
     100% {
-        transform: translateY(110vh) rotate(360deg);
+
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
         opacity: 0;
     }
 }
-    /* =================================
-   BIRTHDAY WISHES
-   ================================= */
 
-.wishes-title {
-    margin-top: 40px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #9d4f69;
-    font-size: 25px;
-}
 
-.birthday-wishes {
-    margin: 20px 0 35px;
-    padding-left: 30px;
-}
-
-.birthday-wishes li {
-    margin-bottom: 18px;
-    padding-left: 8px;
-    line-height: 1.7;
-    color: inherit;
-}
-
-.birthday-wishes li::marker {
-    color: #b06a82;
-    font-weight: bold;
-}
-
-.final-message {
-    margin-top: 35px;
-    line-height: 1.8;
-}
-
-.signature {
-    margin-top: 35px;
-    text-align: right;
-    font-style: italic;
-}
-
-    .song-button {
-    display: inline-block;
-    padding: 13px 22px;
-    background: #9d4f69;
-    color: white;
-    text-decoration: none;
-    border-radius: 30px;
-    font-size: 14px;
-    transition: 0.3s ease;
-}
-
-.song-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 18px rgba(150,70,100,0.2);
-}
-    /* =========================================================
-   NICO.EXE — DIGITAL LOVE SYSTEM
+/* =========================================================
    DIGITAL LOCK SCREEN
    ========================================================= */
 
-/* ---------- LOCK SCREEN BASE ---------- */
-
 #lock-screen {
+
     position: fixed;
+
     inset: 0;
 
     z-index: 99999;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     width: 100%;
+
     height: 100dvh;
 
     padding: 20px;
-
-    box-sizing: border-box;
 
     overflow: hidden;
 
     background:
         radial-gradient(
             circle at 50% 45%,
-            rgba(255, 70, 145, 0.16),
+            rgba(255,70,145,0.16),
             transparent 30%
         ),
         radial-gradient(
             circle at 20% 20%,
-            rgba(255, 150, 200, 0.08),
+            rgba(255,150,200,0.08),
             transparent 25%
         ),
         radial-gradient(
             circle at 80% 80%,
-            rgba(255, 70, 145, 0.06),
+            rgba(255,70,145,0.06),
             transparent 25%
         ),
         #09070b;
@@ -1089,12 +788,12 @@ button:active {
 }
 
 
-/* ---------- DIGITAL GRID ---------- */
-
 #lock-screen::before {
+
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
@@ -1103,12 +802,12 @@ button:active {
 
     background-image:
         linear-gradient(
-            rgba(255, 120, 170, 0.08) 1px,
+            rgba(255,120,170,0.08) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(255, 120, 170, 0.08) 1px,
+            rgba(255,120,170,0.08) 1px,
             transparent 1px
         );
 
@@ -1123,12 +822,12 @@ button:active {
 }
 
 
-/* ---------- SCANLINE EFFECT ---------- */
-
 #lock-screen::after {
+
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     pointer-events: none;
@@ -1146,8 +845,6 @@ button:active {
 }
 
 
-/* ---------- LOCK CONTAINER ---------- */
-
 .lock-container {
 
     position: relative;
@@ -1155,11 +852,10 @@ button:active {
     z-index: 2;
 
     width: 100%;
+
     max-width: 430px;
 
     padding: 34px 24px 28px;
-
-    box-sizing: border-box;
 
     text-align: center;
 
@@ -1170,30 +866,36 @@ button:active {
             rgba(255,255,255,0.015)
         );
 
-    border: 1px solid rgba(255, 126, 175, 0.28);
+    border:
+        1px solid
+        rgba(255,126,175,0.28);
 
     border-radius: 24px;
 
     backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
 
     box-shadow:
-        0 0 30px rgba(255, 70, 145, 0.08),
-        0 0 80px rgba(255, 70, 145, 0.04),
-        inset 0 0 30px rgba(255, 70, 145, 0.025);
+        0 0 30px
+        rgba(255,70,145,0.08),
+        0 0 80px
+        rgba(255,70,145,0.04),
+        inset 0 0 30px
+        rgba(255,70,145,0.025);
 
     animation:
         lockContainerAppear 1s ease forwards;
 }
 
 
-/* ---------- TOP SYSTEM STATUS ---------- */
-
 .lock-status {
 
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     gap: 8px;
@@ -1214,13 +916,12 @@ button:active {
 }
 
 
-/* blinking green/pink dot */
-
 .lock-status::before {
 
     content: "";
 
     width: 7px;
+
     height: 7px;
 
     border-radius: 50%;
@@ -1229,13 +930,13 @@ button:active {
 
     box-shadow:
         0 0 6px #ff6eaa,
-        0 0 14px rgba(255, 110, 170, 0.7);
+        0 0 14px
+        rgba(255,110,170,0.7);
 
-    animation: statusBlink 1.5s infinite;
+    animation:
+        statusBlink 1.5s infinite;
 }
 
-
-/* ---------- LOCK ICON ---------- */
 
 .lock-icon {
 
@@ -1244,9 +945,11 @@ button:active {
     display: inline-flex;
 
     align-items: center;
+
     justify-content: center;
 
     width: 92px;
+
     height: 92px;
 
     margin-bottom: 20px;
@@ -1256,25 +959,26 @@ button:active {
     background:
         radial-gradient(
             circle,
-            rgba(255, 100, 160, 0.14),
+            rgba(255,100,160,0.14),
             transparent 65%
         );
 
-    border: 1px solid rgba(255, 130, 180, 0.18);
+    border:
+        1px solid
+        rgba(255,130,180,0.18);
 
     font-size: 45px;
 
     filter:
         drop-shadow(
             0 0 12px
-            rgba(255, 100, 160, 0.45)
+            rgba(255,100,160,0.45)
         );
 
-    animation: lockPulse 3s infinite;
+    animation:
+        lockPulse 3s infinite;
 }
 
-
-/* rotating digital ring */
 
 .lock-icon::before {
 
@@ -1287,26 +991,22 @@ button:active {
     border-radius: 50%;
 
     border:
-
         1px solid
-        rgba(255, 120, 175, 0.25);
+        rgba(255,120,175,0.25);
 
     border-top-color:
-        rgba(255, 120, 175, 0.85);
+        rgba(255,120,175,0.85);
 
     animation:
         rotateRing 5s linear infinite;
 }
 
 
-/* ---------- MAIN TITLE ---------- */
-
 .lock-title {
 
     margin: 0;
 
-    font-family:
-        monospace;
+    font-family: monospace;
 
     font-size: 30px;
 
@@ -1317,12 +1017,12 @@ button:active {
     color: #ffe6ef;
 
     text-shadow:
-        0 0 10px rgba(255, 100, 160, 0.35),
-        0 0 25px rgba(255, 100, 160, 0.12);
+        0 0 10px
+        rgba(255,100,160,0.35),
+        0 0 25px
+        rgba(255,100,160,0.12);
 }
 
-
-/* ---------- SYSTEM SUBTITLE ---------- */
 
 .lock-subtitle {
 
@@ -1342,8 +1042,6 @@ button:active {
 }
 
 
-/* ---------- ACCESS PANEL ---------- */
-
 .access-panel {
 
     padding: 18px;
@@ -1351,17 +1049,15 @@ button:active {
     margin-top: 5px;
 
     background:
-        rgba(0, 0, 0, 0.18);
+        rgba(0,0,0,0.18);
 
     border:
         1px solid
-        rgba(255, 130, 175, 0.14);
+        rgba(255,130,175,0.14);
 
     border-radius: 16px;
 }
 
-
-/* ---------- LABEL ---------- */
 
 .lock-label {
 
@@ -1381,8 +1077,6 @@ button:active {
 }
 
 
-/* ---------- PASSWORD INPUT ---------- */
-
 #access-code {
 
     display: block;
@@ -1390,8 +1084,6 @@ button:active {
     width: 100%;
 
     height: 52px;
-
-    box-sizing: border-box;
 
     padding: 12px;
 
@@ -1412,7 +1104,7 @@ button:active {
 
     border:
         1px solid
-        rgba(255, 140, 180, 0.35);
+        rgba(255,140,180,0.35);
 
     border-radius: 12px;
 
@@ -1426,7 +1118,7 @@ button:active {
 #access-code::placeholder {
 
     color:
-        rgba(255, 190, 210, 0.25);
+        rgba(255,190,210,0.25);
 
     letter-spacing: 5px;
 }
@@ -1439,13 +1131,11 @@ button:active {
 
     box-shadow:
         0 0 12px
-        rgba(255, 100, 160, 0.18),
+        rgba(255,100,160,0.18),
         inset 0 0 12px
-        rgba(255, 100, 160, 0.04);
+        rgba(255,100,160,0.04);
 }
 
-
-/* ---------- UNLOCK BUTTON ---------- */
 
 .unlock-button {
 
@@ -1480,7 +1170,7 @@ button:active {
 
     box-shadow:
         0 6px 20px
-        rgba(150, 60, 100, 0.15);
+        rgba(150,60,100,0.15);
 
     transition:
         transform 0.25s ease,
@@ -1490,21 +1180,21 @@ button:active {
 
 .unlock-button:active {
 
-    transform: scale(0.97);
+    transform:
+        scale(0.97);
 }
 
 
 .unlock-button:hover {
 
-    transform: translateY(-2px);
+    transform:
+        translateY(-2px);
 
     box-shadow:
         0 0 20px
-        rgba(255, 100, 160, 0.28);
+        rgba(255,100,160,0.28);
 }
 
-
-/* ---------- CLUE BUTTON ---------- */
 
 .clue-button {
 
@@ -1531,18 +1221,8 @@ button:active {
     text-decoration: underline;
 
     text-underline-offset: 4px;
-
-    transition: 0.2s ease;
 }
 
-
-.clue-button:hover {
-
-    color: #ff9cbe;
-}
-
-
-/* ---------- SYSTEM MESSAGE ---------- */
 
 .lock-message {
 
@@ -1559,12 +1239,8 @@ button:active {
     color: #ff91b8;
 
     line-height: 1.5;
-
-    transition: 0.2s ease;
 }
 
-
-/* ---------- SYSTEM FOOTER ---------- */
 
 .lock-footer {
 
@@ -1576,7 +1252,8 @@ button:active {
 
     letter-spacing: 1.5px;
 
-    color: rgba(255, 190, 210, 0.35);
+    color:
+        rgba(255,190,210,0.35);
 
     text-transform: uppercase;
 }
@@ -1597,17 +1274,19 @@ button:active {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     padding: 20px;
 
-    box-sizing: border-box;
-
     background:
-        rgba(5, 3, 7, 0.78);
+        rgba(5,3,7,0.78);
 
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter:
+        blur(8px);
+
+    -webkit-backdrop-filter:
+        blur(8px);
 
     opacity: 0;
 
@@ -1635,24 +1314,22 @@ button:active {
 
     padding: 25px;
 
-    box-sizing: border-box;
-
     background:
         linear-gradient(
             145deg,
-            rgba(35, 15, 27, 0.96),
-            rgba(12, 8, 13, 0.98)
+            rgba(35,15,27,0.96),
+            rgba(12,8,13,0.98)
         );
 
     border:
         1px solid
-        rgba(255, 120, 170, 0.3);
+        rgba(255,120,170,0.3);
 
     border-radius: 18px;
 
     box-shadow:
         0 0 35px
-        rgba(255, 70, 145, 0.12);
+        rgba(255,70,145,0.12);
 }
 
 
@@ -1731,7 +1408,7 @@ button:active {
 
 
 /* =========================================================
-   AUTHENTICATION SCREEN
+   AUTHENTICATION
    ========================================================= */
 
 #auth-screen {
@@ -1745,6 +1422,7 @@ button:active {
     display: flex;
 
     align-items: center;
+
     justify-content: center;
 
     background: #08060a;
@@ -1843,7 +1521,207 @@ button:active {
 
 
 /* =========================================================
-   UNLOCKED STATE
+   CHAPTER 01
+   ========================================================= */
+
+.chapter-page {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9998;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(157,79,105,0.18),
+            transparent 55%
+        ),
+        #0d090c;
+
+    color: #f8e9ee;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+
+.chapter-page.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+.chapter-content {
+
+    width: 90%;
+
+    max-width: 650px;
+
+    text-align: center;
+
+    transform:
+        translateY(30px);
+
+    opacity: 0;
+
+    transition:
+        transform 1s ease,
+        opacity 1s ease;
+}
+
+
+.chapter-page.show
+.chapter-content {
+
+    transform:
+        translateY(0);
+
+    opacity: 1;
+}
+
+
+.chapter-number {
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 5px;
+
+    color: #c98da2;
+
+    margin-bottom: 25px;
+}
+
+
+.chapter-line {
+
+    width: 60px;
+
+    height: 1px;
+
+    background: #c98da2;
+
+    margin: 0 auto 35px;
+
+    opacity: 0.7;
+}
+
+
+.chapter-title {
+
+    margin: 0;
+
+    font-size:
+        clamp(34px, 8vw, 62px);
+
+    line-height: 1.15;
+
+    font-weight: 400;
+
+    letter-spacing: -1px;
+}
+
+
+.chapter-subtitle {
+
+    margin: 28px auto 0;
+
+    max-width: 480px;
+
+    font-size: 15px;
+
+    line-height: 1.8;
+
+    color: #cbb7be;
+}
+
+
+.chapter-date {
+
+    margin-top: 30px;
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    color: #9d4f69;
+}
+
+
+.chapter-button {
+
+    margin-top: 45px;
+
+    padding: 14px 25px;
+
+    border:
+        1px solid #9d4f69;
+
+    border-radius: 30px;
+
+    background: transparent;
+
+    color: #f8e9ee;
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+
+.chapter-button:hover {
+
+    background: #9d4f69;
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 30px
+        rgba(157,79,105,0.3);
+}
+
+
+.chapter-button:active {
+
+    transform:
+        scale(0.96);
+}
+
+
+/* =========================================================
+   LOCK ANIMATIONS
    ========================================================= */
 
 #lock-screen.unlocked {
@@ -1856,20 +1734,12 @@ button:active {
 }
 
 
-/* =========================================================
-   SHAKE ANIMATION
-   ========================================================= */
-
 .shake {
 
     animation:
         lockShake 0.45s ease;
 }
 
-
-/* =========================================================
-   ANIMATIONS
-   ========================================================= */
 
 @keyframes lockContainerAppear {
 
@@ -1895,8 +1765,7 @@ button:active {
 
 @keyframes statusBlink {
 
-    0%,
-    100% {
+    0%, 100% {
 
         opacity: 0.35;
     }
@@ -1910,10 +1779,10 @@ button:active {
 
 @keyframes lockPulse {
 
-    0%,
-    100% {
+    0%, 100% {
 
-        transform: scale(1);
+        transform:
+            scale(1);
 
         box-shadow:
             0 0 0
@@ -1922,7 +1791,8 @@ button:active {
 
     50% {
 
-        transform: scale(1.03);
+        transform:
+            scale(1.03);
 
         box-shadow:
             0 0 25px
@@ -1949,8 +1819,7 @@ button:active {
 
 @keyframes lockShake {
 
-    0%,
-    100% {
+    0%, 100% {
 
         transform:
             translateX(0);
@@ -1983,10 +1852,23 @@ button:active {
 
 
 /* =========================================================
-   MOBILE ADJUSTMENTS
+   MOBILE
    ========================================================= */
 
 @media (max-width: 480px) {
+
+    .card {
+
+        padding:
+            35px 22px;
+    }
+
+
+    .letter-content {
+
+        font-size: 16px;
+    }
+
 
     .lock-container {
 
@@ -1996,6 +1878,7 @@ button:active {
         border-radius: 20px;
     }
 
+
     .lock-title {
 
         font-size: 26px;
@@ -2003,12 +1886,14 @@ button:active {
         letter-spacing: 3px;
     }
 
+
     .lock-subtitle {
 
         font-size: 9px;
 
         letter-spacing: 1.4px;
     }
+
 
     .lock-icon {
 
@@ -2019,6 +1904,7 @@ button:active {
         font-size: 40px;
     }
 
+
     #access-code {
 
         height: 50px;
@@ -2027,14 +1913,32 @@ button:active {
 
         letter-spacing: 7px;
     }
+
+
+    .song-section {
+
+        padding-left: 5px;
+
+        padding-right: 5px;
+    }
+
+
+    .song-card {
+
+        padding: 20px 15px;
+    }
+
 }
+
 </style>
 
 </head>
 
+
 <body>
-    <!-- =====================================================
-     NICO.EXE — DIGITAL LOVE SYSTEM
+
+
+<!-- =====================================================
      DIGITAL LOCK SCREEN
      ===================================================== -->
 
@@ -2042,28 +1946,20 @@ button:active {
 
     <div class="lock-container">
 
-        <!-- SYSTEM STATUS -->
-
         <div class="lock-status">
             SECURE CONNECTION // ONLINE
         </div>
 
-
-        <!-- LOCK ICON -->
 
         <div class="lock-icon">
             🔐
         </div>
 
 
-        <!-- SYSTEM NAME -->
-
         <h1 class="lock-title">
             NICO.EXE
         </h1>
 
-
-        <!-- SYSTEM DESCRIPTION -->
 
         <p class="lock-subtitle">
 
@@ -2076,12 +1972,7 @@ button:active {
         </p>
 
 
-        <!-- ACCESS PANEL -->
-
         <div class="access-panel">
-
-
-            <!-- INPUT LABEL -->
 
             <label
                 for="access-code"
@@ -2090,8 +1981,6 @@ button:active {
                 ENTER ACCESS CODE
             </label>
 
-
-            <!-- PASSWORD INPUT -->
 
             <input
                 type="password"
@@ -2103,54 +1992,41 @@ button:active {
             >
 
 
-            <!-- UNLOCK BUTTON -->
-
             <button
                 type="button"
                 class="unlock-button"
                 onclick="unlockSystem()"
             >
-
                 ⟶ UNLOCK SYSTEM
-
             </button>
 
-
-            <!-- ERROR / SYSTEM MESSAGE -->
 
             <div
                 id="lock-message"
                 class="lock-message"
-            >
-            </div>
-
+            ></div>
 
         </div>
 
-
-        <!-- CLUE -->
 
         <button
             type="button"
             class="clue-button"
             onclick="showClue()"
         >
-
             [ NEED A CLUE? ]
-
         </button>
 
-
-        <!-- FOOTER -->
 
         <div class="lock-footer">
 
             NICO.EXE // PERSONAL SYSTEM
+
             <br>
+
             ENCRYPTED WITH LOVE
 
         </div>
-
 
     </div>
 
@@ -2166,15 +2042,13 @@ button:active {
     <div class="clue-box">
 
         <div class="clue-header">
-
             SYSTEM CLUE // 001
-
         </div>
 
 
         <div class="clue-content">
 
-            > TRACE THE BEGINNING OF THE CONNECTION.
+            &gt; TRACE THE BEGINNING OF THE CONNECTION.
 
             <br><br>
 
@@ -2221,9 +2095,7 @@ button:active {
             class="clue-close"
             onclick="hideClue()"
         >
-
             CLOSE CLUE
-
         </button>
 
     </div>
@@ -2277,8 +2149,7 @@ button:active {
             <div
                 class="auth-progress-bar"
                 id="auth-progress-bar"
-            >
-            </div>
+            ></div>
 
         </div>
 
@@ -2286,58 +2157,991 @@ button:active {
 
 </div>
 
-  <script>
-function createFloatingLove() {
 
-    const love = document.createElement("div");
+<!-- =====================================================
+     CHAPTER 01
+     ===================================================== -->
 
-    const symbols = ["🌸", "🩷", "♡", "✨", "🫃🏻", "👨‍❤️‍💋‍👨"];
-    const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+<section
+    id="chapter-beginning"
+    class="chapter-page"
+>
 
-    love.className = "floating-love";
-    love.textContent = symbol;
+    <div class="chapter-content">
 
-    love.style.left = Math.random() * 100 + "vw";
+        <div class="chapter-number">
+            CHAPTER 01
+        </div>
 
-    love.style.fontSize =
-        (10 + Math.random() * 12) + "px";
 
-    love.style.animationDuration =
-        (7 + Math.random() * 6) + "s";
+        <div class="chapter-line"></div>
 
-    document.body.appendChild(love);
 
-    setTimeout(() => {
-        love.remove();
-    }, 14000);
-}
+        <h1 class="chapter-title">
 
-setInterval(createFloatingLove, 1200);
-</script>
-    <script>
+            This is the beginning
+            <br>
+            of our chapter.
+
+        </h1>
+
+
+        <p class="chapter-subtitle">
+
+            Not the beginning of a perfect story,
+            but the beginning of ours.
+
+        </p>
+
+
+        <p class="chapter-date">
+
+            03 • 06 • 2026
+
+        </p>
+
+
+        <button
+            type="button"
+            class="chapter-button"
+            onclick="continueToLetter()"
+        >
+
+            BEGIN OUR STORY →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN WEBSITE
+     ===================================================== -->
+
+<div class="container">
+
+    <div class="card">
+
+
+        <!-- =================================================
+             PINK LILY OPENING
+             ================================================= -->
+
+        <div class="flower-opening">
+
+            <div class="flower-glow"></div>
+
+
+            <span
+                class="flower-sparkle sparkle-one"
+            >
+                ✦
+            </span>
+
+
+            <span
+                class="flower-sparkle sparkle-two"
+            >
+                ✧
+            </span>
+
+
+            <span
+                class="flower-sparkle sparkle-three"
+            >
+                ✦
+            </span>
+
+
+            <span
+                class="flower-sparkle sparkle-four"
+            >
+                ✧
+            </span>
+
+
+            <!-- =================================================
+                 YOUR ORIGINAL PINK LILY
+                 ================================================= -->
+
+            <div
+                class="pink-lily"
+                style="
+                    width:260px;
+                    height:340px;
+                    margin:0 auto;
+                    position:relative;
+                "
+            >
+
+                <svg
+                    viewBox="0 0 300 390"
+                    width="260"
+                    height="340"
+                    xmlns="http://www.w3.org/2000/svg"
+                    style="overflow:visible;"
+                >
+
+                    <defs>
+
+                        <radialGradient
+                            id="pinkPetal"
+                            cx="45%"
+                            cy="25%"
+                        >
+
+                            <stop
+                                offset="0%"
+                                stop-color="#fff8fb"
+                            />
+
+                            <stop
+                                offset="22%"
+                                stop-color="#ffd7e5"
+                            />
+
+                            <stop
+                                offset="55%"
+                                stop-color="#ff9fbe"
+                            />
+
+                            <stop
+                                offset="100%"
+                                stop-color="#dc5b86"
+                            />
+
+                        </radialGradient>
+
+
+                        <linearGradient
+                            id="stemGreen"
+                            x1="0%"
+                            y1="0%"
+                            x2="100%"
+                            y2="0%"
+                        >
+
+                            <stop
+                                offset="0%"
+                                stop-color="#3d8b47"
+                            />
+
+                            <stop
+                                offset="50%"
+                                stop-color="#79c96b"
+                            />
+
+                            <stop
+                                offset="100%"
+                                stop-color="#438f4b"
+                            />
+
+                        </linearGradient>
+
+
+                        <radialGradient id="centerGold">
+
+                            <stop
+                                offset="0%"
+                                stop-color="#fff4a8"
+                            />
+
+                            <stop
+                                offset="45%"
+                                stop-color="#ffd85b"
+                            />
+
+                            <stop
+                                offset="100%"
+                                stop-color="#e5a52f"
+                            />
+
+                        </radialGradient>
+
+
+                        <filter id="softGlow">
+
+                            <feGaussianBlur
+                                stdDeviation="5"
+                            />
+
+                        </filter>
+
+                    </defs>
+
+
+                    <!-- SOFT GLOW -->
+
+                    <ellipse
+                        cx="150"
+                        cy="125"
+                        rx="95"
+                        ry="85"
+                        fill="#ffb6d0"
+                        opacity=".18"
+                        filter="url(#softGlow)"
+                    />
+
+
+                    <!-- STEM -->
+
+                    <path
+                        d="M150 175 C148 230 151 290 150 365"
+                        stroke="url(#stemGreen)"
+                        stroke-width="13"
+                        stroke-linecap="round"
+                        fill="none"
+                    />
+
+
+                    <!-- LEFT LEAF -->
+
+                    <path
+                        d="
+                            M147 270
+                            C112 245 72 252 48 282
+                            C82 288 120 290 150 275 Z
+                        "
+                        fill="url(#stemGreen)"
+                    />
+
+
+                    <path
+                        d="
+                            M145 273
+                            C105 266 77 270 53 282
+                        "
+                        stroke="#9ade8b"
+                        stroke-width="2"
+                        opacity=".55"
+                        fill="none"
+                    />
+
+
+                    <!-- RIGHT LEAF -->
+
+                    <path
+                        d="
+                            M153 300
+                            C190 270 225 274 248 300
+                            C214 306 180 310 150 305 Z
+                        "
+                        fill="url(#stemGreen)"
+                    />
+
+
+                    <path
+                        d="
+                            M155 303
+                            C193 292 222 294 245 300
+                        "
+                        stroke="#9ade8b"
+                        stroke-width="2"
+                        opacity=".55"
+                        fill="none"
+                    />
+
+
+                    <!-- BACK PETALS -->
+
+                    <path
+                        d="
+                            M150 145
+                            C105 125 72 88 84 42
+                            C125 46 151 73 150 145 Z
+                        "
+                        fill="url(#pinkPetal)"
+                    />
+
+
+                    <path
+                        d="
+                            M150 145
+                            C195 125 228 88 216 42
+                            C175 46 149 73 150 145 Z
+                        "
+                        fill="url(#pinkPetal)"
+                    />
+
+
+                    <!-- SIDE PETALS -->
+
+                    <path
+                        d="
+                            M145 150
+                            C98 158 52 148 30 112
+                            C67 92 111 105 145 150 Z
+                        "
+                        fill="url(#pinkPetal)"
+                    />
+
+
+                    <path
+                        d="
+                            M155 150
+                            C202 158 248 148 270 112
+                            C233 92 189 105 155 150 Z
+                        "
+                        fill="url(#pinkPetal)"
+                    />
+
+
+                    <!-- FRONT PETALS -->
+
+                    <path
+                        d="
+                            M145 145
+                            C110 170 93 211 112 244
+                            C140 226 153 190 150 150 Z
+                        "
+                        fill="url(#pinkPetal)"
+                    />
+
+
+                    <path
+                        d="
+                            M155 145
+                            C190 170 207 211 188 244
+                            C160 226 147 190 150 150 Z
+                        "
+                        fill="url(#pinkPetal)"
+                    />
+
+
+                    <!-- CENTER -->
+
+                    <circle
+                        cx="150"
+                        cy="143"
+                        r="25"
+                        fill="url(#centerGold)"
+                    />
+
+
+                    <!-- STAMENS -->
+
+                    <g
+                        stroke="#e5a33b"
+                        stroke-width="4"
+                        stroke-linecap="round"
+                    >
+
+                        <line
+                            x1="135"
+                            y1="130"
+                            x2="112"
+                            y2="82"
+                        />
+
+                        <line
+                            x1="143"
+                            y1="125"
+                            x2="132"
+                            y2="72"
+                        />
+
+                        <line
+                            x1="150"
+                            y1="123"
+                            x2="150"
+                            y2="68"
+                        />
+
+                        <line
+                            x1="157"
+                            y1="125"
+                            x2="168"
+                            y2="72"
+                        />
+
+                        <line
+                            x1="165"
+                            y1="130"
+                            x2="188"
+                            y2="82"
+                        />
+
+                    </g>
+
+
+                    <!-- STAMEN TIPS -->
+
+                    <g fill="#c98535">
+
+                        <circle
+                            cx="112"
+                            cy="82"
+                            r="6"
+                        />
+
+                        <circle
+                            cx="132"
+                            cy="72"
+                            r="6"
+                        />
+
+                        <circle
+                            cx="150"
+                            cy="68"
+                            r="6"
+                        />
+
+                        <circle
+                            cx="168"
+                            cy="72"
+                            r="6"
+                        />
+
+                        <circle
+                            cx="188"
+                            cy="82"
+                            r="6"
+                        />
+
+                    </g>
+
+
+                    <!-- TINY FLOWER SPARKLES -->
+
+                    <g
+                        fill="#fff"
+                        opacity=".75"
+                    >
+
+                        <circle
+                            cx="102"
+                            cy="73"
+                            r="3"
+                        />
+
+                        <circle
+                            cx="205"
+                            cy="68"
+                            r="3"
+                        />
+
+                    </g>
+
+                </svg>
+
+            </div>
+
+
+            <!-- =================================================
+                 LOVE LETTER
+                 ================================================= -->
+
+            <div
+                class="letter-content"
+                id="letter"
+            >
+
+                <h2>
+                    Dear Nico Siapno,
+                </h2>
+
+
+                <p>
+
+                    Hi, asawa! I just want to greet you a
+
+                    <br>
+
+                    <strong>
+                        happy birthday to you, my baby!!! 🩷✨
+                    </strong>
+
+                </p>
+
+
+                <p>
+
+                    Thank you so much for being the strongest soldier
+                    in this relationship. Thank you for being my
+                    inspiration me every gising, every sipag, every
+                    pasok sa school, every pag uwi kung saan man ako galing.
+                    Maraming salamat sa love na pinaramdam
+                    mo sa akin specially nung mga early days natin.
+
+                </p>
+
+
+                <p>
+
+                    Thank you kasi hindi mo ako sinukuan, hindi mo
+                    akong hinayaan umalis, to the point na nag beg
+                    ka pa.
+
+                </p>
+
+
+                <p>
+
+                    Honestly speaking, I didn’t expect na ganon
+                    ang gagawin mo sa akin kasi syempre early weeks
+                    pa lang ata yon. Wala pa tayong month non?
+
+                </p>
+
+
+                <p>
+
+                    Anyways, maraming maraming salamat sa pakikinig
+                    mo sa akin, sa kwento, mapa personal, jokes,
+                    serious, corny, horny, or kahit ano pang sides meron
+                    ako. Kahit may times na hindi ako sumasang-ayon
+                    sa mga gusto mo. To the point na palagi ako may
+                    disclaimer, kasi ayoko ng away.
+
+                </p>
+
+
+                <p>
+
+                    Thank you sa patience sa kakulitan ko, kaharutan ko,
+                    kalibugan ko, (OO na inaamin ko na) katandaan ko,
+                    kasabugan ko, “GURANG”. Thank you talaga.
+
+                </p>
+
+
+                <p>
+
+                    Thank you sa trust na binigay mo sa akin. Mapa-deepest
+                    secrets, horny secrets, insecurities, bubbly sides,
+                    harot sides, hyper side, lahat lahat ng personalities
+                    and qualities na pinakita mo sa akin.
+                    I really do appreciate all of those.
+
+                </p>
+
+
+                <p>
+
+                    Thank you sa gifts nitong mga nakakaraan, sobrang
+                    naa-appreciate ko siya. Sobrang sarap sa feeling na
+                    nawala na yung depression ko, bihira na ako
+                    magka-anxiety attacks.
+
+                </p>
+
+
+                <p>
+
+                    <strong>Story time:</strong>
+
+                    Kapag ganitong marami akong work loads
+                    (including: activities, friends, family, orgs, classmates,
+                    personal), sa maraming patong-patong na gawain at
+                    emotions na to, supposedly, madalas na anxiety attacks ko
+                    nito. AS IN lahat na lang inaaway ko.
+
+                </p>
+
+
+                <p>
+
+                    But, since nakilala kita as in never or once ko na lang
+                    ulit siya naranasan. Well hindi naman kasi agad-agad
+                    siya talaga mawawala eh. But the thing here is, simula
+                    talaga nung dumating ka, pinaramdam mo na may care ka,
+                    may love, may support ka sa akin.
+
+                </p>
+
+
+                <p>
+
+                    Nawala ehh… so thank you so much sa lahat ng iyon. 🩷
+
+                </p>
+
+
+                <p>
+
+                    I just want to say sorry about sa times na sumasobra
+                    kakulitan ko, harot ko, kalibugan ko, pagiging insensitive
+                    ko. Also pagkukulang ko.
+
+                </p>
+
+
+                <p>
+
+                    Sorry sa parents ko, na hindi ako matanggap, well wala
+                    naman siyang problema sa iyo eh. Pero it's just me na
+                    ayaw nila ako makipag relasyon sa lalaki.
+
+                </p>
+
+
+                <p>
+
+                    But, ngayon, I don’t care what they say about us,
+                    especially now. Wala yan. I know na someday, when
+                    they see us happy, successful, full of love and support
+                    for each other. I believe and I prayed na matatanggap
+                    talaga nila.
+
+                </p>
+
+
+                <p>
+
+                    Sorry sa late na gift. Kasi alam mo na yung ulan ulan,
+                    walang baon, walang ipon, walang pera. But still,
+                    meron at meron naman me maibibigay.
+
+                </p>
+
+
+                <p>
+
+                    Not exactly on your birthday, but I’m sure na meron
+                    at meron ka pa rin naman gifts mula sa akin.
+                    And sana magustohan mo siya kahit very cheap and
+                    simple lang siya.
+
+                </p>
+
+
+                <p>
+
+                    Well, since this is a birthday letter.
+                    Syempre dapat meron tayo wish…
+
+                </p>
+
+
+                <!-- =================================================
+                     20 WISHES
+                     ================================================= -->
+
+                <h3 class="wishes-title">
+                    20 Wishes for My Asawa 🩷
+                </h3>
+
+
+                <ol class="birthday-wishes">
+
+
+                    <li>
+
+                        Wish ko, sana matupad lahat ng wish mo,
+                        manifestation, at prayers mo.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, wag mawala ng pag-asa at manalig
+                        palagi kay Lord.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, mahalin mo sarili mo kung paano
+                        mo ako mahalin.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, never mo nang sasaktan sarili mo.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, na wag mo i-pressure sarili mo.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, yung kabutihan ng health mo.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, makapagtapos ka ng pag-aaral mo
+                        with or without flying colors.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, magkasama pa kayo ni Mami mo
+                        nang matagal.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, mas maging strong ka sa mga challenges
+                        na kakaharapin mo.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, humaba pa ang pasensya mo.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, mahalin mo yung mga tao
+                        na nagmamahal sa'yo.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, matupad lahat ng mga pangarap mo
+                        kasama ako.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, na mag-travel us together while enjoy
+                        our lives, jobs, passion.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, ikaw na ang una at huli kong mahahalin.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, ikaw lang ang luluharan ko at magsasabi
+                        ng “will you marry me”.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, na ikaw lang ang magsusuot ng singsing
+                        sa daliri ko.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, ikaw na mapapangasawa ko.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, ikaw lang kasama ko sa magiging
+                        tirahan natin.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, ikaw lang matitira ko halos araw-araw.
+
+                    </li>
+
+
+                    <li>
+
+                        Wish ko, ako lang ang magmamahal sa'yo ng ganito
+                        at ikaw lang ang magmamahal sa akin ng ganito.
+
+                    </li>
+
+
+                </ol>
+
+
+                <p class="final-message">
+
+                    Again, happy happy happy birthday to my future asawa.
+                    Mahal na mahal kita palagi. Nandito ako, hindi kita iiwan,
+                    mamahalin kitang buong-buo, susuporta sa'yo hanggang dulo.
+                    I love you, baby! Enjoy your day kahit may pasok ka hehehe. 🩷
+
+                </p>
+
+
+                <p class="signature">
+
+                    With all my love,
+
+                    <br>
+
+                    Your Suitor 💗
+
+                </p>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 OPEN LETTER BUTTON
+                 ================================================= -->
+
+            <button
+                type="button"
+                id="open-letter-button"
+                onclick="openLetter()"
+            >
+
+                💌 Open My Letter
+
+            </button>
+
+
+            <!-- =================================================
+                 OUR SONG
+                 ================================================= -->
+
+            <section class="song-section">
+
+                <h2 class="song-title">
+                    Our Song 🎧
+                </h2>
+
+
+                <p class="song-subtitle">
+
+                    A little song that reminds me of you. 🩷
+
+                </p>
+
+
+                <div class="song-card">
+
+
+                    <div class="song-icon">
+                        🎶
+                    </div>
+
+
+                    <h3 class="song-name">
+
+                        Libu-libong buwan (uuwian)
+
+                    </h3>
+
+
+                    <p class="song-artist">
+
+                        Kyle Raphael
+
+                    </p>
+
+
+                    <button
+                        type="button"
+                        class="song-button"
+                        onclick="playOurSong()"
+                    >
+
+                        ▶ Play Our Song
+
+                    </button>
+
+
+                    <!-- YOUTUBE PLAYER -->
+
+                    <div
+                        id="youtube-player-container"
+                        class="youtube-player-container"
+                    >
+
+                        <iframe
+                            id="youtube-player"
+                            class="youtube-player"
+                            src=""
+                            title="Our Song"
+                            allow="
+                                autoplay;
+                                encrypted-media;
+                                picture-in-picture
+                            "
+                            allowfullscreen
+                        >
+                        </iframe>
+
+                    </div>
+
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+     ========================================================= -->
+
+<script>
+
 
 /* =========================================================
-   NICO.EXE — DIGITAL LOVE SYSTEM
-   DIGITAL LOCK ENGINE
+   CONFIGURATION
    ========================================================= */
 
-
-/* =========================================================
-   ACCESS CODE
-   ========================================================= */
 
 /*
-   June 3, 2026
-   First chat on Litmatch
-
-   Format:
-   MMDDYY
+   DIGITAL LOCK CODE
 
    June 03, 2026
+   First chat on Litmatch
+
+   MMDDYY
    = 060326
 */
 
 const ACCESS_CODE = "060326";
+
+
+/*
+   REAL YOUTUBE VIDEO
+
+   https://youtu.be/8lbRDzhjqeM
+*/
+
+const SONG_ID =
+    "8lbRDzhjqeM";
 
 
 /* =========================================================
@@ -2347,24 +3151,61 @@ const ACCESS_CODE = "060326";
 const lockScreen =
     document.getElementById("lock-screen");
 
+
 const accessInput =
     document.getElementById("access-code");
+
 
 const lockMessage =
     document.getElementById("lock-message");
 
+
 const clueModal =
     document.getElementById("clue-modal");
+
 
 const authScreen =
     document.getElementById("auth-screen");
 
+
 const authProgress =
-    document.getElementById("auth-progress-bar");
+    document.getElementById(
+        "auth-progress-bar"
+    );
+
+
+const chapterBeginning =
+    document.getElementById(
+        "chapter-beginning"
+    );
+
+
+const letter =
+    document.getElementById(
+        "letter"
+    );
+
+
+const openLetterButton =
+    document.getElementById(
+        "open-letter-button"
+    );
+
+
+const youtubeContainer =
+    document.getElementById(
+        "youtube-player-container"
+    );
+
+
+const youtubePlayer =
+    document.getElementById(
+        "youtube-player"
+    );
 
 
 /* =========================================================
-   UNLOCK SYSTEM
+   DIGITAL LOCK
    ========================================================= */
 
 function unlockSystem() {
@@ -2373,14 +3214,15 @@ function unlockSystem() {
         accessInput.value.trim();
 
 
-    /* ---------------------------------------------
-       EMPTY INPUT
-       --------------------------------------------- */
+    /* EMPTY */
 
     if (enteredCode === "") {
 
         lockMessage.textContent =
             "> ENTER ACCESS CODE.";
+
+        lockMessage.style.color =
+            "#ff91b8";
 
         shakeLock();
 
@@ -2388,9 +3230,7 @@ function unlockSystem() {
     }
 
 
-    /* ---------------------------------------------
-       CORRECT CODE
-       --------------------------------------------- */
+    /* CORRECT */
 
     if (enteredCode === ACCESS_CODE) {
 
@@ -2401,12 +3241,8 @@ function unlockSystem() {
             "#8fffc1";
 
 
-        /* Hide clue if open */
-
         hideClue();
 
-
-        /* Start authentication */
 
         startAuthentication();
 
@@ -2415,9 +3251,7 @@ function unlockSystem() {
     }
 
 
-    /* ---------------------------------------------
-       WRONG CODE
-       --------------------------------------------- */
+    /* WRONG */
 
     lockMessage.textContent =
         "> ACCESS DENIED // TRY AGAIN.";
@@ -2435,31 +3269,38 @@ function unlockSystem() {
 
 
 /* =========================================================
-   SHAKE EFFECT
+   SHAKE
    ========================================================= */
 
 function shakeLock() {
 
     const container =
-        document.querySelector(".lock-container");
+        document.querySelector(
+            ".lock-container"
+        );
 
 
-    container.classList.remove("shake");
+    if (!container) return;
 
 
-    /*
-       Force browser to restart animation
-    */
+    container.classList.remove(
+        "shake"
+    );
+
 
     void container.offsetWidth;
 
 
-    container.classList.add("shake");
+    container.classList.add(
+        "shake"
+    );
 
 
-    setTimeout(() => {
+    setTimeout(function () {
 
-        container.classList.remove("shake");
+        container.classList.remove(
+            "shake"
+        );
 
     }, 500);
 
@@ -2467,33 +3308,36 @@ function shakeLock() {
 
 
 /* =========================================================
-   CLUE SYSTEM
+   CLUE
    ========================================================= */
 
 function showClue() {
 
-    clueModal.classList.add("show");
+    clueModal.classList.add(
+        "show"
+    );
 
 }
 
 
 function hideClue() {
 
-    clueModal.classList.remove("show");
+    clueModal.classList.remove(
+        "show"
+    );
 
 }
 
 
-/* =========================================================
-   CLOSE CLUE WHEN CLICKING OUTSIDE
-   ========================================================= */
+/* CLOSE CLUE OUTSIDE */
 
 clueModal.addEventListener(
     "click",
     function(event) {
 
         if (
-            event.target === clueModal
+            event.target ===
+            clueModal
         ) {
 
             hideClue();
@@ -2505,20 +3349,21 @@ clueModal.addEventListener(
 
 
 /* =========================================================
-   AUTHENTICATION SEQUENCE
+   AUTHENTICATION
    ========================================================= */
 
 function startAuthentication() {
 
+    authScreen.classList.add(
+        "show"
+    );
 
-    /* Show authentication screen */
 
-    authScreen.classList.add("show");
+    authProgress.style.width =
+        "0%";
 
 
-    /* Start progress bar */
-
-    setTimeout(() => {
+    setTimeout(function() {
 
         authProgress.style.width =
             "100%";
@@ -2526,9 +3371,7 @@ function startAuthentication() {
     }, 100);
 
 
-    /* Activate system lines */
-
-    setTimeout(() => {
+    setTimeout(function() {
 
         document
             .getElementById("auth-line-1")
@@ -2537,7 +3380,7 @@ function startAuthentication() {
     }, 400);
 
 
-    setTimeout(() => {
+    setTimeout(function() {
 
         document
             .getElementById("auth-line-2")
@@ -2546,7 +3389,7 @@ function startAuthentication() {
     }, 900);
 
 
-    setTimeout(() => {
+    setTimeout(function() {
 
         document
             .getElementById("auth-line-3")
@@ -2555,7 +3398,7 @@ function startAuthentication() {
     }, 1400);
 
 
-    setTimeout(() => {
+    setTimeout(function() {
 
         document
             .getElementById("auth-line-4")
@@ -2564,26 +3407,22 @@ function startAuthentication() {
     }, 1900);
 
 
-    /*
-       After authentication,
-       remove lock screen.
-    */
+    setTimeout(function() {
 
-    setTimeout(() => {
-
-        lockScreen.classList.add("unlocked");
+        lockScreen.classList.add(
+            "unlocked"
+        );
 
     }, 2400);
 
 
-    /*
-       Completely hide authentication
-       after transition.
-    */
+    setTimeout(function() {
 
-    setTimeout(() => {
+        authScreen.classList.remove(
+            "show"
+        );
 
-        authScreen.classList.remove("show");
+        showBeginningChapter();
 
     }, 3100);
 
@@ -2591,7 +3430,310 @@ function startAuthentication() {
 
 
 /* =========================================================
-   ENTER KEY SUPPORT
+   CHAPTER 01
+   ========================================================= */
+
+function showBeginningChapter() {
+
+    if (!chapterBeginning) return;
+
+
+    chapterBeginning.classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================================================
+   CONTINUE TO LETTER
+   ========================================================= */
+
+function continueToLetter() {
+
+    if (!chapterBeginning) return;
+
+
+    chapterBeginning.classList.remove(
+        "show"
+    );
+
+
+    setTimeout(function() {
+
+        openLetter();
+
+    }, 900);
+
+}
+
+
+/* =========================================================
+   OPEN LETTER
+   ========================================================= */
+
+function openLetter() {
+
+    if (!letter) return;
+
+
+    letter.style.display =
+        "block";
+
+
+    if (openLetterButton) {
+
+        openLetterButton.style.display =
+            "none";
+
+    }
+
+
+    createPetals();
+
+
+    setTimeout(function() {
+
+        letter.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    }, 200);
+
+}
+
+
+/* =========================================================
+   FALLING PETALS
+   ========================================================= */
+
+function createPetals() {
+
+    for (
+        let i = 0;
+        i < 18;
+        i++
+    ) {
+
+        const petal =
+            document.createElement(
+                "div"
+            );
+
+
+        petal.className =
+            "floating-love";
+
+
+        const symbols = [
+            "🌸",
+            "🩷",
+            "♡",
+            "✨",
+            "💗"
+        ];
+
+
+        petal.textContent =
+            symbols[
+                Math.floor(
+                    Math.random() *
+                    symbols.length
+                )
+            ];
+
+
+        petal.style.left =
+            Math.random() * 100 +
+            "vw";
+
+
+        petal.style.fontSize =
+            (10 +
+            Math.random() * 14) +
+            "px";
+
+
+        petal.style.animationDuration =
+            (7 +
+            Math.random() * 6) +
+            "s";
+
+
+        document.body.appendChild(
+            petal
+        );
+
+
+        setTimeout(function() {
+
+            petal.remove();
+
+        }, 14000);
+
+    }
+
+}
+
+
+/* =========================================================
+   CONTINUOUS FLOATING LOVE
+   ========================================================= */
+
+function createFloatingLove() {
+
+    const love =
+        document.createElement(
+            "div"
+        );
+
+
+    const symbols = [
+        "🌸",
+        "🩷",
+        "♡",
+        "✨",
+        "💗"
+    ];
+
+
+    love.className =
+        "floating-love";
+
+
+    love.textContent =
+        symbols[
+            Math.floor(
+                Math.random() *
+                symbols.length
+            )
+        ];
+
+
+    love.style.left =
+        Math.random() * 100 +
+        "vw";
+
+
+    love.style.fontSize =
+        (10 +
+        Math.random() * 12) +
+        "px";
+
+
+    love.style.animationDuration =
+        (7 +
+        Math.random() * 6) +
+        "s";
+
+
+    document.body.appendChild(
+        love
+    );
+
+
+    setTimeout(function() {
+
+        love.remove();
+
+    }, 14000);
+
+}
+
+
+setInterval(
+    createFloatingLove,
+    1800
+);
+
+
+/* =========================================================
+   OUR SONG
+   ========================================================= */
+
+function playOurSong() {
+
+    if (
+        !youtubeContainer ||
+        !youtubePlayer
+    ) {
+
+        return;
+
+    }
+
+
+    /*
+       If player is already open,
+       scroll to it.
+    */
+
+    if (
+        youtubeContainer.classList.contains(
+            "show"
+        )
+    ) {
+
+        youtubeContainer.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "center"
+
+        });
+
+        return;
+
+    }
+
+
+    /*
+       Correct YouTube EMBED URL.
+
+       This is different from
+       the normal youtu.be link.
+    */
+
+    youtubePlayer.src =
+        "https://www.youtube.com/embed/" +
+        SONG_ID +
+        "?autoplay=1&rel=0";
+
+
+    /*
+       Reveal player.
+    */
+
+    youtubeContainer.classList.add(
+        "show"
+    );
+
+
+    /*
+       Scroll to player.
+    */
+
+    setTimeout(function() {
+
+        youtubeContainer.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "center"
+
+        });
+
+    }, 150);
+
+}
+
+
+/* =========================================================
+   ENTER KEY FOR PASSWORD
    ========================================================= */
 
 accessInput.addEventListener(
@@ -2608,19 +3750,6 @@ accessInput.addEventListener(
 
     }
 );
-
-
-/* =========================================================
-   MOBILE FRIENDLY AUTO FOCUS
-   ========================================================= */
-
-/*
-   We intentionally DO NOT automatically open
-   the keyboard on page load.
-
-   This keeps the birthday page feeling cleaner
-   on mobile.
-*/
 
 
 /* =========================================================
@@ -2642,1089 +3771,23 @@ document.addEventListener(
     }
 );
 
-</script>
-
-    <script>
-
-/* =====================================================
-   LETTER CLICK FIX
-   Keeps the existing letter clickable
-   ===================================================== */
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    /*
-       Find common clickable letter elements
-       without deleting or changing your existing code.
-    */
-
-    const letterElements = document.querySelectorAll(
-        ".letter, .letter-card, .letter-container, .envelope, #letter"
-    );
-
-    letterElements.forEach(function(letter) {
-
-        letter.style.position = "relative";
-        letter.style.zIndex = "20";
-        letter.style.pointerEvents = "auto";
-
-    });
-
-});
-<script>
-
-/* =====================================================
-   DIGITAL LOCK CLICK SAFETY
-   ===================================================== */
-
-const lockScreenFix =
-    document.getElementById("lock-screen");
-
-if (lockScreenFix) {
-
-    lockScreenFix.addEventListener(
-        "transitionend",
-        function () {
-
-            if (
-                lockScreenFix.classList.contains("unlocked")
-            ) {
-
-                lockScreenFix.style.pointerEvents = "none";
-
-            }
-
-        }
-    );
-
-}
-
-</script>
-    <!-- =====================================================
-     CHAPTER 01 — THE BEGINNING
-     ===================================================== -->
-
-<section id="chapter-beginning" class="chapter-page">
-
-    <div class="chapter-content">
-
-        <div class="chapter-number">
-            CHAPTER 01
-        </div>
-
-        <div class="chapter-line"></div>
-
-        <h1 class="chapter-title">
-            This is the beginning<br>
-            of our chapter.
-        </h1>
-
-        <p class="chapter-subtitle">
-            Not the beginning of a perfect story,
-            but the beginning of ours.
-        </p>
-
-        <p class="chapter-date">
-            03 • 06 • 2026
-        </p>
-
-        <button
-            type="button"
-            class="chapter-button"
-            onclick="continueToLetter()"
-        >
-            BEGIN OUR STORY →
-        </button>
-
-    </div>
-
-</section>
-</body>
-
-<div class="container">
-
-    <div class="card">
-
-        <div class="flower-opening">
-
-    <div class="flower-glow"></div>
-
-    <span class="flower-sparkle sparkle-one">✦</span>
-    <span class="flower-sparkle sparkle-two">✧</span>
-    <span class="flower-sparkle sparkle-three">✦</span>
-    <span class="flower-sparkle sparkle-four">✧</span>
-
-    <div class="pink-lily" style="width:260px;height:340px;margin:0 auto;position:relative;">
-    <svg viewBox="0 0 300 390"
-         width="260"
-         height="340"
-         xmlns="http://www.w3.org/2000/svg"
-         style="overflow:visible;">
-
-        <defs>
-
-            <radialGradient id="pinkPetal" cx="45%" cy="25%">
-                <stop offset="0%" stop-color="#fff8fb"/>
-                <stop offset="22%" stop-color="#ffd7e5"/>
-                <stop offset="55%" stop-color="#ff9fbe"/>
-                <stop offset="100%" stop-color="#dc5b86"/>
-            </radialGradient>
-
-            <linearGradient id="stemGreen"
-                            x1="0%" y1="0%"
-                            x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#3d8b47"/>
-                <stop offset="50%" stop-color="#79c96b"/>
-                <stop offset="100%" stop-color="#438f4b"/>
-            </linearGradient>
-
-            <radialGradient id="centerGold">
-                <stop offset="0%" stop-color="#fff4a8"/>
-                <stop offset="45%" stop-color="#ffd85b"/>
-                <stop offset="100%" stop-color="#e5a52f"/>
-            </radialGradient>
-
-            <filter id="softGlow">
-                <feGaussianBlur stdDeviation="5"/>
-            </filter>
-
-        </defs>
-
-        <!-- soft glow behind flower -->
-        <ellipse
-            cx="150"
-            cy="125"
-            rx="95"
-            ry="85"
-            fill="#ffb6d0"
-            opacity=".18"
-            filter="url(#softGlow)"
-        />
-
-        <!-- STEM -->
-        <path
-            d="M150 175 C148 230 151 290 150 365"
-            stroke="url(#stemGreen)"
-            stroke-width="13"
-            stroke-linecap="round"
-            fill="none"
-        />
-
-        <!-- LEFT LEAF -->
-        <path
-            d="M147 270
-               C112 245 72 252 48 282
-               C82 288 120 290 150 275 Z"
-            fill="url(#stemGreen)"
-        />
-
-        <path
-            d="M145 273
-               C105 266 77 270 53 282"
-            stroke="#9ade8b"
-            stroke-width="2"
-            opacity=".55"
-            fill="none"
-        />
-
-        <!-- RIGHT LEAF -->
-        <path
-            d="M153 300
-               C190 270 225 274 248 300
-               C214 306 180 310 150 305 Z"
-            fill="url(#stemGreen)"
-        />
-
-        <path
-            d="M155 303
-               C193 292 222 294 245 300"
-            stroke="#9ade8b"
-            stroke-width="2"
-            opacity=".55"
-            fill="none"
-        />
-
-        <!-- BACK PETALS -->
-
-        <path
-            d="M150 145
-               C105 125 72 88 84 42
-               C125 46 151 73 150 145 Z"
-            fill="url(#pinkPetal)"
-        />
-
-        <path
-            d="M150 145
-               C195 125 228 88 216 42
-               C175 46 149 73 150 145 Z"
-            fill="url(#pinkPetal)"
-        />
-
-        <!-- SIDE PETALS -->
-
-        <path
-            d="M145 150
-               C98 158 52 148 30 112
-               C67 92 111 105 145 150 Z"
-            fill="url(#pinkPetal)"
-        />
-
-        <path
-            d="M155 150
-               C202 158 248 148 270 112
-               C233 92 189 105 155 150 Z"
-            fill="url(#pinkPetal)"
-        />
-
-        <!-- FRONT PETALS -->
-
-        <path
-            d="M145 145
-               C110 170 93 211 112 244
-               C140 226 153 190 150 150 Z"
-            fill="url(#pinkPetal)"
-        />
-
-        <path
-            d="M155 145
-               C190 170 207 211 188 244
-               C160 226 147 190 150 150 Z"
-            fill="url(#pinkPetal)"
-        />
-
-        <!-- CENTER -->
-        <circle
-            cx="150"
-            cy="143"
-            r="25"
-            fill="url(#centerGold)"
-        />
-
-        <!-- STAMENS -->
-
-        <g stroke="#e5a33b"
-          stroke-width="4"
-          stroke-linecap="round">
-
-            <line x1="135" y1="130" x2="112" y2="82"/>
-            <line x1="143" y1="125" x2="132" y2="72"/>
-            <line x1="150" y1="123" x2="150" y2="68"/>
-            <line x1="157" y1="125" x2="168" y2="72"/>
-            <line x1="165" y1="130" x2="188" y2="82"/>
-
-        </g>
-
-        <!-- STAMEN TIPS -->
-
-        <g fill="#c98535">
-
-            <circle cx="112" cy="82" r="6"/>
-            <circle cx="132" cy="72" r="6"/>
-            <circle cx="150" cy="68" r="6"/>
-            <circle cx="168" cy="72" r="6"/>
-            <circle cx="188" cy="82" r="6"/>
-
-        </g>
-
-        <!-- tiny flower sparkle -->
-
-        <g fill="#fff" opacity=".75">
-            <circle cx="102" cy="73" r="3"/>
-            <circle cx="205" cy="68" r="3"/>
-        </g>
-
-    </svg>
-</div>
-
-        <!-- LOVE LETTER -->
-
-<div class="letter-content">
-
-    <h2>Dear Nico Siapno,</h2>
-
-    <p>
-        Hi, asawa! I just want to greet you a
-        <br>
-        <strong>happy birthday to you, my baby!!! 🩷✨</strong>
-    </p>
-
-    <p>
-        Thank you so much for being the strongest soldier
-        in this relationship. Thank you for being my
-        inspiration me every gising, every sipag, every
-        pasok sa school, every pag uwi kung saan man ako galing.
-        Maraming salamat sa love na pinaramdam
-        mo sa akin specially nung mga early days natin.
-    </p>
-
-    <p>
-        Thank you kasi hindi mo ako sinukuan, hindi mo
-        akong hinayaan umalis, to the point na nag beg
-        ka pa.
-    </p>
-
-    <p>
-        Honestly speaking, I didn’t expect na ganon
-        ang gagawin mo sa akin kasi syempre early weeks
-        pa lang ata yon. Wala pa tayong month non?
-    </p>
-
-    <p>
-        Anyways, maraming maraming salamat sa pakikinig
-        mo sa akin, sa kwento, mapa personal, jokes,
-        serious, corny, horny, or kahit ano pang sides meron
-        ako. Kahit may times na hindi ako sumasang-ayon
-        sa mga gusto mo. To the point na palagi ako may
-        disclaimer, kasi ayoko ng away.
-    </p>
-
-    <p>
-        Thank you sa patience sa kakulitan ko, kaharutan ko,
-        kalibugan ko, (OO na inaamin ko na) katandaan ko,
-        kasabugan ko, “GURANG”. Thank you talaga.
-    </p>
-
-    <p>
-        Thank you sa trust na binigay mo sa akin. Mapa-deepest
-        secrets, horny secrets, insecurities, bubbly sides,
-        harot sides, hyper side, lahat lahat ng personalities
-        and qualities na pinakita mo sa akin.
-        I really do appreciate all of those.
-    </p>
-
-    <p>
-        Thank you sa gifts nitong mga nakakaraan, sobrang
-        naa-appreciate ko siya. Sobrang sarap sa feeling na
-        nawala na yung depression ko, bihira na ako
-        magka-anxiety attacks.
-    </p>
-
-    <p>
-        <strong>Story time:</strong> Kapag ganitong marami akong work loads
-        (including: activities, friends, family, orgs, classmates,
-        personal), sa maraming patong-patong na gawain at
-        emotions na to, supposedly, madalas na anxiety attacks ko
-        nito. AS IN lahat na lang inaaway ko.
-    </p>
-
-    <p>
-        But, since nakilala kita as in never or once ko na lang
-        ulit siya naranasan. Well hindi naman kasi agad-agad
-        siya talaga mawawala eh. But the thing here is, simula
-        talaga nung dumating ka, pinaramdam mo na may care ka,
-        may love, may support ka sa akin.
-    </p>
-
-    <p>
-        Nawala ehh… so thank you so much sa lahat ng iyon. 🩷
-    </p>
-
-    <p>
-        I just want to say sorry about sa times na sumasobra
-        kakulitan ko, harot ko, kalibugan ko, pagiging insensitive
-        ko. Also pagkukulang ko.
-    </p>
-
-    <p>
-        Sorry sa parents ko, na hindi ako matanggap, well wala
-        naman siyang problema sa iyo eh. Pero it's just me na
-        ayaw nila ako makipag relasyon sa lalaki.
-    </p>
-
-    <p>
-        But, ngayon, I don’t care what they say about us,
-        especially now. Wala yan. I know na someday, when
-        they see us happy, successful, full of love and support
-        for each other. I believe and I prayed na matatanggap
-        talaga nila.
-    </p>
-
-    <p>
-        Sorry sa late na gift. Kasi alam mo na yung ulan ulan,
-        walang baon, walang ipon, walang pera. But still,
-        meron at meron naman me maibibigay.
-    </p>
-
-    <p>
-        Not exactly on your birthday, but I’m sure na meron
-        at meron ka pa rin naman gifts mula sa akin.
-        And sana magustohan mo siya kahit very cheap and
-        simple lang siya.
-    </p>
-
-    <p>
-        Well, since this is a birthday letter. Syempre dapat
-        meron tayo wish…
-    </p>
-
-    <h3 class="wishes-title">
-        20 Wishes for My Asawa 🩷
-    </h3>
-
-    <ol class="birthday-wishes">
-
-        <li>
-            Wish ko, sana matupad lahat ng wish mo,
-            manifestation, at prayers mo.
-        </li>
-
-        <li>
-            Wish ko, wag mawala ng pag-asa at manalig
-            palagi kay Lord.
-        </li>
-
-        <li>
-            Wish ko, mahalin mo sarili mo kung paano mo ako mahalin.
-        </li>
-
-        <li>
-            Wish ko, never mo nang sasaktan sarili mo.
-        </li>
-
-        <li>
-            Wish ko, na wag mo i-pressure sarili mo.
-        </li>
-
-        <li>
-            Wish ko, yung kabutihan ng health mo.
-        </li>
-
-        <li>
-            Wish ko, makapagtapos ka ng pag-aaral mo
-            with or without flying colors.
-        </li>
-
-        <li>
-            Wish ko, magkasama pa kayo ni Mami mo nang matagal.
-        </li>
-
-        <li>
-            Wish ko, mas maging strong ka sa mga challenges
-            na kakaharapin mo.
-        </li>
-
-        <li>
-            Wish ko, humaba pa ang pasensya mo.
-        </li>
-
-        <li>
-            Wish ko, mahalin mo yung mga tao na nagmamahal sa'yo.
-        </li>
-
-        <li>
-            Wish ko, matupad lahat ng mga pangarap mo kasama ako.
-        </li>
-
-        <li>
-            Wish ko, na mag-travel us together while enjoy
-            our lives, jobs, passion.
-        </li>
-
-        <li>
-            Wish ko, ikaw na ang una at huli kong mahahalin.
-        </li>
-
-        <li>
-            Wish ko, ikaw lang ang luluharan ko at magsasabi
-            ng “will you marry me”.
-        </li>
-
-        <li>
-            Wish ko, na ikaw lang ang magsusuot ng singsing
-            sa daliri ko.
-        </li>
-
-        <li>
-            Wish ko, ikaw na mapapangasawa ko.
-        </li>
-
-        <li>
-            Wish ko, ikaw lang kasama ko sa magiging tirahan natin.
-        </li>
-
-        <li>
-            Wish ko, ikaw lang matitira ko halos araw-araw.
-        </li>
-
-        <li>
-            Wish ko, ako lang ang magmamahal sa'yo ng ganito
-            at ikaw lang ang magmamahal sa akin ng ganito.
-        </li>
-
-    </ol>
-
-    <p class="final-message">
-        Again, happy happy happy birthday to my future asawa.
-        Mahal na mahal kita palagi. Nandito ako, hindi kita iiwan,
-        mamahalin kitang buong-buo, susuporta sa'yo hanggang dulo.
-        I love you, baby! Enjoy your day kahit may pasok ka hehehe. 🩷
-    </p>
-
-    <p class="signature">
-        With all my love,<br>
-        Your Suitor 💗
-    </p>
-
-</div>
-
-<!-- OUR SONG -->
-
-<section class="song-section">
-
-    <h2 class="song-title">
-        Our Song 🎧
-    </h2>
-
-    <p class="song-subtitle">
-        A little song that reminds me of you. 🩷
-    </p>
-
-    <div class="song-card">
-
-        <div class="song-icon">
-            🎶
-        </div>
-
-        <h3 class="song-name">
-            Libu-libong buwan (uuwian)
-        </h3>
-
-        <p class="song-artist">
-            Kyle Raphael
-        </p>
-
-        <button
-    type="button"
-    class="song-button"
-    onclick="playOurSong()"
->
-    ▶ Play Our Song
-</button>
-
-    </div>
-
-</section>
-
-    </div>
-
-</section>
-    </div>
-
-</div>
-
-<script>
-
-function openLetter() {
-
-    const letter = document.getElementById("letter");
-
-    letter.style.display = "block";
-
-    createPetals();
-
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-    });
-}
-
-function createPetals() {
-
-    for (let i = 0; i < 18; i++) {
-
-        const petal = document.createElement("div");
-
-        petal.className = "petal";
-        petal.innerHTML = "🌸";
-
-        petal.style.left = Math.random() * 100 + "vw";
-        petal.style.fontSize =
-            (12 + Math.random() * 18) + "px";
-
-        petal.style.animationDuration =
-            (4 + Math.random() * 5) + "s";
-
-        document.body.appendChild(petal);
-
-        setTimeout(() => {
-            petal.remove();
-        }, 9000);
-    }
-}
-
-    </script>
-
-<!-- =====================================================
-     MASTER FIX
-     LETTER + MUSIC + DIGITAL LOCK
-     ===================================================== -->
-
-<script>
 
 /* =========================================================
-   MASTER FIX FOR NICO.EXE
+   INITIAL STATE
    ========================================================= */
 
+letter.style.display =
+    "none";
 
-/* ---------------------------------------------------------
-   1. PREPARE THE LETTER
-   --------------------------------------------------------- */
 
-document.addEventListener("DOMContentLoaded", function () {
-
-    const letter =
-        document.querySelector(".letter-content");
-
-
-    if (!letter) {
-
-        console.log(
-            "NICO.EXE: Letter content not found."
-        );
-
-        return;
-
-    }
-
-
-    /*
-       Give the existing letter an ID
-       WITHOUT changing your HTML.
-    */
-
-    letter.id = "letter";
-
-
-    /*
-       Hide the letter initially.
-    */
-
-    letter.style.display = "none";
-
-
-    /*
-       Create the OPEN MY LETTER button
-       automatically.
-    */
-
-    const openButton =
-        document.createElement("button");
-
-    openButton.id =
-        "open-letter-button";
-
-    openButton.type =
-        "button";
-
-    openButton.innerHTML =
-        "💌 Open My Letter";
-
-
-    /*
-       Insert button BEFORE the letter.
-    */
-
-    letter.parentNode.insertBefore(
-        openButton,
-        letter
-    );
-
-
-    /*
-       When clicked...
-    */
-
-    openButton.addEventListener(
-        "click",
-        function () {
-
-            openLetterFixed();
-
-        }
-    );
-
-
-    console.log(
-        "NICO.EXE: Letter system ready."
-    );
-
-});
-
-
-/* =========================================================
-   2. OPEN LETTER
-   ========================================================= */
-
-function openLetterFixed() {
-
-    const letter =
-        document.getElementById("letter");
-
-    const button =
-        document.getElementById(
-            "open-letter-button"
-        );
-
-
-    if (!letter) {
-
-        console.log(
-            "NICO.EXE: Letter unavailable."
-        );
-
-        return;
-
-    }
-
-
-    /*
-       Reveal the existing letter.
-    */
-
-    letter.style.display =
-        "block";
-
-
-    /*
-       Change button text.
-    */
-
-    if (button) {
-
-        button.innerHTML =
-            "💗 Reading your letter...";
-
-        button.style.opacity =
-            "0.7";
-
-        button.disabled =
-            true;
-
-    }
-
-
-    /*
-       Create your falling flowers.
-    */
-
-    if (
-        typeof createPetals ===
-        "function"
-    ) {
-
-        createPetals();
-
-    }
-
-
-    /*
-       START MUSIC
-    */
-
-    startOurSong();
-
-
-    /*
-       Scroll to letter.
-    */
-
-    setTimeout(function () {
-
-        letter.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "start"
-
-        });
-
-    }, 300);
-
-}
-
-
-/* =========================================================
-   3. CREATE THE MUSIC PLAYER
-   ========================================================= */
-
-function startOurSong() {
-
-    /*
-       Prevent creating multiple players.
-    */
-
-    if (
-        document.getElementById(
-            "hidden-song-player"
-        )
-    ) {
-
-        playOurSong();
-
-        return;
-
-    }
-
-
-    /*
-       Create YouTube iframe.
-    */
-
-    const iframe =
-        document.createElement("iframe");
-
-
-    iframe.id =
-        "hidden-song-player";
-
-
-    iframe.width =
-        "1";
-
-
-    iframe.height =
-        "1";
-
-
-    iframe.style.position =
-        "fixed";
-
-
-    iframe.style.bottom =
-        "0";
-
-
-    iframe.style.left =
-        "0";
-
-
-    iframe.style.opacity =
-        "0.01";
-
-
-    iframe.style.pointerEvents =
-        "none";
-
-
-    iframe.style.border =
-        "0";
-
-
-    iframe.allow =
-        "autoplay; encrypted-media";
-
-
-    iframe.src = "https://youtu.be/8lbRDzhjqeM?si=QzOiTCVLfTDp4h9G"
-
-
-    document.body.appendChild(
-        iframe
-    );
-
-
-    /*
-       Give YouTube time to load.
-    */
-
-    setTimeout(function () {
-
-        playOurSong();
-
-    }, 1200);
-
-}
-
-
-/* =========================================================
-   4. PLAY SONG
-   ========================================================= */
-
-function playOurSong() {
-
-    const iframe =
-        document.getElementById(
-            "hidden-song-player"
-        );
-
-
-    if (!iframe) {
-
-        return;
-
-    }
-
-
-    /*
-       Tell YouTube player to play.
-    */
-
-    iframe.contentWindow.postMessage(
-        JSON.stringify({
-
-            event: "command",
-
-            func: "playVideo",
-
-            args: []
-
-        }),
-        "*"
-    );
-
-}
-
-
-/* =========================================================
-   5. DIGITAL LOCK SAFETY
-   ========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const lock =
-            document.getElementById(
-                "lock-screen"
-            );
-
-
-        if (!lock) {
-
-            return;
-
-        }
-
-
-        /*
-           Make absolutely sure that once
-           unlocked, the lock cannot block
-           the website underneath.
-        */
-
-        const observer =
-            new MutationObserver(
-                function () {
-
-                    if (
-                        lock.classList.contains(
-                            "unlocked"
-                        )
-                    ) {
-
-                        lock.style.pointerEvents =
-                            "none";
-
-                    }
-
-                }
-            );
-
-
-        observer.observe(
-            lock,
-            {
-                attributes: true,
-                attributeFilter: [
-                    "class"
-                ]
-            }
-        );
-
-    }
+youtubeContainer.classList.remove(
+    "show"
 );
 
 
-/* =========================================================
-   6. MAKE EXISTING LETTER CONTENT CLICK-SAFE
-   ========================================================= */
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        const letter =
-            document.querySelector(
-                ".letter-content"
-            );
-
-
-        if (letter) {
-
-            letter.style.position =
-                "relative";
-
-            letter.style.zIndex =
-                "20";
-
-            letter.style.pointerEvents =
-                "auto";
-
-        }
-
-    }
-);
-
 </script>
-<script>
 
-/* =====================================================
-   CHAPTER 01 — SHOW AFTER DIGITAL LOCK
-   ===================================================== */
-
-const chapterBeginning =
-    document.getElementById("chapter-beginning");
-
-
-function showBeginningChapter() {
-
-    if (!chapterBeginning) return;
-
-    chapterBeginning.classList.add("show");
-
-}
-
-setTimeout(() => {
-    lockScreen.classList.add("unlocked");
-}, 2400);
-
-setTimeout(() => {
-    authScreen.classList.remove("show");
-}, 3100);
-
-setTimeout(() => {
-    showBeginningChapter();
-}, 3400);
-/* =====================================================
-   CONTINUE TO LETTER
-   ===================================================== */
-
-function continueToLetter() {
-
-    if (!chapterBeginning) return;
-
-    chapterBeginning.classList.remove("show");
-
-    setTimeout(function () {
-
-        const letter =
-            document.querySelector(".letter-content");
-
-        if (letter) {
-
-            letter.style.display = "block";
-
-            letter.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-
-        }
-
-    }, 1000);
-
-}
-
-</script>
 
 </body>
+
 </html>
