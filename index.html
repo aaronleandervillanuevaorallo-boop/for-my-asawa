@@ -1021,6 +1021,22 @@ button:active {
     text-align: right;
     font-style: italic;
 }
+
+    .song-button {
+    display: inline-block;
+    padding: 13px 22px;
+    background: #9d4f69;
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 14px;
+    transition: 0.3s ease;
+}
+
+.song-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(150,70,100,0.2);
+}
 </style>
 
 </head>
@@ -1510,13 +1526,13 @@ setInterval(createFloatingLove, 1200);
             Kyle Raphael
         </p>
 
-        <iframe
-            class="youtube-player"
-            src="https://www.youtube.com/embed/tVRfUqyDJyM"
-            title="Libu-libong buwan (uuwian) - Kyle Raphael"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen>
-        </iframe>
+        <a
+            href="https://youtu.be/tVRfUqyDJyM"
+            target="_blank"
+            class="song-button"
+        >
+            ▶ Listen to Our Song
+        </a>
 
     </div>
 
