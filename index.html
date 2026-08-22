@@ -1037,11 +1037,1254 @@ button:active {
     transform: translateY(-2px);
     box-shadow: 0 8px 18px rgba(150,70,100,0.2);
 }
+    /* =========================================================
+   NICO.EXE — DIGITAL LOVE SYSTEM
+   DIGITAL LOCK SCREEN
+   ========================================================= */
+
+/* ---------- LOCK SCREEN BASE ---------- */
+
+#lock-screen {
+    position: fixed;
+    inset: 0;
+
+    z-index: 99999;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 100dvh;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(255, 70, 145, 0.16),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(255, 150, 200, 0.08),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 80%,
+            rgba(255, 70, 145, 0.06),
+            transparent 25%
+        ),
+        #09070b;
+
+    color: #ffe8f1;
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease;
+}
+
+
+/* ---------- DIGITAL GRID ---------- */
+
+#lock-screen::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    opacity: 0.18;
+
+    background-image:
+        linear-gradient(
+            rgba(255, 120, 170, 0.08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255, 120, 170, 0.08) 1px,
+            transparent 1px
+        );
+
+    background-size: 35px 35px;
+
+    mask-image:
+        radial-gradient(
+            circle at center,
+            black,
+            transparent 85%
+        );
+}
+
+
+/* ---------- SCANLINE EFFECT ---------- */
+
+#lock-screen::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+
+    background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,0.018),
+            rgba(255,255,255,0.018) 1px,
+            transparent 1px,
+            transparent 5px
+        );
+
+    opacity: 0.45;
+}
+
+
+/* ---------- LOCK CONTAINER ---------- */
+
+.lock-container {
+
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+    max-width: 430px;
+
+    padding: 34px 24px 28px;
+
+    box-sizing: border-box;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.055),
+            rgba(255,255,255,0.015)
+        );
+
+    border: 1px solid rgba(255, 126, 175, 0.28);
+
+    border-radius: 24px;
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    box-shadow:
+        0 0 30px rgba(255, 70, 145, 0.08),
+        0 0 80px rgba(255, 70, 145, 0.04),
+        inset 0 0 30px rgba(255, 70, 145, 0.025);
+
+    animation:
+        lockContainerAppear 1s ease forwards;
+}
+
+
+/* ---------- TOP SYSTEM STATUS ---------- */
+
+.lock-status {
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 8px;
+
+    margin-bottom: 28px;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2.5px;
+
+    color: #ff8fb8;
+
+    text-transform: uppercase;
+
+    opacity: 0.85;
+}
+
+
+/* blinking green/pink dot */
+
+.lock-status::before {
+
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #ff6eaa;
+
+    box-shadow:
+        0 0 6px #ff6eaa,
+        0 0 14px rgba(255, 110, 170, 0.7);
+
+    animation: statusBlink 1.5s infinite;
+}
+
+
+/* ---------- LOCK ICON ---------- */
+
+.lock-icon {
+
+    position: relative;
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    width: 92px;
+    height: 92px;
+
+    margin-bottom: 20px;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 100, 160, 0.14),
+            transparent 65%
+        );
+
+    border: 1px solid rgba(255, 130, 180, 0.18);
+
+    font-size: 45px;
+
+    filter:
+        drop-shadow(
+            0 0 12px
+            rgba(255, 100, 160, 0.45)
+        );
+
+    animation: lockPulse 3s infinite;
+}
+
+
+/* rotating digital ring */
+
+.lock-icon::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: -8px;
+
+    border-radius: 50%;
+
+    border:
+
+        1px solid
+        rgba(255, 120, 175, 0.25);
+
+    border-top-color:
+        rgba(255, 120, 175, 0.85);
+
+    animation:
+        rotateRing 5s linear infinite;
+}
+
+
+/* ---------- MAIN TITLE ---------- */
+
+.lock-title {
+
+    margin: 0;
+
+    font-family:
+        monospace;
+
+    font-size: 30px;
+
+    font-weight: 700;
+
+    letter-spacing: 4px;
+
+    color: #ffe6ef;
+
+    text-shadow:
+        0 0 10px rgba(255, 100, 160, 0.35),
+        0 0 25px rgba(255, 100, 160, 0.12);
+}
+
+
+/* ---------- SYSTEM SUBTITLE ---------- */
+
+.lock-subtitle {
+
+    margin: 10px 0 30px;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    line-height: 1.8;
+
+    letter-spacing: 1.8px;
+
+    color: #c59aa9;
+
+    text-transform: uppercase;
+}
+
+
+/* ---------- ACCESS PANEL ---------- */
+
+.access-panel {
+
+    padding: 18px;
+
+    margin-top: 5px;
+
+    background:
+        rgba(0, 0, 0, 0.18);
+
+    border:
+        1px solid
+        rgba(255, 130, 175, 0.14);
+
+    border-radius: 16px;
+}
+
+
+/* ---------- LABEL ---------- */
+
+.lock-label {
+
+    display: block;
+
+    margin-bottom: 11px;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #d89bab;
+
+    text-transform: uppercase;
+}
+
+
+/* ---------- PASSWORD INPUT ---------- */
+
+#access-code {
+
+    display: block;
+
+    width: 100%;
+
+    height: 52px;
+
+    box-sizing: border-box;
+
+    padding: 12px;
+
+    text-align: center;
+
+    font-family: monospace;
+
+    font-size: 21px;
+
+    font-weight: 600;
+
+    letter-spacing: 8px;
+
+    color: #ffdce8;
+
+    background:
+        rgba(0,0,0,0.30);
+
+    border:
+        1px solid
+        rgba(255, 140, 180, 0.35);
+
+    border-radius: 12px;
+
+    outline: none;
+
+    transition:
+        0.25s ease;
+}
+
+
+#access-code::placeholder {
+
+    color:
+        rgba(255, 190, 210, 0.25);
+
+    letter-spacing: 5px;
+}
+
+
+#access-code:focus {
+
+    border-color:
+        #ff8fb8;
+
+    box-shadow:
+        0 0 12px
+        rgba(255, 100, 160, 0.18),
+        inset 0 0 12px
+        rgba(255, 100, 160, 0.04);
+}
+
+
+/* ---------- UNLOCK BUTTON ---------- */
+
+.unlock-button {
+
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d95c8a,
+            #9d4f69
+        );
+
+    color: white;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 6px 20px
+        rgba(150, 60, 100, 0.15);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.unlock-button:active {
+
+    transform: scale(0.97);
+}
+
+
+.unlock-button:hover {
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 0 20px
+        rgba(255, 100, 160, 0.28);
+}
+
+
+/* ---------- CLUE BUTTON ---------- */
+
+.clue-button {
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 5px 8px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #bd8a9b;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 1.5px;
+
+    cursor: pointer;
+
+    text-decoration: underline;
+
+    text-underline-offset: 4px;
+
+    transition: 0.2s ease;
+}
+
+
+.clue-button:hover {
+
+    color: #ff9cbe;
+}
+
+
+/* ---------- SYSTEM MESSAGE ---------- */
+
+.lock-message {
+
+    min-height: 20px;
+
+    margin-top: 15px;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+
+    color: #ff91b8;
+
+    line-height: 1.5;
+
+    transition: 0.2s ease;
+}
+
+
+/* ---------- SYSTEM FOOTER ---------- */
+
+.lock-footer {
+
+    margin-top: 26px;
+
+    font-family: monospace;
+
+    font-size: 8px;
+
+    letter-spacing: 1.5px;
+
+    color: rgba(255, 190, 210, 0.35);
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   CLUE MODAL
+   ========================================================= */
+
+#clue-modal {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background:
+        rgba(5, 3, 7, 0.78);
+
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+
+#clue-modal.show {
+
+    opacity: 1;
+
+    visibility: visible;
+}
+
+
+.clue-box {
+
+    width: 100%;
+
+    max-width: 370px;
+
+    padding: 25px;
+
+    box-sizing: border-box;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(35, 15, 27, 0.96),
+            rgba(12, 8, 13, 0.98)
+        );
+
+    border:
+        1px solid
+        rgba(255, 120, 170, 0.3);
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 0 35px
+        rgba(255, 70, 145, 0.12);
+}
+
+
+.clue-header {
+
+    margin-bottom: 20px;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 2px;
+
+    color: #ff8fb8;
+}
+
+
+.clue-content {
+
+    padding: 18px;
+
+    background:
+        rgba(0,0,0,0.20);
+
+    border:
+        1px solid
+        rgba(255,130,175,0.12);
+
+    border-radius: 12px;
+
+    font-family: monospace;
+
+    font-size: 12px;
+
+    line-height: 1.8;
+
+    color: #eacbd6;
+}
+
+
+.clue-highlight {
+
+    color: #ff9fc0;
+
+    font-weight: 700;
+}
+
+
+.clue-close {
+
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 11px;
+
+    border:
+        1px solid
+        rgba(255,130,175,0.25);
+
+    border-radius: 10px;
+
+    background:
+        rgba(255,100,160,0.06);
+
+    color: #e8b7c7;
+
+    font-family: monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   AUTHENTICATION SCREEN
+   ========================================================= */
+
+#auth-screen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 110000;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #08060a;
+
+    color: #ffb4cc;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.5s ease,
+        visibility 0.5s ease;
+}
+
+
+#auth-screen.show {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: all;
+}
+
+
+.auth-content {
+
+    width: 90%;
+
+    max-width: 430px;
+
+    font-family: monospace;
+
+    text-align: left;
+}
+
+
+.auth-line {
+
+    margin: 8px 0;
+
+    font-size: 11px;
+
+    letter-spacing: 1px;
+
+    color: #d6a1b2;
+}
+
+
+.auth-line.active {
+
+    color: #ff8fb8;
+}
+
+
+.auth-progress {
+
+    width: 100%;
+
+    height: 5px;
+
+    margin-top: 25px;
+
+    overflow: hidden;
+
+    background:
+        rgba(255,255,255,0.06);
+
+    border-radius: 10px;
+}
+
+
+.auth-progress-bar {
+
+    width: 0%;
+
+    height: 100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #9d4f69,
+            #ff8fb8
+        );
+
+    box-shadow:
+        0 0 12px
+        rgba(255,100,160,0.6);
+
+    transition:
+        width 2.2s linear;
+}
+
+
+/* =========================================================
+   UNLOCKED STATE
+   ========================================================= */
+
+#lock-screen.unlocked {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SHAKE ANIMATION
+   ========================================================= */
+
+.shake {
+
+    animation:
+        lockShake 0.45s ease;
+}
+
+
+/* =========================================================
+   ANIMATIONS
+   ========================================================= */
+
+@keyframes lockContainerAppear {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(20px)
+            scale(0.97);
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+    }
+}
+
+
+@keyframes statusBlink {
+
+    0%,
+    100% {
+
+        opacity: 0.35;
+    }
+
+    50% {
+
+        opacity: 1;
+    }
+}
+
+
+@keyframes lockPulse {
+
+    0%,
+    100% {
+
+        transform: scale(1);
+
+        box-shadow:
+            0 0 0
+            rgba(255,100,160,0);
+    }
+
+    50% {
+
+        transform: scale(1.03);
+
+        box-shadow:
+            0 0 25px
+            rgba(255,100,160,0.08);
+    }
+}
+
+
+@keyframes rotateRing {
+
+    from {
+
+        transform:
+            rotate(0deg);
+    }
+
+    to {
+
+        transform:
+            rotate(360deg);
+    }
+}
+
+
+@keyframes lockShake {
+
+    0%,
+    100% {
+
+        transform:
+            translateX(0);
+    }
+
+    20% {
+
+        transform:
+            translateX(-8px);
+    }
+
+    40% {
+
+        transform:
+            translateX(8px);
+    }
+
+    60% {
+
+        transform:
+            translateX(-6px);
+    }
+
+    80% {
+
+        transform:
+            translateX(6px);
+    }
+}
+
+
+/* =========================================================
+   MOBILE ADJUSTMENTS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .lock-container {
+
+        padding:
+            30px 20px 24px;
+
+        border-radius: 20px;
+    }
+
+    .lock-title {
+
+        font-size: 26px;
+
+        letter-spacing: 3px;
+    }
+
+    .lock-subtitle {
+
+        font-size: 9px;
+
+        letter-spacing: 1.4px;
+    }
+
+    .lock-icon {
+
+        width: 82px;
+
+        height: 82px;
+
+        font-size: 40px;
+    }
+
+    #access-code {
+
+        height: 50px;
+
+        font-size: 19px;
+
+        letter-spacing: 7px;
+    }
+}
 </style>
 
 </head>
 
 <body>
+    <!-- =====================================================
+     NICO.EXE — DIGITAL LOVE SYSTEM
+     DIGITAL LOCK SCREEN
+     ===================================================== -->
+
+<div id="lock-screen">
+
+    <div class="lock-container">
+
+        <!-- SYSTEM STATUS -->
+
+        <div class="lock-status">
+            SECURE CONNECTION // ONLINE
+        </div>
+
+
+        <!-- LOCK ICON -->
+
+        <div class="lock-icon">
+            🔐
+        </div>
+
+
+        <!-- SYSTEM NAME -->
+
+        <h1 class="lock-title">
+            NICO.EXE
+        </h1>
+
+
+        <!-- SYSTEM DESCRIPTION -->
+
+        <p class="lock-subtitle">
+
+            PERSONAL BIRTHDAY MESSAGE SYSTEM
+
+            <br>
+
+            ACCESS RESTRICTED // PRIVATE CONNECTION
+
+        </p>
+
+
+        <!-- ACCESS PANEL -->
+
+        <div class="access-panel">
+
+
+            <!-- INPUT LABEL -->
+
+            <label
+                for="access-code"
+                class="lock-label"
+            >
+                ENTER ACCESS CODE
+            </label>
+
+
+            <!-- PASSWORD INPUT -->
+
+            <input
+                type="password"
+                id="access-code"
+                maxlength="6"
+                inputmode="numeric"
+                autocomplete="off"
+                placeholder="••••••"
+            >
+
+
+            <!-- UNLOCK BUTTON -->
+
+            <button
+                type="button"
+                class="unlock-button"
+                onclick="unlockSystem()"
+            >
+
+                ⟶ UNLOCK SYSTEM
+
+            </button>
+
+
+            <!-- ERROR / SYSTEM MESSAGE -->
+
+            <div
+                id="lock-message"
+                class="lock-message"
+            >
+            </div>
+
+
+        </div>
+
+
+        <!-- CLUE -->
+
+        <button
+            type="button"
+            class="clue-button"
+            onclick="showClue()"
+        >
+
+            [ NEED A CLUE? ]
+
+        </button>
+
+
+        <!-- FOOTER -->
+
+        <div class="lock-footer">
+
+            NICO.EXE // PERSONAL SYSTEM
+            <br>
+            ENCRYPTED WITH LOVE
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     CLUE MODAL
+     ===================================================== -->
+
+<div id="clue-modal">
+
+    <div class="clue-box">
+
+        <div class="clue-header">
+
+            SYSTEM CLUE // 001
+
+        </div>
+
+
+        <div class="clue-content">
+
+            > TRACE THE BEGINNING OF THE CONNECTION.
+
+            <br><br>
+
+            APP:
+            <span class="clue-highlight">
+                LITMATCH
+            </span>
+
+            <br>
+
+            STATUS:
+            FIRST CONTACT DETECTED
+
+            <br><br>
+
+            HINT:
+
+            <br>
+
+            <span class="clue-highlight">
+                "Find the day our story began."
+            </span>
+
+            <br><br>
+
+            💬 Where did we first meet?
+
+            <br>
+
+            📅 When did we first talk?
+
+            <br><br>
+
+            The answer is the
+            <span class="clue-highlight">
+                beginning of us.
+            </span>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="clue-close"
+            onclick="hideClue()"
+        >
+
+            CLOSE CLUE
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     AUTHENTICATION SCREEN
+     ===================================================== -->
+
+<div id="auth-screen">
+
+    <div class="auth-content">
+
+        <div class="auth-line">
+            &gt; INITIALIZING NICO.EXE...
+        </div>
+
+        <div
+            class="auth-line"
+            id="auth-line-1"
+        >
+            &gt; VERIFYING ACCESS CODE...
+        </div>
+
+        <div
+            class="auth-line"
+            id="auth-line-2"
+        >
+            &gt; LOCATING PERSONAL MESSAGE...
+        </div>
+
+        <div
+            class="auth-line"
+            id="auth-line-3"
+        >
+            &gt; DECRYPTING BIRTHDAY FILE...
+        </div>
+
+        <div
+            class="auth-line"
+            id="auth-line-4"
+        >
+            &gt; CONNECTION VERIFIED.
+        </div>
+
+
+        <div class="auth-progress">
+
+            <div
+                class="auth-progress-bar"
+                id="auth-progress-bar"
+            >
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
 
   <script>
 function createFloatingLove() {
@@ -1070,6 +2313,335 @@ function createFloatingLove() {
 }
 
 setInterval(createFloatingLove, 1200);
+</script>
+    <script>
+
+/* =========================================================
+   NICO.EXE — DIGITAL LOVE SYSTEM
+   DIGITAL LOCK ENGINE
+   ========================================================= */
+
+
+/* =========================================================
+   ACCESS CODE
+   ========================================================= */
+
+/*
+   June 3, 2026
+   First chat on Litmatch
+
+   Format:
+   MMDDYY
+
+   June 03, 2026
+   = 060326
+*/
+
+const ACCESS_CODE = "060326";
+
+
+/* =========================================================
+   GET ELEMENTS
+   ========================================================= */
+
+const lockScreen =
+    document.getElementById("lock-screen");
+
+const accessInput =
+    document.getElementById("access-code");
+
+const lockMessage =
+    document.getElementById("lock-message");
+
+const clueModal =
+    document.getElementById("clue-modal");
+
+const authScreen =
+    document.getElementById("auth-screen");
+
+const authProgress =
+    document.getElementById("auth-progress-bar");
+
+
+/* =========================================================
+   UNLOCK SYSTEM
+   ========================================================= */
+
+function unlockSystem() {
+
+    const enteredCode =
+        accessInput.value.trim();
+
+
+    /* ---------------------------------------------
+       EMPTY INPUT
+       --------------------------------------------- */
+
+    if (enteredCode === "") {
+
+        lockMessage.textContent =
+            "> ENTER ACCESS CODE.";
+
+        shakeLock();
+
+        return;
+    }
+
+
+    /* ---------------------------------------------
+       CORRECT CODE
+       --------------------------------------------- */
+
+    if (enteredCode === ACCESS_CODE) {
+
+        lockMessage.textContent =
+            "> ACCESS CODE ACCEPTED.";
+
+        lockMessage.style.color =
+            "#8fffc1";
+
+
+        /* Hide clue if open */
+
+        hideClue();
+
+
+        /* Start authentication */
+
+        startAuthentication();
+
+
+        return;
+    }
+
+
+    /* ---------------------------------------------
+       WRONG CODE
+       --------------------------------------------- */
+
+    lockMessage.textContent =
+        "> ACCESS DENIED // TRY AGAIN.";
+
+    lockMessage.style.color =
+        "#ff6f91";
+
+
+    accessInput.value = "";
+
+
+    shakeLock();
+
+}
+
+
+/* =========================================================
+   SHAKE EFFECT
+   ========================================================= */
+
+function shakeLock() {
+
+    const container =
+        document.querySelector(".lock-container");
+
+
+    container.classList.remove("shake");
+
+
+    /*
+       Force browser to restart animation
+    */
+
+    void container.offsetWidth;
+
+
+    container.classList.add("shake");
+
+
+    setTimeout(() => {
+
+        container.classList.remove("shake");
+
+    }, 500);
+
+}
+
+
+/* =========================================================
+   CLUE SYSTEM
+   ========================================================= */
+
+function showClue() {
+
+    clueModal.classList.add("show");
+
+}
+
+
+function hideClue() {
+
+    clueModal.classList.remove("show");
+
+}
+
+
+/* =========================================================
+   CLOSE CLUE WHEN CLICKING OUTSIDE
+   ========================================================= */
+
+clueModal.addEventListener(
+    "click",
+    function(event) {
+
+        if (
+            event.target === clueModal
+        ) {
+
+            hideClue();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   AUTHENTICATION SEQUENCE
+   ========================================================= */
+
+function startAuthentication() {
+
+
+    /* Show authentication screen */
+
+    authScreen.classList.add("show");
+
+
+    /* Start progress bar */
+
+    setTimeout(() => {
+
+        authProgress.style.width =
+            "100%";
+
+    }, 100);
+
+
+    /* Activate system lines */
+
+    setTimeout(() => {
+
+        document
+            .getElementById("auth-line-1")
+            .classList.add("active");
+
+    }, 400);
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("auth-line-2")
+            .classList.add("active");
+
+    }, 900);
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("auth-line-3")
+            .classList.add("active");
+
+    }, 1400);
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("auth-line-4")
+            .classList.add("active");
+
+    }, 1900);
+
+
+    /*
+       After authentication,
+       remove lock screen.
+    */
+
+    setTimeout(() => {
+
+        lockScreen.classList.add("unlocked");
+
+    }, 2400);
+
+
+    /*
+       Completely hide authentication
+       after transition.
+    */
+
+    setTimeout(() => {
+
+        authScreen.classList.remove("show");
+
+    }, 3100);
+
+}
+
+
+/* =========================================================
+   ENTER KEY SUPPORT
+   ========================================================= */
+
+accessInput.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            unlockSystem();
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   MOBILE FRIENDLY AUTO FOCUS
+   ========================================================= */
+
+/*
+   We intentionally DO NOT automatically open
+   the keyboard on page load.
+
+   This keeps the birthday page feeling cleaner
+   on mobile.
+*/
+
+
+/* =========================================================
+   ESCAPE KEY
+   ========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Escape"
+        ) {
+
+            hideClue();
+
+        }
+
+    }
+);
+
 </script>
 
 </body>
