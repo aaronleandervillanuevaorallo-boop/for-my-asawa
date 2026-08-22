@@ -5,21 +5,16 @@
 
     <meta
         name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+        content="width=device-width, initial-scale=1.0"
     >
 
-    <title>For My Nico 💗</title>
-
-    <meta
-        name="description"
-        content="A little digital chapter of our story."
-    >
+    <title>For My Nico ♡</title>
 
     <style>
 
-        /* =========================================================
+        /* =====================================================
            RESET
-        ========================================================= */
+        ===================================================== */
 
         * {
             margin: 0;
@@ -32,10 +27,9 @@
         }
 
         body {
-            margin: 0;
             min-height: 100vh;
-            background: #050505;
-            color: #ffffff;
+            background: #fff8fb;
+            color: #4a2634;
             font-family:
                 -apple-system,
                 BlinkMacSystemFont,
@@ -54,27 +48,20 @@
         }
 
 
-        /* =========================================================
-           GLOBAL
-        ========================================================= */
+        /* =====================================================
+           GENERAL PAGE SYSTEM
+        ===================================================== */
 
         .page {
             position: fixed;
             inset: 0;
+
             width: 100%;
-            min-height: 100vh;
+            height: 100vh;
 
             display: flex;
             align-items: center;
             justify-content: center;
-
-            background:
-                radial-gradient(
-                    circle at center,
-                    rgba(255, 130, 170, 0.08),
-                    transparent 45%
-                ),
-                #050505;
 
             opacity: 0;
             visibility: hidden;
@@ -85,7 +72,8 @@
                 visibility 0.8s ease;
 
             overflow-y: auto;
-            z-index: 10;
+
+            z-index: 1;
         }
 
         .page.active {
@@ -94,163 +82,276 @@
             pointer-events: auto;
         }
 
-        .page-content {
-            width: min(90%, 700px);
-            margin: auto;
-            padding: 60px 0;
-            text-align: center;
+
+        /* =====================================================
+           BACKGROUND
+        ===================================================== */
+
+        .pink-background {
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(255, 154, 190, 0.25),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 20% 80%,
+                    rgba(255, 210, 225, 0.45),
+                    transparent 30%
+                ),
+                #fff8fb;
         }
+
+        .white-background {
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 177, 205, 0.18),
+                    transparent 45%
+                ),
+                #ffffff;
+        }
+
+
+        /* =====================================================
+           SMALL TEXT
+        ===================================================== */
 
         .eyebrow {
             font-size: 10px;
             letter-spacing: 5px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.45);
+            color: #c86d91;
             margin-bottom: 18px;
         }
 
-        .pink {
-            color: #ff9fbd;
-        }
-
-        .thin-line {
-            width: 70px;
-            height: 1px;
-            background: rgba(255,255,255,0.35);
-            margin: 25px auto;
+        .small-text {
+            font-size: 11px;
+            line-height: 1.8;
+            color: #9b7181;
         }
 
 
-        /* =========================================================
-           PASSCODE SCREEN
-        ========================================================= */
+        /* =====================================================
+           BUTTONS
+        ===================================================== */
 
-        #lock-screen {
-            z-index: 100;
-        }
+        .pink-button {
+            display: inline-block;
 
-        .lock-container {
-            width: min(90%, 440px);
-            text-align: center;
-        }
+            padding: 15px 28px;
 
-        .lock-status {
-            font-size: 9px;
-            letter-spacing: 5px;
-            color: #ff9fbd;
-            margin-bottom: 20px;
-        }
+            border: 1px solid #e884aa;
 
-        .lock-icon {
-            width: 70px;
-            height: 70px;
-            margin: 0 auto 25px;
-
-            border: 1px solid rgba(255,255,255,0.35);
-            border-radius: 50%;
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
-
-            font-size: 25px;
-
-            box-shadow:
-                0 0 35px rgba(255, 100, 150, 0.08);
-        }
-
-        .lock-title {
-            font-size: clamp(30px, 8vw, 52px);
-            font-weight: 300;
-            letter-spacing: 8px;
-            text-transform: uppercase;
-            margin-bottom: 12px;
-        }
-
-        .lock-subtitle {
-            font-size: 12px;
-            color: rgba(255,255,255,0.48);
-            letter-spacing: 2px;
-            line-height: 1.7;
-            margin-bottom: 35px;
-        }
-
-        .access-panel {
-            border: 1px solid rgba(255,255,255,0.13);
-            background: rgba(255,255,255,0.025);
-            padding: 25px 20px;
-            border-radius: 3px;
-        }
-
-        .access-label {
-            display: block;
-            font-size: 9px;
-            letter-spacing: 4px;
-            color: rgba(255,255,255,0.42);
-            margin-bottom: 14px;
-        }
-
-        #access-code {
-            width: 100%;
-            height: 54px;
-
-            border: 1px solid rgba(255,255,255,0.2);
-            background: rgba(0,0,0,0.5);
-
-            color: #ffffff;
-
-            text-align: center;
-            font-size: 19px;
-            letter-spacing: 9px;
-
-            outline: none;
-            border-radius: 2px;
-
-            transition: 0.3s ease;
-        }
-
-        #access-code:focus {
-            border-color: rgba(255,159,189,0.7);
-            box-shadow:
-                0 0 20px rgba(255,100,150,0.08);
-        }
-
-        .unlock-button,
-        .primary-button {
-            width: 100%;
-            min-height: 52px;
-
-            border: 1px solid #ff9fbd;
-            background: #ff9fbd;
-            color: #12070b;
-
-            margin-top: 15px;
+            background: #e884aa;
+            color: white;
 
             font-size: 10px;
             font-weight: 700;
+
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            transition:
+                background 0.3s ease,
+                color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .pink-button:hover {
+            background: #ffffff;
+            color: #d96e98;
+
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 30px rgba(220, 105, 150, 0.2);
+        }
+
+        .outline-button {
+            display: inline-block;
+
+            padding: 15px 28px;
+
+            border: 1px solid #e884aa;
+
+            background: transparent;
+            color: #d96e98;
+
+            font-size: 10px;
+            font-weight: 700;
+
             letter-spacing: 3px;
             text-transform: uppercase;
 
             transition: 0.3s ease;
         }
 
-        .unlock-button:hover,
-        .primary-button:hover {
+        .outline-button:hover {
+            background: #e884aa;
+            color: white;
+        }
+
+
+        /* =====================================================
+           PAGE 01 — PASSCODE
+        ===================================================== */
+
+        #lock-screen {
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 154, 190, 0.25),
+                    transparent 45%
+                ),
+                #fff8fb;
+
+            z-index: 100;
+        }
+
+        .lock-container {
+            width: min(90%, 430px);
+            text-align: center;
+        }
+
+        .lock-status {
+            font-size: 9px;
+            letter-spacing: 5px;
+            color: #c86d91;
+            margin-bottom: 25px;
+        }
+
+        .lock-icon {
+            width: 78px;
+            height: 78px;
+
+            margin: 0 auto 25px;
+
+            border-radius: 50%;
+
+            border: 1px solid #e9a2bd;
+
+            background: rgba(255,255,255,0.75);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 30px;
+            color: #df719b;
+
+            box-shadow:
+                0 10px 40px rgba(220, 105, 150, 0.12);
+        }
+
+        .lock-title {
+            font-size: clamp(34px, 9vw, 58px);
+
+            font-weight: 300;
+
+            letter-spacing: 7px;
+
+            color: #592c3e;
+
+            margin-bottom: 12px;
+        }
+
+        .lock-subtitle {
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            color: #a27788;
+
+            margin-bottom: 35px;
+        }
+
+        .access-panel {
+            padding: 25px 20px;
+
+            background: rgba(255,255,255,0.75);
+
+            border: 1px solid #f0d4df;
+
+            box-shadow:
+                0 20px 60px rgba(190, 92, 130, 0.08);
+        }
+
+        .access-label {
+            display: block;
+
+            font-size: 9px;
+            letter-spacing: 4px;
+
+            color: #a46c80;
+
+            margin-bottom: 13px;
+        }
+
+        #access-code {
+            width: 100%;
+            height: 54px;
+
+            background: white;
+
+            border: 1px solid #e8c5d3;
+
+            color: #592c3e;
+
+            text-align: center;
+
+            font-size: 19px;
+
+            letter-spacing: 9px;
+
+            outline: none;
+
+            transition: 0.3s ease;
+        }
+
+        #access-code:focus {
+            border-color: #e884aa;
+
+            box-shadow:
+                0 0 20px rgba(232,132,170,0.15);
+        }
+
+        .unlock-button {
+            width: 100%;
+            height: 52px;
+
+            margin-top: 15px;
+
+            border: 1px solid #e884aa;
+
+            background: #e884aa;
+
+            color: white;
+
+            font-size: 10px;
+            font-weight: 700;
+
+            letter-spacing: 3px;
+
+            transition: 0.3s ease;
+        }
+
+        .unlock-button:hover {
             background: #ffffff;
-            border-color: #ffffff;
+            color: #d96e98;
         }
 
         .clue-button {
             margin-top: 18px;
 
-            background: transparent;
+            background: none;
             border: none;
 
-            color: rgba(255,255,255,0.4);
+            color: #a77a89;
 
             font-size: 9px;
             letter-spacing: 2px;
-            text-transform: uppercase;
 
             text-decoration: underline;
             text-underline-offset: 4px;
@@ -258,46 +359,50 @@
 
         .lock-message {
             min-height: 18px;
+
             margin-top: 15px;
 
             font-size: 10px;
+
             letter-spacing: 1px;
-            color: #ff9fbd;
+
+            color: #d96e98;
         }
 
         .lock-footer {
-            margin-top: 35px;
+            margin-top: 30px;
 
             font-size: 8px;
-            letter-spacing: 3px;
-            color: rgba(255,255,255,0.22);
 
-            text-transform: uppercase;
+            letter-spacing: 3px;
+
+            color: #c7a3b0;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            CLUE MODAL
-        ========================================================= */
+        ===================================================== */
 
         #clue-modal {
             position: fixed;
             inset: 0;
 
-            background: rgba(0,0,0,0.82);
+            z-index: 500;
+
+            background: rgba(70, 30, 45, 0.45);
 
             display: flex;
             align-items: center;
             justify-content: center;
+
+            padding: 20px;
 
             opacity: 0;
             visibility: hidden;
             pointer-events: none;
 
             transition: 0.4s ease;
-
-            z-index: 500;
-            padding: 20px;
         }
 
         #clue-modal.show {
@@ -309,57 +414,66 @@
         .clue-box {
             width: min(100%, 400px);
 
-            background: #0d0d0d;
-            border: 1px solid rgba(255,255,255,0.18);
+            background: #ffffff;
+
+            border: 1px solid #f0cad9;
 
             padding: 30px;
 
             box-shadow:
-                0 20px 80px rgba(0,0,0,0.6);
+                0 30px 80px rgba(100, 35, 60, 0.2);
         }
 
         .clue-header {
+            color: #d96e98;
+
             font-size: 10px;
             letter-spacing: 4px;
-            color: #ff9fbd;
-            text-transform: uppercase;
+
             margin-bottom: 25px;
         }
 
         .clue-content {
             font-size: 13px;
-            color: rgba(255,255,255,0.7);
+
             line-height: 1.9;
+
+            color: #765363;
         }
 
         .clue-highlight {
             display: block;
+
             margin-top: 15px;
-            color: #ffffff;
+
+            color: #d96e98;
+
             font-size: 17px;
         }
 
         .clue-close {
             margin-top: 25px;
 
-            background: transparent;
-            color: rgba(255,255,255,0.5);
-
-            border: 1px solid rgba(255,255,255,0.2);
-
             padding: 11px 18px;
 
+            background: transparent;
+
+            border: 1px solid #e5b9ca;
+
+            color: #a36f81;
+
             font-size: 9px;
+
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
 
 
-        /* =========================================================
-           AUTHENTICATION
-        ========================================================= */
+        /* =====================================================
+           PAGE 02 — AUTHENTICATION
+        ===================================================== */
 
         #auth-screen {
+            background: #fff8fb;
             z-index: 90;
         }
 
@@ -369,32 +483,42 @@
 
         .auth-line {
             font-family: monospace;
+
             font-size: 12px;
-            color: #ff9fbd;
+
+            color: #d96e98;
+
             margin-bottom: 10px;
+
             opacity: 0;
-            animation: authText 0.4s forwards;
+
+            animation:
+                authText 0.5s forwards;
         }
 
         .auth-progress {
             width: 100%;
             height: 2px;
 
-            background: rgba(255,255,255,0.08);
-
             margin-top: 25px;
+
+            background: #f2dce5;
+
             overflow: hidden;
         }
 
         .auth-progress-bar {
             width: 0%;
             height: 100%;
-            background: #ff9fbd;
 
-            animation: progress 2.6s ease forwards;
+            background: #e884aa;
+
+            animation:
+                progress 2.6s ease forwards;
         }
 
         @keyframes progress {
+
             from {
                 width: 0%;
             }
@@ -402,49 +526,67 @@
             to {
                 width: 100%;
             }
+
         }
 
         @keyframes authText {
+
             to {
                 opacity: 1;
             }
+
         }
 
 
-        /* =========================================================
-           CHAPTER ONE
-        ========================================================= */
+        /* =====================================================
+           PAGE 03 — CHAPTER ONE
+        ===================================================== */
 
         #chapter-page {
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 164, 196, 0.2),
+                    transparent 45%
+                ),
+                #ffffff;
+
             z-index: 80;
         }
 
         .chapter-content {
             width: min(90%, 700px);
+
             text-align: center;
         }
 
         .chapter-number {
             font-size: 10px;
+
             letter-spacing: 7px;
-            color: #ff9fbd;
-            margin-bottom: 22px;
+
+            color: #d96e98;
+
+            margin-bottom: 20px;
         }
 
         .chapter-line {
             width: 90px;
             height: 1px;
 
-            background: rgba(255,255,255,0.35);
-
             margin: 0 auto 30px;
+
+            background: #e6a9bd;
         }
 
         .chapter-title {
-            font-size: clamp(34px, 9vw, 68px);
-            line-height: 1.08;
+            font-size: clamp(38px, 9vw, 70px);
+
             font-weight: 300;
-            letter-spacing: -1px;
+
+            line-height: 1.05;
+
+            color: #592c3e;
         }
 
         .chapter-subtitle {
@@ -452,67 +594,67 @@
 
             margin: 25px auto 0;
 
-            color: rgba(255,255,255,0.55);
-
             font-size: 13px;
+
             line-height: 1.9;
+
+            color: #9c7182;
         }
 
         .chapter-date {
-            margin-top: 30px;
+            margin-top: 28px;
 
             font-size: 10px;
+
             letter-spacing: 5px;
 
-            color: rgba(255,255,255,0.4);
+            color: #c092a3;
         }
 
         .chapter-button {
             margin-top: 40px;
 
-            background: transparent;
-
-            border: 1px solid rgba(255,159,189,0.7);
-
-            color: #ff9fbd;
-
             padding: 16px 25px;
 
+            background: transparent;
+
+            border: 1px solid #e884aa;
+
+            color: #d96e98;
+
             font-size: 9px;
+
             letter-spacing: 3px;
 
             transition: 0.3s ease;
         }
 
         .chapter-button:hover {
-            background: #ff9fbd;
-            color: #12070b;
+            background: #e884aa;
+            color: white;
         }
 
 
-        /* =========================================================
-           MUSIC PAGE
-        ========================================================= */
+        /* =====================================================
+           PAGE 04 — MUSIC
+        ===================================================== */
 
         #music-page {
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 180, 205, 0.22),
+                    transparent 45%
+                ),
+                #fff8fb;
+
             z-index: 70;
         }
 
-        .music-title {
-            font-size: clamp(32px, 8vw, 55px);
-            font-weight: 300;
-            line-height: 1.1;
-        }
+        .music-content {
+            width: min(90%, 700px);
 
-        .music-description {
-            max-width: 520px;
-
-            margin: 25px auto;
-
-            color: rgba(255,255,255,0.55);
-
-            font-size: 13px;
-            line-height: 1.9;
+            text-align: center;
         }
 
         .music-note {
@@ -521,61 +663,91 @@
 
             margin: 0 auto 30px;
 
-            border: 1px solid rgba(255,159,189,0.5);
             border-radius: 50%;
+
+            border: 1px solid #e9a2bd;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
+            color: #df719b;
+
             font-size: 30px;
 
-            animation: musicPulse 2.5s ease-in-out infinite;
+            background: rgba(255,255,255,0.7);
+
+            animation:
+                musicPulse 2.5s ease-in-out infinite;
         }
 
         @keyframes musicPulse {
+
             0%,
             100% {
                 box-shadow:
-                    0 0 0 rgba(255,100,150,0);
+                    0 0 0 rgba(220,105,150,0);
             }
 
             50% {
                 box-shadow:
-                    0 0 35px rgba(255,100,150,0.12);
+                    0 0 35px rgba(220,105,150,0.15);
             }
+
+        }
+
+        .music-title {
+            font-size: clamp(32px, 8vw, 55px);
+
+            font-weight: 300;
+
+            color: #592c3e;
+
+            line-height: 1.1;
+        }
+
+        .music-description {
+            max-width: 520px;
+
+            margin: 25px auto;
+
+            color: #9c7182;
+
+            font-size: 13px;
+
+            line-height: 1.9;
         }
 
         .song-button {
-            display: inline-block;
-
-            background: #ff9fbd;
-            border: 1px solid #ff9fbd;
-
-            color: #12070b;
-
             padding: 17px 28px;
 
+            background: #e884aa;
+
+            border: 1px solid #e884aa;
+
+            color: white;
+
             font-size: 10px;
+
             font-weight: 700;
+
             letter-spacing: 3px;
-            text-transform: uppercase;
 
             transition: 0.3s ease;
         }
 
         .song-button:hover {
-            background: #ffffff;
-            border-color: #ffffff;
+            background: white;
+            color: #d96e98;
         }
 
         .youtube-player-container {
+            display: none;
+
             width: 100%;
             max-width: 650px;
 
             margin: 30px auto 0;
-
-            display: none;
         }
 
         .youtube-player-container.show {
@@ -583,10 +755,13 @@
         }
 
         .youtube-player {
+            display: block;
+
             width: 100%;
+
             aspect-ratio: 16 / 9;
 
-            border: 1px solid rgba(255,255,255,0.12);
+            border: 1px solid #f0cedb;
 
             background: #000;
         }
@@ -594,10 +769,10 @@
         .music-warning {
             margin-top: 15px;
 
-            color: rgba(255,255,255,0.3);
+            color: #b894a2;
 
             font-size: 9px;
-            letter-spacing: 1px;
+
             line-height: 1.6;
         }
 
@@ -606,9 +781,9 @@
         }
 
 
-        /* =========================================================
-           LETTER PAGE
-        ========================================================= */
+        /* =====================================================
+           PAGE 05 — LETTER
+        ===================================================== */
 
         #letter-page {
             position: fixed;
@@ -619,10 +794,10 @@
             background:
                 radial-gradient(
                     circle at top,
-                    rgba(255,159,189,0.06),
+                    rgba(255, 175, 205, 0.2),
                     transparent 35%
                 ),
-                #080708;
+                #fffafd;
 
             overflow-y: auto;
 
@@ -645,33 +820,45 @@
             margin: auto;
 
             padding:
-                70px
+                60px
                 0
                 100px;
         }
 
-        .letter-top {
+        .letter-header {
             text-align: center;
-            margin-bottom: 55px;
+
+            margin-bottom: 40px;
         }
 
-        .letter-top-title {
+        .letter-header-label {
+            font-size: 10px;
+
+            letter-spacing: 5px;
+
+            color: #c86d91;
+        }
+
+        .letter-title {
+            margin-top: 12px;
+
             font-size: clamp(28px, 7vw, 48px);
+
             font-weight: 300;
-            margin-top: 10px;
+
+            color: #592c3e;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            PINK LILY
-           KEEP THIS SECTION AS YOUR LILY AREA
-        ========================================================= */
+        ===================================================== */
 
         .pink-lily {
             width: 260px;
             height: 340px;
 
-            margin: 0 auto 20px;
+            margin: 0 auto 10px;
 
             position: relative;
         }
@@ -684,27 +871,23 @@
         }
 
 
-        /* =========================================================
+        /* =====================================================
            LETTER CARD
-        ========================================================= */
+        ===================================================== */
 
         .letter-card {
             position: relative;
 
-            background:
-                linear-gradient(
-                    180deg,
-                    rgba(255,255,255,0.035),
-                    rgba(255,255,255,0.015)
-                );
-
-            border: 1px solid rgba(255,255,255,0.1);
-
             padding:
                 clamp(28px, 6vw, 55px);
 
+            background:
+                rgba(255,255,255,0.92);
+
+            border: 1px solid #efd2de;
+
             box-shadow:
-                0 30px 100px rgba(0,0,0,0.35);
+                0 25px 80px rgba(180, 90, 125, 0.1);
         }
 
         .letter-card::before {
@@ -716,22 +899,15 @@
             left: 0;
 
             width: 100%;
-            height: 1px;
+            height: 2px;
 
             background:
                 linear-gradient(
                     90deg,
                     transparent,
-                    #ff9fbd,
+                    #e884aa,
                     transparent
                 );
-        }
-
-        .letter-greeting {
-            font-size: 18px;
-            color: #ffb5ca;
-
-            margin-bottom: 30px;
         }
 
         .letter-text {
@@ -741,17 +917,27 @@
                 serif;
 
             font-size: 16px;
+
             line-height: 2;
 
-            color: rgba(255,255,255,0.82);
+            color: #593846;
         }
 
         .letter-text p {
-            margin-bottom: 24px;
+            margin-bottom: 25px;
+        }
+
+        .letter-greeting {
+            color: #d96e98;
+
+            font-size: 20px;
+
+            margin-bottom: 30px !important;
         }
 
         .wish-title {
-            margin-top: 40px;
+            margin-top: 45px;
+
             margin-bottom: 25px;
 
             font-family:
@@ -761,141 +947,171 @@
                 sans-serif;
 
             font-size: 13px;
+
             letter-spacing: 3px;
 
-            color: #ff9fbd;
+            color: #d96e98;
 
             text-transform: uppercase;
         }
 
         .wishes {
-            padding-left: 22px;
+            padding-left: 25px;
+
             margin-bottom: 30px;
         }
 
         .wishes li {
-            padding-left: 8px;
+            padding-left: 7px;
+
             margin-bottom: 15px;
         }
 
         .signature {
             margin-top: 45px;
 
-            font-family:
-                Georgia,
-                "Times New Roman",
-                serif;
-
             font-size: 18px;
 
-            color: #ffb5ca;
+            color: #d96e98;
 
             line-height: 1.8;
         }
 
+        .letter-end {
+            text-align: center;
 
-        /* =========================================================
-           NEXT CHAPTER PAGE
-        ========================================================= */
+            margin-top: 45px;
+        }
+
+
+        /* =====================================================
+           PAGE 06 — NEXT CHAPTER
+        ===================================================== */
 
         #next-chapter-page {
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 165, 198, 0.25),
+                    transparent 45%
+                ),
+                #ffffff;
+
             z-index: 50;
         }
 
-        .next-chapter-content {
+        .next-content {
             width: min(90%, 700px);
+
             text-align: center;
         }
 
         .next-number {
             font-size: 10px;
+
             letter-spacing: 7px;
-            color: #ff9fbd;
-            margin-bottom: 25px;
+
+            color: #d96e98;
+
+            margin-bottom: 22px;
         }
 
         .next-title {
-            font-size: clamp(35px, 9vw, 70px);
-            line-height: 1.05;
+            font-size: clamp(36px, 9vw, 68px);
+
             font-weight: 300;
+
+            line-height: 1.05;
+
+            color: #592c3e;
         }
 
         .next-description {
-            max-width: 520px;
+            max-width: 540px;
 
             margin: 30px auto;
 
-            color: rgba(255,255,255,0.52);
-
             font-size: 13px;
+
             line-height: 2;
+
+            color: #9c7182;
         }
 
         .next-status {
-            margin: 35px auto;
+            display: inline-block;
 
-            padding: 15px 20px;
+            padding: 14px 20px;
 
-            width: fit-content;
+            border: 1px solid #efd0dd;
 
-            border: 1px solid rgba(255,255,255,0.12);
-
-            color: rgba(255,255,255,0.35);
+            color: #b08495;
 
             font-size: 9px;
+
             letter-spacing: 3px;
+
             text-transform: uppercase;
+
+            background: rgba(255,255,255,0.7);
         }
 
         .next-year {
+            margin-top: 30px;
+
             font-size: 10px;
+
             letter-spacing: 5px;
 
-            color: rgba(255,255,255,0.25);
+            color: #c39aaa;
         }
 
         .close-story-button {
             margin-top: 35px;
 
-            background: transparent;
-
-            border: 1px solid rgba(255,255,255,0.2);
-
-            color: rgba(255,255,255,0.55);
-
             padding: 14px 22px;
 
+            background: transparent;
+
+            border: 1px solid #e7bfd0;
+
+            color: #a77789;
+
             font-size: 9px;
+
             letter-spacing: 3px;
+
             text-transform: uppercase;
 
             transition: 0.3s ease;
         }
 
         .close-story-button:hover {
-            border-color: #ff9fbd;
-            color: #ff9fbd;
+            border-color: #e884aa;
+
+            color: #d96e98;
+
+            background: #fff8fb;
         }
 
 
-        /* =========================================================
+        /* =====================================================
            FLOATING HEARTS
-        ========================================================= */
+        ===================================================== */
 
         .heart {
             position: fixed;
 
             bottom: -20px;
 
-            font-size: 12px;
-
-            color: rgba(255,159,189,0.4);
+            color: rgba(220, 105, 150, 0.35);
 
             pointer-events: none;
 
-            animation: floatHeart 8s linear forwards;
-
             z-index: 5;
+
+            animation:
+                floatHeart 8s linear forwards;
         }
 
         @keyframes floatHeart {
@@ -925,18 +1141,15 @@
 
                 opacity: 0;
             }
+
         }
 
 
-        /* =========================================================
+        /* =====================================================
            MOBILE
-        ========================================================= */
+        ===================================================== */
 
         @media (max-width: 600px) {
-
-            .page-content {
-                padding: 45px 0;
-            }
 
             .lock-title {
                 letter-spacing: 5px;
@@ -946,13 +1159,9 @@
                 padding: 20px 15px;
             }
 
-            .chapter-title,
-            .next-title {
-                letter-spacing: -0.5px;
-            }
-
             .letter-wrapper {
                 width: 92%;
+
                 padding-top: 45px;
             }
 
@@ -962,18 +1171,22 @@
 
             .letter-text {
                 font-size: 15px;
+
                 line-height: 1.9;
             }
 
             .pink-lily {
                 transform: scale(0.85);
+
                 transform-origin: center;
+
                 margin-bottom: -15px;
             }
 
             .youtube-player {
                 min-height: 210px;
             }
+
         }
 
     </style>
@@ -984,7 +1197,8 @@
 
 
     <!-- =========================================================
-         PAGE 01 — PASSCODE
+         PAGE 01
+         PASSCODE
     ========================================================== -->
 
     <section
@@ -1042,7 +1256,7 @@
                     class="clue-button"
                     onclick="openClue()"
                 >
-                    Need a clue?
+                    NEED A CLUE?
                 </button>
 
                 <div
@@ -1063,7 +1277,7 @@
 
 
     <!-- =========================================================
-         CLUE MODAL
+         CLUE
     ========================================================== -->
 
     <div
@@ -1088,7 +1302,14 @@
                     Find the day our story began.
                 </span>
 
-                <div class="thin-line"></div>
+                <div
+                    style="
+                        width:60px;
+                        height:1px;
+                        background:#e8bfd0;
+                        margin:20px 0;
+                    "
+                ></div>
 
                 <small>
                     LITMATCH.
@@ -1111,7 +1332,8 @@
 
 
     <!-- =========================================================
-         PAGE 02 — AUTHENTICATION
+         PAGE 02
+         AUTHENTICATION
     ========================================================== -->
 
     <section
@@ -1127,24 +1349,24 @@
 
             <div
                 class="auth-line"
-                style="animation-delay: .5s;"
+                style="animation-delay:0.5s;"
             >
                 VERIFYING PRIVATE ARCHIVE...
             </div>
 
             <div
                 class="auth-line"
-                style="animation-delay: 1s;"
+                style="animation-delay:1s;"
             >
                 WELCOME, NICO.
             </div>
 
-            <div
-                class="auth-progress"
-            >
+            <div class="auth-progress">
+
                 <div
                     class="auth-progress-bar"
                 ></div>
+
             </div>
 
         </div>
@@ -1154,7 +1376,8 @@
 
 
     <!-- =========================================================
-         PAGE 03 — CHAPTER ONE
+         PAGE 03
+         CHAPTER ONE
     ========================================================== -->
 
     <section
@@ -1199,7 +1422,8 @@
 
 
     <!-- =========================================================
-         PAGE 04 — MUSIC
+         PAGE 04
+         MUSIC
     ========================================================== -->
 
     <section
@@ -1207,7 +1431,7 @@
         class="page"
     >
 
-        <div class="page-content">
+        <div class="music-content">
 
             <div class="eyebrow">
                 BEFORE YOU READ
@@ -1276,7 +1500,8 @@
 
 
     <!-- =========================================================
-         PAGE 05 — LETTER
+         PAGE 05
+         YOUR LETTER
     ========================================================== -->
 
     <section
@@ -1285,17 +1510,18 @@
 
         <div class="letter-wrapper">
 
-            <div class="letter-top">
+            <div class="letter-header">
 
-                <div class="eyebrow">
+                <div class="letter-header-label">
                     CHAPTER 01 • 2026
                 </div>
 
-                <div class="pink-lily">
 
-                    <!-- =================================================
-                         PINK LILY SVG
-                         ================================================= -->
+                <!-- =================================================
+                     PINK LILY
+                ================================================== -->
+
+                <div class="pink-lily">
 
                     <svg
                         viewBox="0 0 300 390"
@@ -1312,6 +1538,7 @@
                                 cx="45%"
                                 cy="25%"
                             >
+
                                 <stop
                                     offset="0%"
                                     stop-color="#fff8fb"
@@ -1331,7 +1558,9 @@
                                     offset="100%"
                                     stop-color="#dc5b86"
                                 />
+
                             </radialGradient>
+
 
                             <linearGradient
                                 id="stemGreen"
@@ -1358,6 +1587,7 @@
 
                             </linearGradient>
 
+
                             <radialGradient id="centerGold">
 
                                 <stop
@@ -1376,6 +1606,7 @@
                                 />
 
                             </radialGradient>
+
 
                             <filter id="softGlow">
 
@@ -1413,6 +1644,7 @@
                             fill="url(#stemGreen)"
                         />
 
+
                         <path
                             d="M145 273 C105 266 77 270 53 282"
                             stroke="#9ade8b"
@@ -1426,6 +1658,7 @@
                             d="M153 300 C190 270 225 274 248 300 C214 306 180 310 150 305 Z"
                             fill="url(#stemGreen)"
                         />
+
 
                         <path
                             d="M155 303 C193 292 222 294 245 300"
@@ -1441,25 +1674,30 @@
                             fill="url(#pinkPetal)"
                         />
 
+
                         <path
                             d="M150 145 C195 125 228 88 216 42 C175 46 149 73 150 145 Z"
                             fill="url(#pinkPetal)"
                         />
+
 
                         <path
                             d="M145 150 C98 158 52 148 30 112 C67 92 111 105 145 150 Z"
                             fill="url(#pinkPetal)"
                         />
 
+
                         <path
                             d="M155 150 C202 158 248 148 270 112 C233 92 189 105 155 150 Z"
                             fill="url(#pinkPetal)"
                         />
 
+
                         <path
                             d="M145 145 C110 170 93 211 112 244 C140 226 153 190 150 150 Z"
                             fill="url(#pinkPetal)"
                         />
+
 
                         <path
                             d="M155 145 C190 170 207 211 188 244 C160 226 147 190 150 150 Z"
@@ -1577,16 +1815,18 @@
 
                 </div>
 
-                <div class="letter-top-title">
-                    For My Nico
-                </div>
+
+                <h1 class="letter-title">
+                    For My Nico ♡
+                </h1>
 
             </div>
 
 
+
             <!-- =====================================================
-                 YOUR LETTER
-                 ===================================================== -->
+                 YOUR EXACT MESSAGE
+            ====================================================== -->
 
             <article class="letter-card">
 
@@ -1598,195 +1838,219 @@
 
 
                     <p>
-                        Hi, asawa! I just want to greet you a happy birthday
-                        to you, my baby!!! 🩷✨
+                        Hi, asawa! I just want to greet you a
+                        happy birthday to you, my baby!!! 🩷✨
                     </p>
 
 
                     <p>
-                        First of all, I want to thank you for being the
-                        strongest soldier in this relationship. Thank you
-                        for always being there for me, for inspiring me
-                        every time I wake up, go to school, and go home.
+                        Thank you so much for being the strongest soldier
+                        in this relationship. Thank you for being my
+                        inspiration me every gising, every sipag, every
+                        pasok sa school, every pag uwi kung saan man ako
+                        galing. Maraming salamat sa love na pinaramdam
+                        mo sa akin specially nung mga early days natin.
                     </p>
 
 
                     <p>
-                        Thank you for not giving up on us, especially since
-                        the beginning of our relationship. From the time we
-                        met on Litmatch until now, you have remained one of
-                        the most important people in my life.
+                        Thank you kasi hindi mo ako sinukuan, hindi mo
+                        akong hinayaan umalis, to the point na nag beg
+                        kapa.
                     </p>
 
 
                     <p>
-                        Thank you for listening to all of my stories, my
-                        jokes, my serious stories, my corny stories, my
-                        horny stories, and everything in between.
+                        honestly speaking, i didn’t know expect na ganon
+                        ang gagawin mo sa akin kasi syempre early weeks
+                        pa lang ata yon. wala pa tayong month non?
+                        anyways, maraming maraming salamat sa pakikinig
+                        mo sa akin, sa kwento, mapa personal, jokes,
+                        serious, corny, horny, or kahit ano pang sides
+                        meron ako. kahit may times na hindi ako
+                        sumasang-ayon sa mga gusto mo. to the point na
+                        palagi ako may disclaimer, kasi ayoko ng away.
                     </p>
 
 
                     <p>
-                        Thank you for being patient with my kakulitan,
-                        harot, kalibugan, and even when I call you
-                        “GURANG.” Thank you for accepting all of my
-                        personalities — the bubbly, harot, hyper, and
-                        everything else that comes with me.
+                        thank you sa patience sa kakulitan ko, kaharutan
+                        ko, kalibugan ko, (OO na inaamin ko na)
+                        katandaan ko, kasabugan ko, “GURANG”. Thank you
+                        talaga
                     </p>
 
 
                     <p>
-                        Thank you for trusting me with your deepest secrets,
-                        your horny secrets, your insecurities, and the
-                        different sides of yourself that you don't always
-                        show to other people.
+                        thank you sa trust na binigay mo sa akin.
+                        mapa-deepest secrets, horny secrets, insecurities,
+                        bubbly sides, harot sides, hyper side, lahat lahat
+                        ng personalities and qualities na pinakita mo sa
+                        akin. i really do appreciate all of those
                     </p>
 
 
                     <p>
-                        Thank you for all the gifts and for making me feel
-                        appreciated and loved. Every little thing you have
-                        done for me means more than you probably realize.
+                        thank you sa gifts nitong mga nakakaraan, sobrang
+                        naaapprieciate ko sya. sobrang sarap sa feeling
+                        na nawala na yung depression ko, bihira na ako
+                        magka-anxiety attacks.
                     </p>
 
 
                     <p>
-                        There were also times when I had so much workload
-                        and experienced anxiety attacks. Somehow, having
-                        you beside me and knowing that I have someone to
-                        talk to made those moments easier to handle.
+                        story time: kapag ganitong marami akong work loads
+                        (including: activities, friends, family, orgs,
+                        classmates, personal), sa maraming patong patong
+                        na gawain at emotions na to, supposedly, madalas
+                        na anxiety attacks ko nito. AS IN lahat na lang
+                        inaaway ko. But, since nakilala kita as in never
+                        or once ko na lang ulit sya naranasan. well hindi
+                        naman kasi agad-agad sya talaga mawawala eh.
+                        but the think here is, simula talaga nung dumating
+                        ka, pinaramdam mo na may care ka, may love, may
+                        support ka sa akin. nawala ehh… so thank you so
+                        much sa lahat ng iyon.
                     </p>
 
 
                     <p>
-                        I'm also sorry for the times that I became
-                        insensitive, for my shortcomings, and for the
-                        moments when I failed to understand you the way
-                        you deserved to be understood.
+                        i just want to say sorry about sa times na
+                        sumosobra kakulitan ko, harot ko, kalibugan ko,
+                        pagiging insensitive ko. also pagkukulang ko.
                     </p>
 
 
                     <p>
-                        I know that our relationship isn't always easy.
-                        Especially because my parents still don't fully
-                        accept our relationship. But I still believe that
-                        someday, when they see how happy, successful,
-                        loving, and supportive we are together, they will
-                        understand us.
+                        sorry sa parents ko, na hindi ako matanggap, well
+                        wala naman syang problema sa iyo eh. pero its just
+                        me na ayaw nila ako makipag relasyon sa lalaki.
+                        but, ngayon, i don’t care what they say about us,
+                        especially now. wala yan. i know na someday,
+                        when they see us happy, successful, full of love
+                        and support for each other. i believe and i
+                        prayed na matatanggap talaga nila
                     </p>
 
 
                     <p>
-                        I'm also sorry that your gift came late. The rain,
-                        having no allowance, no savings, and no money made
-                        things difficult. But even if the gift came late,
-                        please know that it doesn't mean that my love for
-                        you came late. I will always find a way to show you
-                        how much you mean to me.
+                        sorry sa late na gift. kasi alam mo na yung ulan
+                        ulan, walang baon, walang ipon, walang pera. but
+                        still, meron at meron naman me maibibigay. not
+                        exactly on your birthday, but i’m sure na meron at
+                        meron ka parin naman gifts mula sa akin. and sana
+                        magustohan mo syankahit very cheap and simple lang
+                        sya
+                    </p>
+
+
+                    <p>
+                        well, since this is a birthday letter. syempre
+                        dapat meron tayo wish…
                     </p>
 
 
                     <div class="wish-title">
-                        My 20 Wishes For You
+                        20 Wishes For My Asawa
                     </div>
 
 
                     <ol class="wishes">
 
                         <li>
-                            Wish ko, sana matupad lahat ng wish mo,
-                            manifestation, prayers mo.
+                            wish ko, sana matupad lahat ng wish mo,
+                            manifestation, prayers mo
                         </li>
 
                         <li>
-                            Wish ko, wag mawala ng pag-asa at manalig
-                            palagi kay Lord.
+                            wish ko, wag mawala ng pag-asa at manalig
+                            palagi kay Lord
                         </li>
 
                         <li>
-                            Wish ko, mahalin mo sarili mo kung paano mo
-                            ako mahalin.
+                            wish ko, mahalin mo sarili mo kung paano mo
+                            ako mahalin
                         </li>
 
                         <li>
-                            Wish ko, never mo nang sasaktan sarili mo.
+                            wish ko, never mo nang sasaktan sarili mo
                         </li>
 
                         <li>
-                            Wish ko, na wag mo i-pressure sarili mo.
+                            wish ko, na wag mo i-pressure sarili mo
                         </li>
 
                         <li>
-                            Wish ko, yung kabutihan ng health mo.
+                            wish ko, yung kabutihan ng health mo
                         </li>
 
                         <li>
-                            Wish ko, makapagtapos ka ng pag-aaral mo
-                            with or without flying colors.
+                            wish ko, makapagtapos ka ng pag-aaral mo
+                            with or without flying colors
                         </li>
 
                         <li>
-                            Wish ko, magkasama pa kayo ni mami mo nang
-                            matagal.
+                            wish ko, magkasama pa kayo ni mami mo nang
+                            matagal
                         </li>
 
                         <li>
-                            Wish ko, mas maging strong ka sa mga challenges
-                            na kakaharapin mo.
+                            wish ko, mas maging strong ka sa mga
+                            challenges na kakaharapin mo
                         </li>
 
                         <li>
-                            Wish ko, humaba pa ang pasensya mo.
+                            wish ko, humaba pa ang pasensya mo
                         </li>
 
                         <li>
-                            Wish ko, mahalin mo yung mga tao na
-                            nagmamahal sayo.
+                            wish ko, mahalin mo yung mga tao na
+                            nagmamahal sayo
                         </li>
 
                         <li>
-                            Wish ko, matupad lahat ng mga pangarap mo
-                            kasama ako.
+                            wish ko, matupad lahat ng mga pangarap mo
+                            kasama ako
                         </li>
 
                         <li>
-                            Wish ko, na mag-travel us together while
-                            enjoy our lives, jobs, passion.
+                            wish ko, na mag-travel us together while
+                            enjoy our lives, jobs, passion
                         </li>
 
                         <li>
-                            Wish ko, ikaw na ang una at huli kong
-                            mahahalin.
+                            wish ko, ikaw na ang una at huli kong
+                            mahahalin
                         </li>
 
                         <li>
-                            Wish ko, ikaw lang ang luluharan ko at
-                            magsasabi ng “will you marry me”.
+                            wish ko, ikaw lang ang luluharan ko at
+                            magsasabi ng “will you marry me”
                         </li>
 
                         <li>
-                            Wish ko, na ikaw lang ang magsusuot ng
-                            singsing sa daliri ko.
+                            wish ko, na ikaw lang ang magsusuot ng
+                            singsing sa daliri ko
                         </li>
 
                         <li>
-                            Wish ko, ikaw na mapapangasawa ko.
+                            wish ko, ikaw na mapapangasawa ko
                         </li>
 
                         <li>
-                            Wish ko, ikaw lang kasama ko sa magiging
-                            tirahan natin.
+                            wish ko, ikaw lang kasama ko sa magiging
+                            tirahan natin
                         </li>
 
                         <li>
-                            Wish ko, ikaw lang matitira ko halos
-                            araw-araw.
+                            wish ko, ikaw lang matitira ko halos
+                            araw-araw
                         </li>
 
                         <li>
-                            Wish ko, ako lang ang magmamahal sayo ng
+                            wish ko, ako lang ang magmamahal sayo ng
                             ganito at ikaw lang ang magmamahal sa akin
-                            ng ganito.
+                            ng ganito
                         </li>
 
                     </ol>
@@ -1797,7 +2061,7 @@
                         asawa. mahal na mahal kita palagi. nandito ako,
                         hindi kita iiwan, mamahilin kitang buong buo,
                         susuporta sayo hanggang dulo. I love you, baby!
-                        Enjoy your day kahit may pasok ka hehehe.
+                        Enjoy your day kahit may pasok ka hehehe
                     </p>
 
 
@@ -1811,16 +2075,11 @@
             </article>
 
 
-            <div
-                style="
-                    text-align:center;
-                    margin-top:45px;
-                "
-            >
+            <div class="letter-end">
 
                 <button
                     type="button"
-                    class="chapter-button"
+                    class="pink-button"
                     onclick="openNextChapter()"
                 >
                     CONTINUE TO OUR NEXT CHAPTER →
@@ -1835,17 +2094,18 @@
 
 
     <!-- =========================================================
-         PAGE 06 — NEXT CHAPTER
+         PAGE 06
+         NEXT CHAPTER
          
-         THIS IS THE PAGE YOU CAN UPDATE EVERY YEAR.
-         ========================================================== -->
+         THIS IS THE PAGE WE CAN UPDATE IN THE FUTURE.
+    ========================================================== -->
 
     <section
         id="next-chapter-page"
         class="page"
     >
 
-        <div class="next-chapter-content">
+        <div class="next-content">
 
             <div class="next-number">
                 NEXT CHAPTER
@@ -1865,12 +2125,19 @@
 
                 <br><br>
 
-                There are still places to go,
-                memories to make,
-                birthdays to celebrate,
-                events to experience,
-                and countless moments
-                that we haven't written yet.
+                There are still more memories
+                waiting for us.
+
+                More places to go.
+                More moments to celebrate.
+                More stories to tell.
+
+                <br><br>
+
+                And whenever the next chapter
+                of our story comes,
+                this little website will be here
+                waiting for it.
 
             </p>
 
@@ -1905,18 +2172,18 @@
 
     <script>
 
-        /* =========================================================
-           BASIC SETTINGS
-        ========================================================== */
+        /* =====================================================
+           SETTINGS YOU CAN EASILY CHANGE IN THE FUTURE
+        ===================================================== */
 
         const ACCESS_CODE = "060326";
 
         const SONG_ID = "8lbRDzhjqeM";
 
 
-        /* =========================================================
-           PAGE ELEMENTS
-        ========================================================== */
+        /* =====================================================
+           GET ELEMENTS
+        ===================================================== */
 
         const lockScreen =
             document.getElementById("lock-screen");
@@ -1956,9 +2223,9 @@
             );
 
 
-        /* =========================================================
+        /* =====================================================
            PASSCODE
-        ========================================================== */
+        ===================================================== */
 
         function checkPasscode() {
 
@@ -1980,6 +2247,7 @@
                 accessCodeInput.value = "";
 
                 accessCodeInput.focus();
+
 
                 lockScreen.animate(
                     [
@@ -2013,9 +2281,9 @@
         }
 
 
-        /* =========================================================
+        /* =====================================================
            ENTER KEY
-        ========================================================== */
+        ===================================================== */
 
         accessCodeInput.addEventListener(
             "keydown",
@@ -2031,9 +2299,9 @@
         );
 
 
-        /* =========================================================
+        /* =====================================================
            CLUE
-        ========================================================== */
+        ===================================================== */
 
         function openClue() {
 
@@ -2056,15 +2324,16 @@
         }
 
 
-        /* =========================================================
+        /* =====================================================
            AUTHENTICATION
-        ========================================================== */
+        ===================================================== */
 
         function startAuthentication() {
 
             lockScreen.classList.remove("active");
 
             authScreen.classList.add("active");
+
 
             setTimeout(
                 function() {
@@ -2080,13 +2349,14 @@
         }
 
 
-        /* =========================================================
+        /* =====================================================
            CHAPTER ONE → MUSIC
-        ========================================================== */
+        ===================================================== */
 
         function goToMusic() {
 
             chapterPage.classList.remove("active");
+
 
             setTimeout(
                 function() {
@@ -2100,9 +2370,9 @@
         }
 
 
-        /* =========================================================
+        /* =====================================================
            PLAY OUR SONG
-        ========================================================== */
+        ===================================================== */
 
         function playOurSong() {
 
@@ -2140,13 +2410,14 @@
         }
 
 
-        /* =========================================================
+        /* =====================================================
            MUSIC → LETTER
-        ========================================================== */
+        ===================================================== */
 
         function openLetter() {
 
             musicPage.classList.remove("active");
+
 
             setTimeout(
                 function() {
@@ -2156,19 +2427,20 @@
                     letterPage.scrollTop = 0;
 
                 },
-                250
+                300
             );
 
         }
 
 
-        /* =========================================================
+        /* =====================================================
            LETTER → NEXT CHAPTER
-        ========================================================== */
+        ===================================================== */
 
         function openNextChapter() {
 
             letterPage.classList.remove("active");
+
 
             setTimeout(
                 function() {
@@ -2182,13 +2454,14 @@
         }
 
 
-        /* =========================================================
+        /* =====================================================
            CLOSE STORY
-        ========================================================== */
+        ===================================================== */
 
         function closeStory() {
 
             nextChapterPage.classList.remove("active");
+
 
             setTimeout(
                 function() {
@@ -2206,9 +2479,9 @@
         }
 
 
-        /* =========================================================
+        /* =====================================================
            FLOATING HEARTS
-        ========================================================== */
+        ===================================================== */
 
         function createHeart() {
 
@@ -2222,14 +2495,18 @@
                     ? "♡"
                     : "♥";
 
+
             heart.style.left =
                 Math.random() * 100 + "vw";
+
 
             heart.style.animationDuration =
                 (6 + Math.random() * 5) + "s";
 
+
             heart.style.fontSize =
                 (8 + Math.random() * 10) + "px";
+
 
             document.body.appendChild(heart);
 
@@ -2246,15 +2523,14 @@
         }
 
 
-        /* =========================================================
+        /* =====================================================
            START FLOATING HEARTS
-        ========================================================== */
+        ===================================================== */
 
         setInterval(
             createHeart,
             2200
         );
-
 
     </script>
 
