@@ -3213,6 +3213,423 @@ function createPetals() {
     }
 }
 
+    </script>
+
+<!-- =====================================================
+     MASTER FIX
+     LETTER + MUSIC + DIGITAL LOCK
+     ===================================================== -->
+
+<script>
+
+/* =========================================================
+   MASTER FIX FOR NICO.EXE
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   1. PREPARE THE LETTER
+   --------------------------------------------------------- */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const letter =
+        document.querySelector(".letter-content");
+
+
+    if (!letter) {
+
+        console.log(
+            "NICO.EXE: Letter content not found."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Give the existing letter an ID
+       WITHOUT changing your HTML.
+    */
+
+    letter.id = "letter";
+
+
+    /*
+       Hide the letter initially.
+    */
+
+    letter.style.display = "none";
+
+
+    /*
+       Create the OPEN MY LETTER button
+       automatically.
+    */
+
+    const openButton =
+        document.createElement("button");
+
+    openButton.id =
+        "open-letter-button";
+
+    openButton.type =
+        "button";
+
+    openButton.innerHTML =
+        "💌 Open My Letter";
+
+
+    /*
+       Insert button BEFORE the letter.
+    */
+
+    letter.parentNode.insertBefore(
+        openButton,
+        letter
+    );
+
+
+    /*
+       When clicked...
+    */
+
+    openButton.addEventListener(
+        "click",
+        function () {
+
+            openLetterFixed();
+
+        }
+    );
+
+
+    console.log(
+        "NICO.EXE: Letter system ready."
+    );
+
+});
+
+
+/* =========================================================
+   2. OPEN LETTER
+   ========================================================= */
+
+function openLetterFixed() {
+
+    const letter =
+        document.getElementById("letter");
+
+    const button =
+        document.getElementById(
+            "open-letter-button"
+        );
+
+
+    if (!letter) {
+
+        console.log(
+            "NICO.EXE: Letter unavailable."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Reveal the existing letter.
+    */
+
+    letter.style.display =
+        "block";
+
+
+    /*
+       Change button text.
+    */
+
+    if (button) {
+
+        button.innerHTML =
+            "💗 Reading your letter...";
+
+        button.style.opacity =
+            "0.7";
+
+        button.disabled =
+            true;
+
+    }
+
+
+    /*
+       Create your falling flowers.
+    */
+
+    if (
+        typeof createPetals ===
+        "function"
+    ) {
+
+        createPetals();
+
+    }
+
+
+    /*
+       START MUSIC
+    */
+
+    startOurSong();
+
+
+    /*
+       Scroll to letter.
+    */
+
+    setTimeout(function () {
+
+        letter.scrollIntoView({
+
+            behavior: "smooth",
+
+            block: "start"
+
+        });
+
+    }, 300);
+
+}
+
+
+/* =========================================================
+   3. CREATE THE MUSIC PLAYER
+   ========================================================= */
+
+function startOurSong() {
+
+    /*
+       Prevent creating multiple players.
+    */
+
+    if (
+        document.getElementById(
+            "hidden-song-player"
+        )
+    ) {
+
+        playOurSong();
+
+        return;
+
+    }
+
+
+    /*
+       Create YouTube iframe.
+    */
+
+    const iframe =
+        document.createElement("iframe");
+
+
+    iframe.id =
+        "hidden-song-player";
+
+
+    iframe.width =
+        "1";
+
+
+    iframe.height =
+        "1";
+
+
+    iframe.style.position =
+        "fixed";
+
+
+    iframe.style.bottom =
+        "0";
+
+
+    iframe.style.left =
+        "0";
+
+
+    iframe.style.opacity =
+        "0.01";
+
+
+    iframe.style.pointerEvents =
+        "none";
+
+
+    iframe.style.border =
+        "0";
+
+
+    iframe.allow =
+        "autoplay; encrypted-media";
+
+
+    iframe.src =
+        "https://www.youtube.com/embed/tVRfUqyDJyM?enablejsapi=1&autoplay=1&loop=1&playlist=tVRfUqyDJyM&controls=0";
+
+
+    document.body.appendChild(
+        iframe
+    );
+
+
+    /*
+       Give YouTube time to load.
+    */
+
+    setTimeout(function () {
+
+        playOurSong();
+
+    }, 1200);
+
+}
+
+
+/* =========================================================
+   4. PLAY SONG
+   ========================================================= */
+
+function playOurSong() {
+
+    const iframe =
+        document.getElementById(
+            "hidden-song-player"
+        );
+
+
+    if (!iframe) {
+
+        return;
+
+    }
+
+
+    /*
+       Tell YouTube player to play.
+    */
+
+    iframe.contentWindow.postMessage(
+        JSON.stringify({
+
+            event: "command",
+
+            func: "playVideo",
+
+            args: []
+
+        }),
+        "*"
+    );
+
+}
+
+
+/* =========================================================
+   5. DIGITAL LOCK SAFETY
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const lock =
+            document.getElementById(
+                "lock-screen"
+            );
+
+
+        if (!lock) {
+
+            return;
+
+        }
+
+
+        /*
+           Make absolutely sure that once
+           unlocked, the lock cannot block
+           the website underneath.
+        */
+
+        const observer =
+            new MutationObserver(
+                function () {
+
+                    if (
+                        lock.classList.contains(
+                            "unlocked"
+                        )
+                    ) {
+
+                        lock.style.pointerEvents =
+                            "none";
+
+                    }
+
+                }
+            );
+
+
+        observer.observe(
+            lock,
+            {
+                attributes: true,
+                attributeFilter: [
+                    "class"
+                ]
+            }
+        );
+
+    }
+);
+
+
+/* =========================================================
+   6. MAKE EXISTING LETTER CONTENT CLICK-SAFE
+   ========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function () {
+
+        const letter =
+            document.querySelector(
+                ".letter-content"
+            );
+
+
+        if (letter) {
+
+            letter.style.position =
+                "relative";
+
+            letter.style.zIndex =
+                "20";
+
+            letter.style.pointerEvents =
+                "auto";
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
 </script>
 
 </body>
