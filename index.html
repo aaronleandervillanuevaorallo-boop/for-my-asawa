@@ -1,3793 +1,2262 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    >
+
+    <title>For My Nico 💗</title>
+
+    <meta
+        name="description"
+        content="A little digital chapter of our story."
+    >
+
+    <style>
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: #050505;
+            color: #ffffff;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+            overflow-x: hidden;
+        }
+
+        button,
+        input {
+            font: inherit;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           GLOBAL
+        ========================================================= */
+
+        .page {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(255, 130, 170, 0.08),
+                    transparent 45%
+                ),
+                #050505;
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition:
+                opacity 0.8s ease,
+                visibility 0.8s ease;
+
+            overflow-y: auto;
+            z-index: 10;
+        }
+
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .page-content {
+            width: min(90%, 700px);
+            margin: auto;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .eyebrow {
+            font-size: 10px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 18px;
+        }
+
+        .pink {
+            color: #ff9fbd;
+        }
+
+        .thin-line {
+            width: 70px;
+            height: 1px;
+            background: rgba(255,255,255,0.35);
+            margin: 25px auto;
+        }
+
+
+        /* =========================================================
+           PASSCODE SCREEN
+        ========================================================= */
+
+        #lock-screen {
+            z-index: 100;
+        }
+
+        .lock-container {
+            width: min(90%, 440px);
+            text-align: center;
+        }
+
+        .lock-status {
+            font-size: 9px;
+            letter-spacing: 5px;
+            color: #ff9fbd;
+            margin-bottom: 20px;
+        }
+
+        .lock-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 25px;
+
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 25px;
+
+            box-shadow:
+                0 0 35px rgba(255, 100, 150, 0.08);
+        }
+
+        .lock-title {
+            font-size: clamp(30px, 8vw, 52px);
+            font-weight: 300;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .lock-subtitle {
+            font-size: 12px;
+            color: rgba(255,255,255,0.48);
+            letter-spacing: 2px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .access-panel {
+            border: 1px solid rgba(255,255,255,0.13);
+            background: rgba(255,255,255,0.025);
+            padding: 25px 20px;
+            border-radius: 3px;
+        }
+
+        .access-label {
+            display: block;
+            font-size: 9px;
+            letter-spacing: 4px;
+            color: rgba(255,255,255,0.42);
+            margin-bottom: 14px;
+        }
+
+        #access-code {
+            width: 100%;
+            height: 54px;
+
+            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(0,0,0,0.5);
+
+            color: #ffffff;
+
+            text-align: center;
+            font-size: 19px;
+            letter-spacing: 9px;
+
+            outline: none;
+            border-radius: 2px;
+
+            transition: 0.3s ease;
+        }
+
+        #access-code:focus {
+            border-color: rgba(255,159,189,0.7);
+            box-shadow:
+                0 0 20px rgba(255,100,150,0.08);
+        }
+
+        .unlock-button,
+        .primary-button {
+            width: 100%;
+            min-height: 52px;
+
+            border: 1px solid #ff9fbd;
+            background: #ff9fbd;
+            color: #12070b;
+
+            margin-top: 15px;
+
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+
+            transition: 0.3s ease;
+        }
+
+        .unlock-button:hover,
+        .primary-button:hover {
+            background: #ffffff;
+            border-color: #ffffff;
+        }
+
+        .clue-button {
+            margin-top: 18px;
+
+            background: transparent;
+            border: none;
+
+            color: rgba(255,255,255,0.4);
+
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .lock-message {
+            min-height: 18px;
+            margin-top: 15px;
+
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: #ff9fbd;
+        }
+
+        .lock-footer {
+            margin-top: 35px;
+
+            font-size: 8px;
+            letter-spacing: 3px;
+            color: rgba(255,255,255,0.22);
+
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           CLUE MODAL
+        ========================================================= */
+
+        #clue-modal {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0,0,0,0.82);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+
+            transition: 0.4s ease;
+
+            z-index: 500;
+            padding: 20px;
+        }
+
+        #clue-modal.show {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .clue-box {
+            width: min(100%, 400px);
+
+            background: #0d0d0d;
+            border: 1px solid rgba(255,255,255,0.18);
+
+            padding: 30px;
+
+            box-shadow:
+                0 20px 80px rgba(0,0,0,0.6);
+        }
+
+        .clue-header {
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #ff9fbd;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .clue-content {
+            font-size: 13px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.9;
+        }
+
+        .clue-highlight {
+            display: block;
+            margin-top: 15px;
+            color: #ffffff;
+            font-size: 17px;
+        }
+
+        .clue-close {
+            margin-top: 25px;
+
+            background: transparent;
+            color: rgba(255,255,255,0.5);
+
+            border: 1px solid rgba(255,255,255,0.2);
+
+            padding: 11px 18px;
+
+            font-size: 9px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+
+        /* =========================================================
+           AUTHENTICATION
+        ========================================================= */
+
+        #auth-screen {
+            z-index: 90;
+        }
+
+        .auth-content {
+            width: min(90%, 500px);
+        }
+
+        .auth-line {
+            font-family: monospace;
+            font-size: 12px;
+            color: #ff9fbd;
+            margin-bottom: 10px;
+            opacity: 0;
+            animation: authText 0.4s forwards;
+        }
+
+        .auth-progress {
+            width: 100%;
+            height: 2px;
 
-<meta charset="UTF-8">
+            background: rgba(255,255,255,0.08);
 
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+            margin-top: 25px;
+            overflow: hidden;
+        }
 
-<title>For My Asawa 🩷</title>
+        .auth-progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #ff9fbd;
 
+            animation: progress 2.6s ease forwards;
+        }
 
-<style>
+        @keyframes progress {
+            from {
+                width: 0%;
+            }
 
-/* =========================================================
-   GLOBAL
-   ========================================================= */
+            to {
+                width: 100%;
+            }
+        }
 
-* {
-    box-sizing: border-box;
-}
+        @keyframes authText {
+            to {
+                opacity: 1;
+            }
+        }
 
-html {
-    scroll-behavior: smooth;
-}
 
-body {
+        /* =========================================================
+           CHAPTER ONE
+        ========================================================= */
 
-    margin: 0;
+        #chapter-page {
+            z-index: 80;
+        }
 
-    min-height: 100vh;
+        .chapter-content {
+            width: min(90%, 700px);
+            text-align: center;
+        }
 
-    font-family: Georgia, serif;
+        .chapter-number {
+            font-size: 10px;
+            letter-spacing: 7px;
+            color: #ff9fbd;
+            margin-bottom: 22px;
+        }
 
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255, 190, 210, 0.45),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(255, 220, 230, 0.55),
-            transparent 35%
-        ),
-        linear-gradient(
-            135deg,
-            #fff7fa,
-            #fce8ef,
-            #fff9f5
-        );
+        .chapter-line {
+            width: 90px;
+            height: 1px;
 
-    color: #5b3745;
+            background: rgba(255,255,255,0.35);
 
-    overflow-x: hidden;
-}
+            margin: 0 auto 30px;
+        }
 
+        .chapter-title {
+            font-size: clamp(34px, 9vw, 68px);
+            line-height: 1.08;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
 
-/* =========================================================
-   MAIN CONTAINER
-   ========================================================= */
+        .chapter-subtitle {
+            max-width: 520px;
 
-.container {
+            margin: 25px auto 0;
 
-    min-height: 100vh;
+            color: rgba(255,255,255,0.55);
 
-    display: flex;
+            font-size: 13px;
+            line-height: 1.9;
+        }
 
-    justify-content: center;
+        .chapter-date {
+            margin-top: 30px;
 
-    align-items: flex-start;
+            font-size: 10px;
+            letter-spacing: 5px;
 
-    padding: 40px 20px 80px;
+            color: rgba(255,255,255,0.4);
+        }
 
-    position: relative;
-}
+        .chapter-button {
+            margin-top: 40px;
 
+            background: transparent;
 
-.card {
+            border: 1px solid rgba(255,159,189,0.7);
 
-    width: 100%;
+            color: #ff9fbd;
 
-    max-width: 600px;
+            padding: 16px 25px;
 
-    background:
-        rgba(255,255,255,0.82);
+            font-size: 9px;
+            letter-spacing: 3px;
 
-    padding: 45px 28px;
+            transition: 0.3s ease;
+        }
 
-    border-radius: 30px;
+        .chapter-button:hover {
+            background: #ff9fbd;
+            color: #12070b;
+        }
 
-    text-align: center;
 
-    box-shadow:
-        0 15px 45px
-        rgba(120, 50, 80, 0.15);
+        /* =========================================================
+           MUSIC PAGE
+        ========================================================= */
 
-    position: relative;
+        #music-page {
+            z-index: 70;
+        }
 
-    z-index: 2;
-}
+        .music-title {
+            font-size: clamp(32px, 8vw, 55px);
+            font-weight: 300;
+            line-height: 1.1;
+        }
 
+        .music-description {
+            max-width: 520px;
 
-/* =========================================================
-   OPENING
-   ========================================================= */
+            margin: 25px auto;
 
-.flower-opening {
+            color: rgba(255,255,255,0.55);
 
-    position: relative;
+            font-size: 13px;
+            line-height: 1.9;
+        }
 
-    text-align: center;
+        .music-note {
+            width: 90px;
+            height: 90px;
 
-    padding: 20px 10px 10px;
-}
+            margin: 0 auto 30px;
 
+            border: 1px solid rgba(255,159,189,0.5);
+            border-radius: 50%;
 
-.flower-glow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    position: absolute;
+            font-size: 30px;
 
-    width: 220px;
-    height: 220px;
+            animation: musicPulse 2.5s ease-in-out infinite;
+        }
 
-    left: 50%;
-    top: 5px;
+        @keyframes musicPulse {
+            0%,
+            100% {
+                box-shadow:
+                    0 0 0 rgba(255,100,150,0);
+            }
 
-    transform: translateX(-50%);
+            50% {
+                box-shadow:
+                    0 0 35px rgba(255,100,150,0.12);
+            }
+        }
 
-    border-radius: 50%;
+        .song-button {
+            display: inline-block;
 
-    background:
-        radial-gradient(
-            circle,
-            rgba(255, 170, 200, 0.35) 0%,
-            rgba(255, 190, 215, 0.15) 35%,
-            transparent 70%
-        );
+            background: #ff9fbd;
+            border: 1px solid #ff9fbd;
 
-    filter: blur(8px);
+            color: #12070b;
 
-    animation:
-        flowerGlow 3s ease-in-out infinite;
+            padding: 17px 28px;
 
-    pointer-events: none;
-}
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
 
+            transition: 0.3s ease;
+        }
 
-@keyframes flowerGlow {
+        .song-button:hover {
+            background: #ffffff;
+            border-color: #ffffff;
+        }
 
-    0%, 100% {
+        .youtube-player-container {
+            width: 100%;
+            max-width: 650px;
 
-        transform:
-            translateX(-50%)
-            scale(0.9);
+            margin: 30px auto 0;
 
-        opacity: 0.65;
-    }
+            display: none;
+        }
 
-    50% {
+        .youtube-player-container.show {
+            display: block;
+        }
 
-        transform:
-            translateX(-50%)
-            scale(1.1);
+        .youtube-player {
+            width: 100%;
+            aspect-ratio: 16 / 9;
 
-        opacity: 1;
-    }
-}
+            border: 1px solid rgba(255,255,255,0.12);
 
+            background: #000;
+        }
 
-/* =========================================================
-   FLOWER SPARKLES
-   ========================================================= */
+        .music-warning {
+            margin-top: 15px;
 
-.flower-sparkle {
+            color: rgba(255,255,255,0.3);
 
-    position: absolute;
+            font-size: 9px;
+            letter-spacing: 1px;
+            line-height: 1.6;
+        }
 
-    color: #e98aaa;
+        .music-continue {
+            margin-top: 30px;
+        }
 
-    font-size: 18px;
 
-    opacity: 0.7;
+        /* =========================================================
+           LETTER PAGE
+        ========================================================= */
 
-    animation:
-        sparkle 3s ease-in-out infinite;
+        #letter-page {
+            position: fixed;
+            inset: 0;
 
-    pointer-events: none;
-}
+            z-index: 60;
 
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(255,159,189,0.06),
+                    transparent 35%
+                ),
+                #080708;
 
-.sparkle-one {
+            overflow-y: auto;
 
-    left: 8%;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
 
-    top: 20px;
-}
+            transition: 0.8s ease;
+        }
 
+        #letter-page.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
 
-.sparkle-two {
+        .letter-wrapper {
+            width: min(92%, 760px);
 
-    right: 8%;
+            margin: auto;
 
-    top: 55px;
+            padding:
+                70px
+                0
+                100px;
+        }
 
-    animation-delay: 1s;
-}
+        .letter-top {
+            text-align: center;
+            margin-bottom: 55px;
+        }
 
+        .letter-top-title {
+            font-size: clamp(28px, 7vw, 48px);
+            font-weight: 300;
+            margin-top: 10px;
+        }
 
-.sparkle-three {
 
-    left: 4%;
+        /* =========================================================
+           PINK LILY
+           KEEP THIS SECTION AS YOUR LILY AREA
+        ========================================================= */
 
-    top: 115px;
+        .pink-lily {
+            width: 260px;
+            height: 340px;
 
-    animation-delay: 1.8s;
-}
+            margin: 0 auto 20px;
 
+            position: relative;
+        }
 
-.sparkle-four {
+        .pink-lily svg {
+            width: 260px;
+            height: 340px;
 
-    right: 4%;
+            overflow: visible;
+        }
 
-    top: 130px;
 
-    animation-delay: 0.7s;
-}
+        /* =========================================================
+           LETTER CARD
+        ========================================================= */
 
+        .letter-card {
+            position: relative;
 
-@keyframes sparkle {
+            background:
+                linear-gradient(
+                    180deg,
+                    rgba(255,255,255,0.035),
+                    rgba(255,255,255,0.015)
+                );
 
-    0%, 100% {
+            border: 1px solid rgba(255,255,255,0.1);
 
-        opacity: 0.25;
+            padding:
+                clamp(28px, 6vw, 55px);
 
-        transform:
-            scale(0.8)
-            rotate(0deg);
-    }
+            box-shadow:
+                0 30px 100px rgba(0,0,0,0.35);
+        }
 
-    50% {
+        .letter-card::before {
+            content: "";
 
-        opacity: 1;
+            position: absolute;
 
-        transform:
-            scale(1.25)
-            rotate(15deg);
-    }
-}
+            top: 0;
+            left: 0;
 
+            width: 100%;
+            height: 1px;
 
-/* =========================================================
-   PINK LILY
-   DO NOT CHANGE
-   ========================================================= */
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #ff9fbd,
+                    transparent
+                );
+        }
 
-.pink-lily {
+        .letter-greeting {
+            font-size: 18px;
+            color: #ffb5ca;
 
-    position: relative;
+            margin-bottom: 30px;
+        }
 
-    animation:
-        lilySway 6s ease-in-out infinite;
+        .letter-text {
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
 
-    filter:
-        drop-shadow(
-            0 15px 20px
-            rgba(190, 80, 120, 0.18)
-        );
-}
+            font-size: 16px;
+            line-height: 2;
 
+            color: rgba(255,255,255,0.82);
+        }
 
-@keyframes lilySway {
+        .letter-text p {
+            margin-bottom: 24px;
+        }
 
-    0%, 100% {
+        .wish-title {
+            margin-top: 40px;
+            margin-bottom: 25px;
 
-        transform:
-            rotate(-1deg)
-            translateY(0);
-    }
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
 
-    50% {
+            font-size: 13px;
+            letter-spacing: 3px;
 
-        transform:
-            rotate(1deg)
-            translateY(-5px);
-    }
-}
+            color: #ff9fbd;
 
+            text-transform: uppercase;
+        }
 
-/* =========================================================
-   TITLE
-   ========================================================= */
+        .wishes {
+            padding-left: 22px;
+            margin-bottom: 30px;
+        }
 
-.small {
+        .wishes li {
+            padding-left: 8px;
+            margin-bottom: 15px;
+        }
 
-    font-size: 14px;
+        .signature {
+            margin-top: 45px;
 
-    letter-spacing: 3px;
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
 
-    text-transform: uppercase;
+            font-size: 18px;
 
-    color: #a66a7c;
-}
+            color: #ffb5ca;
 
+            line-height: 1.8;
+        }
 
-h1 {
 
-    font-size: 42px;
+        /* =========================================================
+           NEXT CHAPTER PAGE
+        ========================================================= */
 
-    margin: 15px 0;
+        #next-chapter-page {
+            z-index: 50;
+        }
 
-    color: #9d4f69;
-}
+        .next-chapter-content {
+            width: min(90%, 700px);
+            text-align: center;
+        }
 
+        .next-number {
+            font-size: 10px;
+            letter-spacing: 7px;
+            color: #ff9fbd;
+            margin-bottom: 25px;
+        }
 
-.subtitle {
+        .next-title {
+            font-size: clamp(35px, 9vw, 70px);
+            line-height: 1.05;
+            font-weight: 300;
+        }
 
-    font-size: 18px;
+        .next-description {
+            max-width: 520px;
 
-    line-height: 1.7;
+            margin: 30px auto;
 
-    color: #76505d;
-}
+            color: rgba(255,255,255,0.52);
 
+            font-size: 13px;
+            line-height: 2;
+        }
 
-/* =========================================================
-   LETTER
-   ========================================================= */
+        .next-status {
+            margin: 35px auto;
 
-.letter-content {
+            padding: 15px 20px;
 
-    display: none;
+            width: fit-content;
 
-    margin-top: 35px;
+            border: 1px solid rgba(255,255,255,0.12);
 
-    text-align: left;
+            color: rgba(255,255,255,0.35);
 
-    line-height: 1.9;
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
 
-    font-size: 17px;
+        .next-year {
+            font-size: 10px;
+            letter-spacing: 5px;
 
-    animation:
-        fadeIn 1s ease;
+            color: rgba(255,255,255,0.25);
+        }
 
-    position: relative;
+        .close-story-button {
+            margin-top: 35px;
 
-    z-index: 20;
+            background: transparent;
 
-    pointer-events: auto;
-}
+            border: 1px solid rgba(255,255,255,0.2);
 
+            color: rgba(255,255,255,0.55);
 
-.letter-content h2 {
+            padding: 14px 22px;
 
-    text-align: center;
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
 
-    color: #9d4f69;
+            transition: 0.3s ease;
+        }
 
-    margin-bottom: 30px;
-}
+        .close-story-button:hover {
+            border-color: #ff9fbd;
+            color: #ff9fbd;
+        }
 
 
-.letter-content p {
+        /* =========================================================
+           FLOATING HEARTS
+        ========================================================= */
 
-    margin-bottom: 24px;
-}
+        .heart {
+            position: fixed;
 
+            bottom: -20px;
 
-@keyframes fadeIn {
+            font-size: 12px;
 
-    from {
+            color: rgba(255,159,189,0.4);
 
-        opacity: 0;
+            pointer-events: none;
 
-        transform:
-            translateY(15px);
-    }
+            animation: floatHeart 8s linear forwards;
 
-    to {
+            z-index: 5;
+        }
 
-        opacity: 1;
+        @keyframes floatHeart {
 
-        transform:
-            translateY(0);
-    }
-}
+            0% {
+                transform:
+                    translateY(0)
+                    translateX(0)
+                    rotate(0deg);
 
+                opacity: 0;
+            }
 
-/* =========================================================
-   OPEN LETTER BUTTON
-   ========================================================= */
+            10% {
+                opacity: 1;
+            }
 
-#open-letter-button {
+            90% {
+                opacity: 0.6;
+            }
 
-    display: block;
+            100% {
+                transform:
+                    translateY(-110vh)
+                    translateX(60px)
+                    rotate(25deg);
 
-    margin: 30px auto 10px;
+                opacity: 0;
+            }
+        }
 
-    padding: 14px 28px;
 
-    border: none;
+        /* =========================================================
+           MOBILE
+        ========================================================= */
 
-    border-radius: 30px;
+        @media (max-width: 600px) {
 
-    background:
-        linear-gradient(
-            135deg,
-            #d95c8a,
-            #9d4f69
-        );
+            .page-content {
+                padding: 45px 0;
+            }
 
-    color: white;
+            .lock-title {
+                letter-spacing: 5px;
+            }
 
-    font-family: Georgia, serif;
+            .access-panel {
+                padding: 20px 15px;
+            }
 
-    font-size: 15px;
+            .chapter-title,
+            .next-title {
+                letter-spacing: -0.5px;
+            }
 
-    cursor: pointer;
+            .letter-wrapper {
+                width: 92%;
+                padding-top: 45px;
+            }
 
-    box-shadow:
-        0 8px 20px
-        rgba(184,92,120,0.25);
+            .letter-card {
+                padding: 27px 22px;
+            }
 
-    transition:
-        0.3s ease;
-}
+            .letter-text {
+                font-size: 15px;
+                line-height: 1.9;
+            }
 
+            .pink-lily {
+                transform: scale(0.85);
+                transform-origin: center;
+                margin-bottom: -15px;
+            }
 
-#open-letter-button:hover {
+            .youtube-player {
+                min-height: 210px;
+            }
+        }
 
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 12px 25px
-        rgba(184,92,120,0.3);
-}
-
-
-#open-letter-button:active {
-
-    transform:
-        scale(0.96);
-}
-
-
-/* =========================================================
-   BIRTHDAY WISHES
-   ========================================================= */
-
-.wishes-title {
-
-    margin-top: 45px;
-
-    margin-bottom: 25px;
-
-    text-align: center;
-
-    color: #9d4f69;
-
-    font-size: 25px;
-}
-
-
-.birthday-wishes {
-
-    margin: 20px 0 35px;
-
-    padding-left: 30px;
-}
-
-
-.birthday-wishes li {
-
-    margin-bottom: 18px;
-
-    padding-left: 8px;
-
-    line-height: 1.7;
-
-    color: inherit;
-}
-
-
-.birthday-wishes li::marker {
-
-    color: #b06a82;
-
-    font-weight: bold;
-}
-
-
-.final-message {
-
-    margin-top: 35px;
-
-    line-height: 1.8;
-}
-
-
-.signature {
-
-    margin-top: 35px;
-
-    text-align: right;
-
-    font-style: italic;
-}
-
-
-/* =========================================================
-   OUR SONG
-   ========================================================= */
-
-.song-section {
-
-    margin-top: 70px;
-
-    padding: 40px 20px;
-
-    text-align: center;
-}
-
-
-.song-title {
-
-    font-size: 32px;
-
-    color: #9d4f69;
-
-    margin-bottom: 8px;
-}
-
-
-.song-subtitle {
-
-    color: #76505d;
-
-    font-size: 15px;
-
-    line-height: 1.6;
-
-    margin-bottom: 25px;
-}
-
-
-.song-card {
-
-    max-width: 450px;
-
-    margin: 0 auto;
-
-    padding: 25px;
-
-    border-radius: 25px;
-
-    background:
-        rgba(255,255,255,0.88);
-
-    box-shadow:
-        0 10px 30px
-        rgba(150,70,100,0.15);
-}
-
-
-.song-icon {
-
-    font-size: 45px;
-
-    margin-bottom: 10px;
-}
-
-
-.song-name {
-
-    font-size: 22px;
-
-    color: #9d4f69;
-
-    margin: 8px 0 4px;
-}
-
-
-.song-artist {
-
-    color: #76505d;
-
-    font-size: 14px;
-
-    margin-bottom: 20px;
-}
-
-
-/* =========================================================
-   YOUTUBE PLAYER
-   ========================================================= */
-
-.youtube-player-container {
-
-    display: none;
-
-    margin-top: 25px;
-
-    animation:
-        fadeIn 0.8s ease;
-}
-
-
-.youtube-player-container.show {
-
-    display: block;
-}
-
-
-.youtube-player {
-
-    width: 100%;
-
-    aspect-ratio: 16 / 9;
-
-    border: none;
-
-    border-radius: 16px;
-
-    display: block;
-
-    box-shadow:
-        0 10px 25px
-        rgba(100,40,70,0.15);
-}
-
-
-/* =========================================================
-   SONG BUTTON
-   ========================================================= */
-
-.song-button {
-
-    display: inline-block;
-
-    padding: 13px 22px;
-
-    background:
-        #9d4f69;
-
-    color: white;
-
-    border: none;
-
-    text-decoration: none;
-
-    border-radius: 30px;
-
-    font-family: Georgia, serif;
-
-    font-size: 14px;
-
-    cursor: pointer;
-
-    transition:
-        0.3s ease;
-}
-
-
-.song-button:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 8px 18px
-        rgba(150,70,100,0.2);
-}
-
-
-.song-button:active {
-
-    transform:
-        scale(0.96);
-}
-
-
-/* =========================================================
-   FLOATING LOVE
-   ========================================================= */
-
-.floating-love {
-
-    position: fixed;
-
-    top: -30px;
-
-    z-index: 999;
-
-    pointer-events: none;
-
-    animation:
-        fallingLove linear forwards;
-
-    opacity: 0.75;
-}
-
-
-@keyframes fallingLove {
-
-    0% {
-
-        transform:
-            translateY(0)
-            rotate(0deg);
-
-        opacity: 0;
-    }
-
-    10% {
-
-        opacity: 0.8;
-    }
-
-    90% {
-
-        opacity: 0.6;
-    }
-
-    100% {
-
-        transform:
-            translateY(110vh)
-            rotate(360deg);
-
-        opacity: 0;
-    }
-}
-
-
-/* =========================================================
-   DIGITAL LOCK SCREEN
-   ========================================================= */
-
-#lock-screen {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 99999;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 100%;
-
-    height: 100dvh;
-
-    padding: 20px;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 50% 45%,
-            rgba(255,70,145,0.16),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,150,200,0.08),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(255,70,145,0.06),
-            transparent 25%
-        ),
-        #09070b;
-
-    color: #ffe8f1;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
-}
-
-
-#lock-screen::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    opacity: 0.18;
-
-    background-image:
-        linear-gradient(
-            rgba(255,120,170,0.08) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(255,120,170,0.08) 1px,
-            transparent 1px
-        );
-
-    background-size: 35px 35px;
-
-    mask-image:
-        radial-gradient(
-            circle at center,
-            black,
-            transparent 85%
-        );
-}
-
-
-#lock-screen::after {
-
-    content: "";
-
-    position: absolute;
-
-    inset: 0;
-
-    pointer-events: none;
-
-    background:
-        repeating-linear-gradient(
-            to bottom,
-            rgba(255,255,255,0.018),
-            rgba(255,255,255,0.018) 1px,
-            transparent 1px,
-            transparent 5px
-        );
-
-    opacity: 0.45;
-}
-
-
-.lock-container {
-
-    position: relative;
-
-    z-index: 2;
-
-    width: 100%;
-
-    max-width: 430px;
-
-    padding: 34px 24px 28px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.055),
-            rgba(255,255,255,0.015)
-        );
-
-    border:
-        1px solid
-        rgba(255,126,175,0.28);
-
-    border-radius: 24px;
-
-    backdrop-filter: blur(18px);
-
-    -webkit-backdrop-filter:
-        blur(18px);
-
-    box-shadow:
-        0 0 30px
-        rgba(255,70,145,0.08),
-        0 0 80px
-        rgba(255,70,145,0.04),
-        inset 0 0 30px
-        rgba(255,70,145,0.025);
-
-    animation:
-        lockContainerAppear 1s ease forwards;
-}
-
-
-.lock-status {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 8px;
-
-    margin-bottom: 28px;
-
-    font-family: monospace;
-
-    font-size: 10px;
-
-    letter-spacing: 2.5px;
-
-    color: #ff8fb8;
-
-    text-transform: uppercase;
-
-    opacity: 0.85;
-}
-
-
-.lock-status::before {
-
-    content: "";
-
-    width: 7px;
-
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #ff6eaa;
-
-    box-shadow:
-        0 0 6px #ff6eaa,
-        0 0 14px
-        rgba(255,110,170,0.7);
-
-    animation:
-        statusBlink 1.5s infinite;
-}
-
-
-.lock-icon {
-
-    position: relative;
-
-    display: inline-flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    width: 92px;
-
-    height: 92px;
-
-    margin-bottom: 20px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(255,100,160,0.14),
-            transparent 65%
-        );
-
-    border:
-        1px solid
-        rgba(255,130,180,0.18);
-
-    font-size: 45px;
-
-    filter:
-        drop-shadow(
-            0 0 12px
-            rgba(255,100,160,0.45)
-        );
-
-    animation:
-        lockPulse 3s infinite;
-}
-
-
-.lock-icon::before {
-
-    content: "";
-
-    position: absolute;
-
-    inset: -8px;
-
-    border-radius: 50%;
-
-    border:
-        1px solid
-        rgba(255,120,175,0.25);
-
-    border-top-color:
-        rgba(255,120,175,0.85);
-
-    animation:
-        rotateRing 5s linear infinite;
-}
-
-
-.lock-title {
-
-    margin: 0;
-
-    font-family: monospace;
-
-    font-size: 30px;
-
-    font-weight: 700;
-
-    letter-spacing: 4px;
-
-    color: #ffe6ef;
-
-    text-shadow:
-        0 0 10px
-        rgba(255,100,160,0.35),
-        0 0 25px
-        rgba(255,100,160,0.12);
-}
-
-
-.lock-subtitle {
-
-    margin: 10px 0 30px;
-
-    font-family: monospace;
-
-    font-size: 10px;
-
-    line-height: 1.8;
-
-    letter-spacing: 1.8px;
-
-    color: #c59aa9;
-
-    text-transform: uppercase;
-}
-
-
-.access-panel {
-
-    padding: 18px;
-
-    margin-top: 5px;
-
-    background:
-        rgba(0,0,0,0.18);
-
-    border:
-        1px solid
-        rgba(255,130,175,0.14);
-
-    border-radius: 16px;
-}
-
-
-.lock-label {
-
-    display: block;
-
-    margin-bottom: 11px;
-
-    font-family: monospace;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    color: #d89bab;
-
-    text-transform: uppercase;
-}
-
-
-#access-code {
-
-    display: block;
-
-    width: 100%;
-
-    height: 52px;
-
-    padding: 12px;
-
-    text-align: center;
-
-    font-family: monospace;
-
-    font-size: 21px;
-
-    font-weight: 600;
-
-    letter-spacing: 8px;
-
-    color: #ffdce8;
-
-    background:
-        rgba(0,0,0,0.30);
-
-    border:
-        1px solid
-        rgba(255,140,180,0.35);
-
-    border-radius: 12px;
-
-    outline: none;
-
-    transition:
-        0.25s ease;
-}
-
-
-#access-code::placeholder {
-
-    color:
-        rgba(255,190,210,0.25);
-
-    letter-spacing: 5px;
-}
-
-
-#access-code:focus {
-
-    border-color:
-        #ff8fb8;
-
-    box-shadow:
-        0 0 12px
-        rgba(255,100,160,0.18),
-        inset 0 0 12px
-        rgba(255,100,160,0.04);
-}
-
-
-.unlock-button {
-
-    width: 100%;
-
-    margin-top: 14px;
-
-    padding: 14px;
-
-    border: none;
-
-    border-radius: 12px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #d95c8a,
-            #9d4f69
-        );
-
-    color: white;
-
-    font-family: monospace;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 6px 20px
-        rgba(150,60,100,0.15);
-
-    transition:
-        transform 0.25s ease,
-        box-shadow 0.25s ease;
-}
-
-
-.unlock-button:active {
-
-    transform:
-        scale(0.97);
-}
-
-
-.unlock-button:hover {
-
-    transform:
-        translateY(-2px);
-
-    box-shadow:
-        0 0 20px
-        rgba(255,100,160,0.28);
-}
-
-
-.clue-button {
-
-    display: inline-block;
-
-    margin-top: 20px;
-
-    padding: 5px 8px;
-
-    border: none;
-
-    background: transparent;
-
-    color: #bd8a9b;
-
-    font-family: monospace;
-
-    font-size: 10px;
-
-    letter-spacing: 1.5px;
-
-    cursor: pointer;
-
-    text-decoration: underline;
-
-    text-underline-offset: 4px;
-}
-
-
-.lock-message {
-
-    min-height: 20px;
-
-    margin-top: 15px;
-
-    font-family: monospace;
-
-    font-size: 10px;
-
-    letter-spacing: 1px;
-
-    color: #ff91b8;
-
-    line-height: 1.5;
-}
-
-
-.lock-footer {
-
-    margin-top: 26px;
-
-    font-family: monospace;
-
-    font-size: 8px;
-
-    letter-spacing: 1.5px;
-
-    color:
-        rgba(255,190,210,0.35);
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   CLUE MODAL
-   ========================================================= */
-
-#clue-modal {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 100000;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 20px;
-
-    background:
-        rgba(5,3,7,0.78);
-
-    backdrop-filter:
-        blur(8px);
-
-    -webkit-backdrop-filter:
-        blur(8px);
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
-}
-
-
-#clue-modal.show {
-
-    opacity: 1;
-
-    visibility: visible;
-}
-
-
-.clue-box {
-
-    width: 100%;
-
-    max-width: 370px;
-
-    padding: 25px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(35,15,27,0.96),
-            rgba(12,8,13,0.98)
-        );
-
-    border:
-        1px solid
-        rgba(255,120,170,0.3);
-
-    border-radius: 18px;
-
-    box-shadow:
-        0 0 35px
-        rgba(255,70,145,0.12);
-}
-
-
-.clue-header {
-
-    margin-bottom: 20px;
-
-    font-family: monospace;
-
-    font-size: 11px;
-
-    letter-spacing: 2px;
-
-    color: #ff8fb8;
-}
-
-
-.clue-content {
-
-    padding: 18px;
-
-    background:
-        rgba(0,0,0,0.20);
-
-    border:
-        1px solid
-        rgba(255,130,175,0.12);
-
-    border-radius: 12px;
-
-    font-family: monospace;
-
-    font-size: 12px;
-
-    line-height: 1.8;
-
-    color: #eacbd6;
-}
-
-
-.clue-highlight {
-
-    color: #ff9fc0;
-
-    font-weight: 700;
-}
-
-
-.clue-close {
-
-    width: 100%;
-
-    margin-top: 18px;
-
-    padding: 11px;
-
-    border:
-        1px solid
-        rgba(255,130,175,0.25);
-
-    border-radius: 10px;
-
-    background:
-        rgba(255,100,160,0.06);
-
-    color: #e8b7c7;
-
-    font-family: monospace;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    cursor: pointer;
-}
-
-
-/* =========================================================
-   AUTHENTICATION
-   ========================================================= */
-
-#auth-screen {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 110000;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background: #08060a;
-
-    color: #ffb4cc;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity 0.5s ease,
-        visibility 0.5s ease;
-}
-
-
-#auth-screen.show {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: all;
-}
-
-
-.auth-content {
-
-    width: 90%;
-
-    max-width: 430px;
-
-    font-family: monospace;
-
-    text-align: left;
-}
-
-
-.auth-line {
-
-    margin: 8px 0;
-
-    font-size: 11px;
-
-    letter-spacing: 1px;
-
-    color: #d6a1b2;
-}
-
-
-.auth-line.active {
-
-    color: #ff8fb8;
-}
-
-
-.auth-progress {
-
-    width: 100%;
-
-    height: 5px;
-
-    margin-top: 25px;
-
-    overflow: hidden;
-
-    background:
-        rgba(255,255,255,0.06);
-
-    border-radius: 10px;
-}
-
-
-.auth-progress-bar {
-
-    width: 0%;
-
-    height: 100%;
-
-    background:
-        linear-gradient(
-            90deg,
-            #9d4f69,
-            #ff8fb8
-        );
-
-    box-shadow:
-        0 0 12px
-        rgba(255,100,160,0.6);
-
-    transition:
-        width 2.2s linear;
-}
-
-
-/* =========================================================
-   CHAPTER 01
-   ========================================================= */
-
-.chapter-page {
-
-    position: fixed;
-
-    inset: 0;
-
-    z-index: 9998;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    background:
-        radial-gradient(
-            circle at center,
-            rgba(157,79,105,0.18),
-            transparent 55%
-        ),
-        #0d090c;
-
-    color: #f8e9ee;
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-
-    transition:
-        opacity 1s ease,
-        visibility 1s ease;
-}
-
-
-.chapter-page.show {
-
-    opacity: 1;
-
-    visibility: visible;
-
-    pointer-events: auto;
-}
-
-
-.chapter-content {
-
-    width: 90%;
-
-    max-width: 650px;
-
-    text-align: center;
-
-    transform:
-        translateY(30px);
-
-    opacity: 0;
-
-    transition:
-        transform 1s ease,
-        opacity 1s ease;
-}
-
-
-.chapter-page.show
-.chapter-content {
-
-    transform:
-        translateY(0);
-
-    opacity: 1;
-}
-
-
-.chapter-number {
-
-    font-family: monospace;
-
-    font-size: 12px;
-
-    letter-spacing: 5px;
-
-    color: #c98da2;
-
-    margin-bottom: 25px;
-}
-
-
-.chapter-line {
-
-    width: 60px;
-
-    height: 1px;
-
-    background: #c98da2;
-
-    margin: 0 auto 35px;
-
-    opacity: 0.7;
-}
-
-
-.chapter-title {
-
-    margin: 0;
-
-    font-size:
-        clamp(34px, 8vw, 62px);
-
-    line-height: 1.15;
-
-    font-weight: 400;
-
-    letter-spacing: -1px;
-}
-
-
-.chapter-subtitle {
-
-    margin: 28px auto 0;
-
-    max-width: 480px;
-
-    font-size: 15px;
-
-    line-height: 1.8;
-
-    color: #cbb7be;
-}
-
-
-.chapter-date {
-
-    margin-top: 30px;
-
-    font-family: monospace;
-
-    font-size: 12px;
-
-    letter-spacing: 4px;
-
-    color: #9d4f69;
-}
-
-
-.chapter-button {
-
-    margin-top: 45px;
-
-    padding: 14px 25px;
-
-    border:
-        1px solid #9d4f69;
-
-    border-radius: 30px;
-
-    background: transparent;
-
-    color: #f8e9ee;
-
-    font-family: monospace;
-
-    font-size: 12px;
-
-    letter-spacing: 2px;
-
-    cursor: pointer;
-
-    transition:
-        background 0.3s ease,
-        transform 0.3s ease,
-        box-shadow 0.3s ease;
-}
-
-
-.chapter-button:hover {
-
-    background: #9d4f69;
-
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 10px 30px
-        rgba(157,79,105,0.3);
-}
-
-
-.chapter-button:active {
-
-    transform:
-        scale(0.96);
-}
-
-
-/* =========================================================
-   LOCK ANIMATIONS
-   ========================================================= */
-
-#lock-screen.unlocked {
-
-    opacity: 0;
-
-    visibility: hidden;
-
-    pointer-events: none;
-}
-
-
-.shake {
-
-    animation:
-        lockShake 0.45s ease;
-}
-
-
-@keyframes lockContainerAppear {
-
-    from {
-
-        opacity: 0;
-
-        transform:
-            translateY(20px)
-            scale(0.97);
-    }
-
-    to {
-
-        opacity: 1;
-
-        transform:
-            translateY(0)
-            scale(1);
-    }
-}
-
-
-@keyframes statusBlink {
-
-    0%, 100% {
-
-        opacity: 0.35;
-    }
-
-    50% {
-
-        opacity: 1;
-    }
-}
-
-
-@keyframes lockPulse {
-
-    0%, 100% {
-
-        transform:
-            scale(1);
-
-        box-shadow:
-            0 0 0
-            rgba(255,100,160,0);
-    }
-
-    50% {
-
-        transform:
-            scale(1.03);
-
-        box-shadow:
-            0 0 25px
-            rgba(255,100,160,0.08);
-    }
-}
-
-
-@keyframes rotateRing {
-
-    from {
-
-        transform:
-            rotate(0deg);
-    }
-
-    to {
-
-        transform:
-            rotate(360deg);
-    }
-}
-
-
-@keyframes lockShake {
-
-    0%, 100% {
-
-        transform:
-            translateX(0);
-    }
-
-    20% {
-
-        transform:
-            translateX(-8px);
-    }
-
-    40% {
-
-        transform:
-            translateX(8px);
-    }
-
-    60% {
-
-        transform:
-            translateX(-6px);
-    }
-
-    80% {
-
-        transform:
-            translateX(6px);
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 480px) {
-
-    .card {
-
-        padding:
-            35px 22px;
-    }
-
-
-    .letter-content {
-
-        font-size: 16px;
-    }
-
-
-    .lock-container {
-
-        padding:
-            30px 20px 24px;
-
-        border-radius: 20px;
-    }
-
-
-    .lock-title {
-
-        font-size: 26px;
-
-        letter-spacing: 3px;
-    }
-
-
-    .lock-subtitle {
-
-        font-size: 9px;
-
-        letter-spacing: 1.4px;
-    }
-
-
-    .lock-icon {
-
-        width: 82px;
-
-        height: 82px;
-
-        font-size: 40px;
-    }
-
-
-    #access-code {
-
-        height: 50px;
-
-        font-size: 19px;
-
-        letter-spacing: 7px;
-    }
-
-
-    .song-section {
-
-        padding-left: 5px;
-
-        padding-right: 5px;
-    }
-
-
-    .song-card {
-
-        padding: 20px 15px;
-    }
-
-}
-
-</style>
-
+    </style>
 </head>
 
 
 <body>
 
 
-<!-- =====================================================
-     DIGITAL LOCK SCREEN
-     ===================================================== -->
+    <!-- =========================================================
+         PAGE 01 — PASSCODE
+    ========================================================== -->
 
-<div id="lock-screen">
+    <section
+        id="lock-screen"
+        class="page active"
+    >
 
-    <div class="lock-container">
+        <div class="lock-container">
 
-        <div class="lock-status">
-            SECURE CONNECTION // ONLINE
+            <div class="lock-status">
+                PRIVATE ACCESS
+            </div>
+
+            <div class="lock-icon">
+                ♡
+            </div>
+
+            <h1 class="lock-title">
+                PASSCODE
+            </h1>
+
+            <p class="lock-subtitle">
+                This little place contains<br>
+                something meant only for you.
+            </p>
+
+            <div class="access-panel">
+
+                <label
+                    class="access-label"
+                    for="access-code"
+                >
+                    ENTER ACCESS CODE
+                </label>
+
+                <input
+                    type="password"
+                    id="access-code"
+                    inputmode="numeric"
+                    maxlength="6"
+                    autocomplete="off"
+                    placeholder="••••••"
+                >
+
+                <button
+                    type="button"
+                    class="unlock-button"
+                    onclick="checkPasscode()"
+                >
+                    UNLOCK
+                </button>
+
+                <button
+                    type="button"
+                    class="clue-button"
+                    onclick="openClue()"
+                >
+                    Need a clue?
+                </button>
+
+                <div
+                    id="lock-message"
+                    class="lock-message"
+                ></div>
+
+            </div>
+
+            <div class="lock-footer">
+                NICO.EXE // PRIVATE ARCHIVE
+            </div>
+
         </div>
 
-
-        <div class="lock-icon">
-            🔐
-        </div>
+    </section>
 
 
-        <h1 class="lock-title">
-            NICO.EXE
-        </h1>
 
+    <!-- =========================================================
+         CLUE MODAL
+    ========================================================== -->
 
-        <p class="lock-subtitle">
+    <div
+        id="clue-modal"
+        onclick="closeClue(event)"
+    >
 
-            PERSONAL BIRTHDAY MESSAGE SYSTEM
+        <div
+            class="clue-box"
+            onclick="event.stopPropagation()"
+        >
 
-            <br>
+            <div class="clue-header">
+                ACCESS CLUE
+            </div>
 
-            ACCESS RESTRICTED // PRIVATE CONNECTION
+            <div class="clue-content">
 
-        </p>
+                You already know the answer.
 
+                <span class="clue-highlight">
+                    Find the day our story began.
+                </span>
 
-        <div class="access-panel">
+                <div class="thin-line"></div>
 
-            <label
-                for="access-code"
-                class="lock-label"
-            >
-                ENTER ACCESS CODE
-            </label>
+                <small>
+                    LITMATCH.
+                </small>
 
-
-            <input
-                type="password"
-                id="access-code"
-                maxlength="6"
-                inputmode="numeric"
-                autocomplete="off"
-                placeholder="••••••"
-            >
-
+            </div>
 
             <button
                 type="button"
-                class="unlock-button"
-                onclick="unlockSystem()"
+                class="clue-close"
+                onclick="closeClue()"
             >
-                ⟶ UNLOCK SYSTEM
+                CLOSE
             </button>
 
+        </div>
+
+    </div>
+
+
+
+    <!-- =========================================================
+         PAGE 02 — AUTHENTICATION
+    ========================================================== -->
+
+    <section
+        id="auth-screen"
+        class="page"
+    >
+
+        <div class="auth-content">
+
+            <div class="auth-line">
+                ACCESS CODE ACCEPTED.
+            </div>
 
             <div
-                id="lock-message"
-                class="lock-message"
-            ></div>
-
-        </div>
-
-
-        <button
-            type="button"
-            class="clue-button"
-            onclick="showClue()"
-        >
-            [ NEED A CLUE? ]
-        </button>
-
-
-        <div class="lock-footer">
-
-            NICO.EXE // PERSONAL SYSTEM
-
-            <br>
-
-            ENCRYPTED WITH LOVE
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     CLUE MODAL
-     ===================================================== -->
-
-<div id="clue-modal">
-
-    <div class="clue-box">
-
-        <div class="clue-header">
-            SYSTEM CLUE // 001
-        </div>
-
-
-        <div class="clue-content">
-
-            &gt; TRACE THE BEGINNING OF THE CONNECTION.
-
-            <br><br>
-
-            APP:
-            <span class="clue-highlight">
-                LITMATCH
-            </span>
-
-            <br>
-
-            STATUS:
-            FIRST CONTACT DETECTED
-
-            <br><br>
-
-            HINT:
-
-            <br>
-
-            <span class="clue-highlight">
-                "Find the day our story began."
-            </span>
-
-            <br><br>
-
-            💬 Where did we first meet?
-
-            <br>
-
-            📅 When did we first talk?
-
-            <br><br>
-
-            The answer is the
-            <span class="clue-highlight">
-                beginning of us.
-            </span>
-
-        </div>
-
-
-        <button
-            type="button"
-            class="clue-close"
-            onclick="hideClue()"
-        >
-            CLOSE CLUE
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     AUTHENTICATION SCREEN
-     ===================================================== -->
-
-<div id="auth-screen">
-
-    <div class="auth-content">
-
-        <div class="auth-line">
-            &gt; INITIALIZING NICO.EXE...
-        </div>
-
-        <div
-            class="auth-line"
-            id="auth-line-1"
-        >
-            &gt; VERIFYING ACCESS CODE...
-        </div>
-
-        <div
-            class="auth-line"
-            id="auth-line-2"
-        >
-            &gt; LOCATING PERSONAL MESSAGE...
-        </div>
-
-        <div
-            class="auth-line"
-            id="auth-line-3"
-        >
-            &gt; DECRYPTING BIRTHDAY FILE...
-        </div>
-
-        <div
-            class="auth-line"
-            id="auth-line-4"
-        >
-            &gt; CONNECTION VERIFIED.
-        </div>
-
-
-        <div class="auth-progress">
+                class="auth-line"
+                style="animation-delay: .5s;"
+            >
+                VERIFYING PRIVATE ARCHIVE...
+            </div>
 
             <div
-                class="auth-progress-bar"
-                id="auth-progress-bar"
-            ></div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =====================================================
-     CHAPTER 01
-     ===================================================== -->
-
-<section
-    id="chapter-beginning"
-    class="chapter-page"
->
-
-    <div class="chapter-content">
-
-        <div class="chapter-number">
-            CHAPTER 01
-        </div>
-
-
-        <div class="chapter-line"></div>
-
-
-        <h1 class="chapter-title">
-
-            This is the beginning
-            <br>
-            of our chapter.
-
-        </h1>
-
-
-        <p class="chapter-subtitle">
-
-            Not the beginning of a perfect story,
-            but the beginning of ours.
-
-        </p>
-
-
-        <p class="chapter-date">
-
-            03 • 06 • 2026
-
-        </p>
-
-
-        <button
-            type="button"
-            class="chapter-button"
-            onclick="continueToLetter()"
-        >
-
-            BEGIN OUR STORY →
-
-        </button>
-
-    </div>
-
-</section>
-
-
-<!-- =====================================================
-     MAIN WEBSITE
-     ===================================================== -->
-
-<div class="container">
-
-    <div class="card">
-
-
-        <!-- =================================================
-             PINK LILY OPENING
-             ================================================= -->
-
-        <div class="flower-opening">
-
-            <div class="flower-glow"></div>
-
-
-            <span
-                class="flower-sparkle sparkle-one"
+                class="auth-line"
+                style="animation-delay: 1s;"
             >
-                ✦
-            </span>
-
-
-            <span
-                class="flower-sparkle sparkle-two"
-            >
-                ✧
-            </span>
-
-
-            <span
-                class="flower-sparkle sparkle-three"
-            >
-                ✦
-            </span>
-
-
-            <span
-                class="flower-sparkle sparkle-four"
-            >
-                ✧
-            </span>
-
-
-            <!-- =================================================
-                 YOUR ORIGINAL PINK LILY
-                 ================================================= -->
+                WELCOME, NICO.
+            </div>
 
             <div
-                class="pink-lily"
-                style="
-                    width:260px;
-                    height:340px;
-                    margin:0 auto;
-                    position:relative;
-                "
+                class="auth-progress"
+            >
+                <div
+                    class="auth-progress-bar"
+                ></div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PAGE 03 — CHAPTER ONE
+    ========================================================== -->
+
+    <section
+        id="chapter-page"
+        class="page"
+    >
+
+        <div class="chapter-content">
+
+            <div class="chapter-number">
+                CHAPTER 01
+            </div>
+
+            <div class="chapter-line"></div>
+
+            <h1 class="chapter-title">
+                The Beginning<br>
+                of Us.
+            </h1>
+
+            <p class="chapter-subtitle">
+                Every story has a beginning.<br>
+                This one started with us.
+            </p>
+
+            <p class="chapter-date">
+                03 • 06 • 2026
+            </p>
+
+            <button
+                type="button"
+                class="chapter-button"
+                onclick="goToMusic()"
+            >
+                CONTINUE OUR STORY →
+            </button>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =========================================================
+         PAGE 04 — MUSIC
+    ========================================================== -->
+
+    <section
+        id="music-page"
+        class="page"
+    >
+
+        <div class="page-content">
+
+            <div class="eyebrow">
+                BEFORE YOU READ
+            </div>
+
+            <div class="music-note">
+                ♫
+            </div>
+
+            <h1 class="music-title">
+                Play This Music
+            </h1>
+
+            <p class="music-description">
+                Play this music while reading the letter.
+                <br>
+                Take your time.
+                Read every word slowly.
+            </p>
+
+            <button
+                type="button"
+                class="song-button"
+                onclick="playOurSong()"
+            >
+                ▶ PLAY OUR SONG
+            </button>
+
+            <div
+                id="youtube-player-container"
+                class="youtube-player-container"
             >
 
-                <svg
-                    viewBox="0 0 300 390"
-                    width="260"
-                    height="340"
-                    xmlns="http://www.w3.org/2000/svg"
-                    style="overflow:visible;"
+                <iframe
+                    id="youtube-player"
+                    class="youtube-player"
+                    src=""
+                    title="Our Song"
+                    allow="autoplay; encrypted-media; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+
+            </div>
+
+            <p class="music-warning">
+                If the music does not start automatically,
+                simply press play on the video.
+            </p>
+
+            <div class="music-continue">
+
+                <button
+                    type="button"
+                    class="chapter-button"
+                    onclick="openLetter()"
                 >
+                    OPEN MY LETTER →
+                </button>
 
-                    <defs>
+            </div>
 
-                        <radialGradient
-                            id="pinkPetal"
-                            cx="45%"
-                            cy="25%"
-                        >
+        </div>
 
-                            <stop
-                                offset="0%"
-                                stop-color="#fff8fb"
-                            />
-
-                            <stop
-                                offset="22%"
-                                stop-color="#ffd7e5"
-                            />
-
-                            <stop
-                                offset="55%"
-                                stop-color="#ff9fbe"
-                            />
-
-                            <stop
-                                offset="100%"
-                                stop-color="#dc5b86"
-                            />
-
-                        </radialGradient>
+    </section>
 
 
-                        <linearGradient
-                            id="stemGreen"
-                            x1="0%"
-                            y1="0%"
-                            x2="100%"
-                            y2="0%"
-                        >
 
-                            <stop
-                                offset="0%"
-                                stop-color="#3d8b47"
-                            />
+    <!-- =========================================================
+         PAGE 05 — LETTER
+    ========================================================== -->
 
-                            <stop
-                                offset="50%"
-                                stop-color="#79c96b"
-                            />
+    <section
+        id="letter-page"
+    >
 
-                            <stop
-                                offset="100%"
-                                stop-color="#438f4b"
-                            />
+        <div class="letter-wrapper">
 
-                        </linearGradient>
+            <div class="letter-top">
 
+                <div class="eyebrow">
+                    CHAPTER 01 • 2026
+                </div>
 
-                        <radialGradient id="centerGold">
+                <div class="pink-lily">
 
-                            <stop
-                                offset="0%"
-                                stop-color="#fff4a8"
-                            />
+                    <!-- =================================================
+                         PINK LILY SVG
+                         ================================================= -->
 
-                            <stop
-                                offset="45%"
-                                stop-color="#ffd85b"
-                            />
-
-                            <stop
-                                offset="100%"
-                                stop-color="#e5a52f"
-                            />
-
-                        </radialGradient>
-
-
-                        <filter id="softGlow">
-
-                            <feGaussianBlur
-                                stdDeviation="5"
-                            />
-
-                        </filter>
-
-                    </defs>
-
-
-                    <!-- SOFT GLOW -->
-
-                    <ellipse
-                        cx="150"
-                        cy="125"
-                        rx="95"
-                        ry="85"
-                        fill="#ffb6d0"
-                        opacity=".18"
-                        filter="url(#softGlow)"
-                    />
-
-
-                    <!-- STEM -->
-
-                    <path
-                        d="M150 175 C148 230 151 290 150 365"
-                        stroke="url(#stemGreen)"
-                        stroke-width="13"
-                        stroke-linecap="round"
-                        fill="none"
-                    />
-
-
-                    <!-- LEFT LEAF -->
-
-                    <path
-                        d="
-                            M147 270
-                            C112 245 72 252 48 282
-                            C82 288 120 290 150 275 Z
-                        "
-                        fill="url(#stemGreen)"
-                    />
-
-
-                    <path
-                        d="
-                            M145 273
-                            C105 266 77 270 53 282
-                        "
-                        stroke="#9ade8b"
-                        stroke-width="2"
-                        opacity=".55"
-                        fill="none"
-                    />
-
-
-                    <!-- RIGHT LEAF -->
-
-                    <path
-                        d="
-                            M153 300
-                            C190 270 225 274 248 300
-                            C214 306 180 310 150 305 Z
-                        "
-                        fill="url(#stemGreen)"
-                    />
-
-
-                    <path
-                        d="
-                            M155 303
-                            C193 292 222 294 245 300
-                        "
-                        stroke="#9ade8b"
-                        stroke-width="2"
-                        opacity=".55"
-                        fill="none"
-                    />
-
-
-                    <!-- BACK PETALS -->
-
-                    <path
-                        d="
-                            M150 145
-                            C105 125 72 88 84 42
-                            C125 46 151 73 150 145 Z
-                        "
-                        fill="url(#pinkPetal)"
-                    />
-
-
-                    <path
-                        d="
-                            M150 145
-                            C195 125 228 88 216 42
-                            C175 46 149 73 150 145 Z
-                        "
-                        fill="url(#pinkPetal)"
-                    />
-
-
-                    <!-- SIDE PETALS -->
-
-                    <path
-                        d="
-                            M145 150
-                            C98 158 52 148 30 112
-                            C67 92 111 105 145 150 Z
-                        "
-                        fill="url(#pinkPetal)"
-                    />
-
-
-                    <path
-                        d="
-                            M155 150
-                            C202 158 248 148 270 112
-                            C233 92 189 105 155 150 Z
-                        "
-                        fill="url(#pinkPetal)"
-                    />
-
-
-                    <!-- FRONT PETALS -->
-
-                    <path
-                        d="
-                            M145 145
-                            C110 170 93 211 112 244
-                            C140 226 153 190 150 150 Z
-                        "
-                        fill="url(#pinkPetal)"
-                    />
-
-
-                    <path
-                        d="
-                            M155 145
-                            C190 170 207 211 188 244
-                            C160 226 147 190 150 150 Z
-                        "
-                        fill="url(#pinkPetal)"
-                    />
-
-
-                    <!-- CENTER -->
-
-                    <circle
-                        cx="150"
-                        cy="143"
-                        r="25"
-                        fill="url(#centerGold)"
-                    />
-
-
-                    <!-- STAMENS -->
-
-                    <g
-                        stroke="#e5a33b"
-                        stroke-width="4"
-                        stroke-linecap="round"
+                    <svg
+                        viewBox="0 0 300 390"
+                        width="260"
+                        height="340"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style="overflow:visible;"
                     >
 
-                        <line
-                            x1="135"
-                            y1="130"
-                            x2="112"
-                            y2="82"
+                        <defs>
+
+                            <radialGradient
+                                id="pinkPetal"
+                                cx="45%"
+                                cy="25%"
+                            >
+                                <stop
+                                    offset="0%"
+                                    stop-color="#fff8fb"
+                                />
+
+                                <stop
+                                    offset="22%"
+                                    stop-color="#ffd7e5"
+                                />
+
+                                <stop
+                                    offset="55%"
+                                    stop-color="#ff9fbe"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#dc5b86"
+                                />
+                            </radialGradient>
+
+                            <linearGradient
+                                id="stemGreen"
+                                x1="0%"
+                                y1="0%"
+                                x2="100%"
+                                y2="0%"
+                            >
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#3d8b47"
+                                />
+
+                                <stop
+                                    offset="50%"
+                                    stop-color="#79c96b"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#438f4b"
+                                />
+
+                            </linearGradient>
+
+                            <radialGradient id="centerGold">
+
+                                <stop
+                                    offset="0%"
+                                    stop-color="#fff4a8"
+                                />
+
+                                <stop
+                                    offset="45%"
+                                    stop-color="#ffd85b"
+                                />
+
+                                <stop
+                                    offset="100%"
+                                    stop-color="#e5a52f"
+                                />
+
+                            </radialGradient>
+
+                            <filter id="softGlow">
+
+                                <feGaussianBlur
+                                    stdDeviation="5"
+                                />
+
+                            </filter>
+
+                        </defs>
+
+
+                        <ellipse
+                            cx="150"
+                            cy="125"
+                            rx="95"
+                            ry="85"
+                            fill="#ffb6d0"
+                            opacity=".18"
+                            filter="url(#softGlow)"
                         />
 
-                        <line
-                            x1="143"
-                            y1="125"
-                            x2="132"
-                            y2="72"
+
+                        <path
+                            d="M150 175 C148 230 151 290 150 365"
+                            stroke="url(#stemGreen)"
+                            stroke-width="13"
+                            stroke-linecap="round"
+                            fill="none"
                         />
 
-                        <line
-                            x1="150"
-                            y1="123"
-                            x2="150"
-                            y2="68"
+
+                        <path
+                            d="M147 270 C112 245 72 252 48 282 C82 288 120 290 150 275 Z"
+                            fill="url(#stemGreen)"
                         />
 
-                        <line
-                            x1="157"
-                            y1="125"
-                            x2="168"
-                            y2="72"
+                        <path
+                            d="M145 273 C105 266 77 270 53 282"
+                            stroke="#9ade8b"
+                            stroke-width="2"
+                            opacity=".55"
+                            fill="none"
                         />
 
-                        <line
-                            x1="165"
-                            y1="130"
-                            x2="188"
-                            y2="82"
+
+                        <path
+                            d="M153 300 C190 270 225 274 248 300 C214 306 180 310 150 305 Z"
+                            fill="url(#stemGreen)"
                         />
 
-                    </g>
-
-
-                    <!-- STAMEN TIPS -->
-
-                    <g fill="#c98535">
-
-                        <circle
-                            cx="112"
-                            cy="82"
-                            r="6"
+                        <path
+                            d="M155 303 C193 292 222 294 245 300"
+                            stroke="#9ade8b"
+                            stroke-width="2"
+                            opacity=".55"
+                            fill="none"
                         />
 
-                        <circle
-                            cx="132"
-                            cy="72"
-                            r="6"
+
+                        <path
+                            d="M150 145 C105 125 72 88 84 42 C125 46 151 73 150 145 Z"
+                            fill="url(#pinkPetal)"
                         />
+
+                        <path
+                            d="M150 145 C195 125 228 88 216 42 C175 46 149 73 150 145 Z"
+                            fill="url(#pinkPetal)"
+                        />
+
+                        <path
+                            d="M145 150 C98 158 52 148 30 112 C67 92 111 105 145 150 Z"
+                            fill="url(#pinkPetal)"
+                        />
+
+                        <path
+                            d="M155 150 C202 158 248 148 270 112 C233 92 189 105 155 150 Z"
+                            fill="url(#pinkPetal)"
+                        />
+
+                        <path
+                            d="M145 145 C110 170 93 211 112 244 C140 226 153 190 150 150 Z"
+                            fill="url(#pinkPetal)"
+                        />
+
+                        <path
+                            d="M155 145 C190 170 207 211 188 244 C160 226 147 190 150 150 Z"
+                            fill="url(#pinkPetal)"
+                        />
+
 
                         <circle
                             cx="150"
-                            cy="68"
-                            r="6"
+                            cy="143"
+                            r="25"
+                            fill="url(#centerGold)"
                         />
 
-                        <circle
-                            cx="168"
-                            cy="72"
-                            r="6"
-                        />
 
-                        <circle
-                            cx="188"
-                            cy="82"
-                            r="6"
-                        />
-
-                    </g>
-
-
-                    <!-- TINY FLOWER SPARKLES -->
-
-                    <g
-                        fill="#fff"
-                        opacity=".75"
-                    >
-
-                        <circle
-                            cx="102"
-                            cy="73"
-                            r="3"
-                        />
-
-                        <circle
-                            cx="205"
-                            cy="68"
-                            r="3"
-                        />
-
-                    </g>
-
-                </svg>
-
-            </div>
-
-
-            <!-- =================================================
-                 LOVE LETTER
-                 ================================================= -->
-
-            <div
-                class="letter-content"
-                id="letter"
-            >
-
-                <h2>
-                    Dear Nico Siapno,
-                </h2>
-
-
-                <p>
-
-                    Hi, asawa! I just want to greet you a
-
-                    <br>
-
-                    <strong>
-                        happy birthday to you, my baby!!! 🩷✨
-                    </strong>
-
-                </p>
-
-
-                <p>
-
-                    Thank you so much for being the strongest soldier
-                    in this relationship. Thank you for being my
-                    inspiration me every gising, every sipag, every
-                    pasok sa school, every pag uwi kung saan man ako galing.
-                    Maraming salamat sa love na pinaramdam
-                    mo sa akin specially nung mga early days natin.
-
-                </p>
-
-
-                <p>
-
-                    Thank you kasi hindi mo ako sinukuan, hindi mo
-                    akong hinayaan umalis, to the point na nag beg
-                    ka pa.
-
-                </p>
-
-
-                <p>
-
-                    Honestly speaking, I didn’t expect na ganon
-                    ang gagawin mo sa akin kasi syempre early weeks
-                    pa lang ata yon. Wala pa tayong month non?
-
-                </p>
-
-
-                <p>
-
-                    Anyways, maraming maraming salamat sa pakikinig
-                    mo sa akin, sa kwento, mapa personal, jokes,
-                    serious, corny, horny, or kahit ano pang sides meron
-                    ako. Kahit may times na hindi ako sumasang-ayon
-                    sa mga gusto mo. To the point na palagi ako may
-                    disclaimer, kasi ayoko ng away.
-
-                </p>
-
-
-                <p>
-
-                    Thank you sa patience sa kakulitan ko, kaharutan ko,
-                    kalibugan ko, (OO na inaamin ko na) katandaan ko,
-                    kasabugan ko, “GURANG”. Thank you talaga.
-
-                </p>
-
-
-                <p>
-
-                    Thank you sa trust na binigay mo sa akin. Mapa-deepest
-                    secrets, horny secrets, insecurities, bubbly sides,
-                    harot sides, hyper side, lahat lahat ng personalities
-                    and qualities na pinakita mo sa akin.
-                    I really do appreciate all of those.
-
-                </p>
-
-
-                <p>
-
-                    Thank you sa gifts nitong mga nakakaraan, sobrang
-                    naa-appreciate ko siya. Sobrang sarap sa feeling na
-                    nawala na yung depression ko, bihira na ako
-                    magka-anxiety attacks.
-
-                </p>
-
-
-                <p>
-
-                    <strong>Story time:</strong>
-
-                    Kapag ganitong marami akong work loads
-                    (including: activities, friends, family, orgs, classmates,
-                    personal), sa maraming patong-patong na gawain at
-                    emotions na to, supposedly, madalas na anxiety attacks ko
-                    nito. AS IN lahat na lang inaaway ko.
-
-                </p>
-
-
-                <p>
-
-                    But, since nakilala kita as in never or once ko na lang
-                    ulit siya naranasan. Well hindi naman kasi agad-agad
-                    siya talaga mawawala eh. But the thing here is, simula
-                    talaga nung dumating ka, pinaramdam mo na may care ka,
-                    may love, may support ka sa akin.
-
-                </p>
-
-
-                <p>
-
-                    Nawala ehh… so thank you so much sa lahat ng iyon. 🩷
-
-                </p>
-
-
-                <p>
-
-                    I just want to say sorry about sa times na sumasobra
-                    kakulitan ko, harot ko, kalibugan ko, pagiging insensitive
-                    ko. Also pagkukulang ko.
-
-                </p>
-
-
-                <p>
-
-                    Sorry sa parents ko, na hindi ako matanggap, well wala
-                    naman siyang problema sa iyo eh. Pero it's just me na
-                    ayaw nila ako makipag relasyon sa lalaki.
-
-                </p>
-
-
-                <p>
-
-                    But, ngayon, I don’t care what they say about us,
-                    especially now. Wala yan. I know na someday, when
-                    they see us happy, successful, full of love and support
-                    for each other. I believe and I prayed na matatanggap
-                    talaga nila.
-
-                </p>
-
-
-                <p>
-
-                    Sorry sa late na gift. Kasi alam mo na yung ulan ulan,
-                    walang baon, walang ipon, walang pera. But still,
-                    meron at meron naman me maibibigay.
-
-                </p>
-
-
-                <p>
-
-                    Not exactly on your birthday, but I’m sure na meron
-                    at meron ka pa rin naman gifts mula sa akin.
-                    And sana magustohan mo siya kahit very cheap and
-                    simple lang siya.
-
-                </p>
-
-
-                <p>
-
-                    Well, since this is a birthday letter.
-                    Syempre dapat meron tayo wish…
-
-                </p>
-
-
-                <!-- =================================================
-                     20 WISHES
-                     ================================================= -->
-
-                <h3 class="wishes-title">
-                    20 Wishes for My Asawa 🩷
-                </h3>
-
-
-                <ol class="birthday-wishes">
-
-
-                    <li>
-
-                        Wish ko, sana matupad lahat ng wish mo,
-                        manifestation, at prayers mo.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, wag mawala ng pag-asa at manalig
-                        palagi kay Lord.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, mahalin mo sarili mo kung paano
-                        mo ako mahalin.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, never mo nang sasaktan sarili mo.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, na wag mo i-pressure sarili mo.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, yung kabutihan ng health mo.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, makapagtapos ka ng pag-aaral mo
-                        with or without flying colors.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, magkasama pa kayo ni Mami mo
-                        nang matagal.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, mas maging strong ka sa mga challenges
-                        na kakaharapin mo.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, humaba pa ang pasensya mo.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, mahalin mo yung mga tao
-                        na nagmamahal sa'yo.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, matupad lahat ng mga pangarap mo
-                        kasama ako.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, na mag-travel us together while enjoy
-                        our lives, jobs, passion.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, ikaw na ang una at huli kong mahahalin.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, ikaw lang ang luluharan ko at magsasabi
-                        ng “will you marry me”.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, na ikaw lang ang magsusuot ng singsing
-                        sa daliri ko.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, ikaw na mapapangasawa ko.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, ikaw lang kasama ko sa magiging
-                        tirahan natin.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, ikaw lang matitira ko halos araw-araw.
-
-                    </li>
-
-
-                    <li>
-
-                        Wish ko, ako lang ang magmamahal sa'yo ng ganito
-                        at ikaw lang ang magmamahal sa akin ng ganito.
-
-                    </li>
-
-
-                </ol>
-
-
-                <p class="final-message">
-
-                    Again, happy happy happy birthday to my future asawa.
-                    Mahal na mahal kita palagi. Nandito ako, hindi kita iiwan,
-                    mamahalin kitang buong-buo, susuporta sa'yo hanggang dulo.
-                    I love you, baby! Enjoy your day kahit may pasok ka hehehe. 🩷
-
-                </p>
-
-
-                <p class="signature">
-
-                    With all my love,
-
-                    <br>
-
-                    Your Suitor 💗
-
-                </p>
-
-
-            </div>
-
-
-            <!-- =================================================
-                 OPEN LETTER BUTTON
-                 ================================================= -->
-
-            <button
-                type="button"
-                id="open-letter-button"
-                onclick="openLetter()"
-            >
-
-                💌 Open My Letter
-
-            </button>
-
-
-            <!-- =================================================
-                 OUR SONG
-                 ================================================= -->
-
-            <section class="song-section">
-
-                <h2 class="song-title">
-                    Our Song 🎧
-                </h2>
-
-
-                <p class="song-subtitle">
-
-                    A little song that reminds me of you. 🩷
-
-                </p>
-
-
-                <div class="song-card">
-
-
-                    <div class="song-icon">
-                        🎶
-                    </div>
-
-
-                    <h3 class="song-name">
-
-                        Libu-libong buwan (uuwian)
-
-                    </h3>
-
-
-                    <p class="song-artist">
-
-                        Kyle Raphael
-
-                    </p>
-
-
-                    <button
-                        type="button"
-                        class="song-button"
-                        onclick="playOurSong()"
-                    >
-
-                        ▶ Play Our Song
-
-                    </button>
-
-
-                    <!-- YOUTUBE PLAYER -->
-
-                    <div
-                        id="youtube-player-container"
-                        class="youtube-player-container"
-                    >
-
-                        <iframe
-                            id="youtube-player"
-                            class="youtube-player"
-                            src=""
-                            title="Our Song"
-                            allow="
-                                autoplay;
-                                encrypted-media;
-                                picture-in-picture
-                            "
-                            allowfullscreen
+                        <g
+                            stroke="#e5a33b"
+                            stroke-width="4"
+                            stroke-linecap="round"
                         >
-                        </iframe>
 
-                    </div>
+                            <line
+                                x1="135"
+                                y1="130"
+                                x2="112"
+                                y2="82"
+                            />
 
+                            <line
+                                x1="143"
+                                y1="125"
+                                x2="132"
+                                y2="72"
+                            />
+
+                            <line
+                                x1="150"
+                                y1="123"
+                                x2="150"
+                                y2="68"
+                            />
+
+                            <line
+                                x1="157"
+                                y1="125"
+                                x2="168"
+                                y2="72"
+                            />
+
+                            <line
+                                x1="165"
+                                y1="130"
+                                x2="188"
+                                y2="82"
+                            />
+
+                        </g>
+
+
+                        <g fill="#c98535">
+
+                            <circle
+                                cx="112"
+                                cy="82"
+                                r="6"
+                            />
+
+                            <circle
+                                cx="132"
+                                cy="72"
+                                r="6"
+                            />
+
+                            <circle
+                                cx="150"
+                                cy="68"
+                                r="6"
+                            />
+
+                            <circle
+                                cx="168"
+                                cy="72"
+                                r="6"
+                            />
+
+                            <circle
+                                cx="188"
+                                cy="82"
+                                r="6"
+                            />
+
+                        </g>
+
+
+                        <g
+                            fill="#fff"
+                            opacity=".75"
+                        >
+
+                            <circle
+                                cx="102"
+                                cy="73"
+                                r="3"
+                            />
+
+                            <circle
+                                cx="205"
+                                cy="68"
+                                r="3"
+                            />
+
+                        </g>
+
+                    </svg>
 
                 </div>
 
-            </section>
+                <div class="letter-top-title">
+                    For My Nico
+                </div>
 
+            </div>
+
+
+            <!-- =====================================================
+                 YOUR LETTER
+                 ===================================================== -->
+
+            <article class="letter-card">
+
+                <div class="letter-text">
+
+                    <p class="letter-greeting">
+                        Dear Nico Siapno,
+                    </p>
+
+
+                    <p>
+                        Hi, asawa! I just want to greet you a happy birthday
+                        to you, my baby!!! 🩷✨
+                    </p>
+
+
+                    <p>
+                        First of all, I want to thank you for being the
+                        strongest soldier in this relationship. Thank you
+                        for always being there for me, for inspiring me
+                        every time I wake up, go to school, and go home.
+                    </p>
+
+
+                    <p>
+                        Thank you for not giving up on us, especially since
+                        the beginning of our relationship. From the time we
+                        met on Litmatch until now, you have remained one of
+                        the most important people in my life.
+                    </p>
+
+
+                    <p>
+                        Thank you for listening to all of my stories, my
+                        jokes, my serious stories, my corny stories, my
+                        horny stories, and everything in between.
+                    </p>
+
+
+                    <p>
+                        Thank you for being patient with my kakulitan,
+                        harot, kalibugan, and even when I call you
+                        “GURANG.” Thank you for accepting all of my
+                        personalities — the bubbly, harot, hyper, and
+                        everything else that comes with me.
+                    </p>
+
+
+                    <p>
+                        Thank you for trusting me with your deepest secrets,
+                        your horny secrets, your insecurities, and the
+                        different sides of yourself that you don't always
+                        show to other people.
+                    </p>
+
+
+                    <p>
+                        Thank you for all the gifts and for making me feel
+                        appreciated and loved. Every little thing you have
+                        done for me means more than you probably realize.
+                    </p>
+
+
+                    <p>
+                        There were also times when I had so much workload
+                        and experienced anxiety attacks. Somehow, having
+                        you beside me and knowing that I have someone to
+                        talk to made those moments easier to handle.
+                    </p>
+
+
+                    <p>
+                        I'm also sorry for the times that I became
+                        insensitive, for my shortcomings, and for the
+                        moments when I failed to understand you the way
+                        you deserved to be understood.
+                    </p>
+
+
+                    <p>
+                        I know that our relationship isn't always easy.
+                        Especially because my parents still don't fully
+                        accept our relationship. But I still believe that
+                        someday, when they see how happy, successful,
+                        loving, and supportive we are together, they will
+                        understand us.
+                    </p>
+
+
+                    <p>
+                        I'm also sorry that your gift came late. The rain,
+                        having no allowance, no savings, and no money made
+                        things difficult. But even if the gift came late,
+                        please know that it doesn't mean that my love for
+                        you came late. I will always find a way to show you
+                        how much you mean to me.
+                    </p>
+
+
+                    <div class="wish-title">
+                        My 20 Wishes For You
+                    </div>
+
+
+                    <ol class="wishes">
+
+                        <li>
+                            Wish ko, sana matupad lahat ng wish mo,
+                            manifestation, prayers mo.
+                        </li>
+
+                        <li>
+                            Wish ko, wag mawala ng pag-asa at manalig
+                            palagi kay Lord.
+                        </li>
+
+                        <li>
+                            Wish ko, mahalin mo sarili mo kung paano mo
+                            ako mahalin.
+                        </li>
+
+                        <li>
+                            Wish ko, never mo nang sasaktan sarili mo.
+                        </li>
+
+                        <li>
+                            Wish ko, na wag mo i-pressure sarili mo.
+                        </li>
+
+                        <li>
+                            Wish ko, yung kabutihan ng health mo.
+                        </li>
+
+                        <li>
+                            Wish ko, makapagtapos ka ng pag-aaral mo
+                            with or without flying colors.
+                        </li>
+
+                        <li>
+                            Wish ko, magkasama pa kayo ni mami mo nang
+                            matagal.
+                        </li>
+
+                        <li>
+                            Wish ko, mas maging strong ka sa mga challenges
+                            na kakaharapin mo.
+                        </li>
+
+                        <li>
+                            Wish ko, humaba pa ang pasensya mo.
+                        </li>
+
+                        <li>
+                            Wish ko, mahalin mo yung mga tao na
+                            nagmamahal sayo.
+                        </li>
+
+                        <li>
+                            Wish ko, matupad lahat ng mga pangarap mo
+                            kasama ako.
+                        </li>
+
+                        <li>
+                            Wish ko, na mag-travel us together while
+                            enjoy our lives, jobs, passion.
+                        </li>
+
+                        <li>
+                            Wish ko, ikaw na ang una at huli kong
+                            mahahalin.
+                        </li>
+
+                        <li>
+                            Wish ko, ikaw lang ang luluharan ko at
+                            magsasabi ng “will you marry me”.
+                        </li>
+
+                        <li>
+                            Wish ko, na ikaw lang ang magsusuot ng
+                            singsing sa daliri ko.
+                        </li>
+
+                        <li>
+                            Wish ko, ikaw na mapapangasawa ko.
+                        </li>
+
+                        <li>
+                            Wish ko, ikaw lang kasama ko sa magiging
+                            tirahan natin.
+                        </li>
+
+                        <li>
+                            Wish ko, ikaw lang matitira ko halos
+                            araw-araw.
+                        </li>
+
+                        <li>
+                            Wish ko, ako lang ang magmamahal sayo ng
+                            ganito at ikaw lang ang magmamahal sa akin
+                            ng ganito.
+                        </li>
+
+                    </ol>
+
+
+                    <p>
+                        Again, happy happy happy birthday to my future
+                        asawa. mahal na mahal kita palagi. nandito ako,
+                        hindi kita iiwan, mamahilin kitang buong buo,
+                        susuporta sayo hanggang dulo. I love you, baby!
+                        Enjoy your day kahit may pasok ka hehehe.
+                    </p>
+
+
+                    <p class="signature">
+                        With all my love,<br>
+                        Your Suitor 💗
+                    </p>
+
+                </div>
+
+            </article>
+
+
+            <div
+                style="
+                    text-align:center;
+                    margin-top:45px;
+                "
+            >
+
+                <button
+                    type="button"
+                    class="chapter-button"
+                    onclick="openNextChapter()"
+                >
+                    CONTINUE TO OUR NEXT CHAPTER →
+                </button>
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</div>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-     ========================================================= -->
+    <!-- =========================================================
+         PAGE 06 — NEXT CHAPTER
+         
+         THIS IS THE PAGE YOU CAN UPDATE EVERY YEAR.
+         ========================================================== -->
 
-<script>
+    <section
+        id="next-chapter-page"
+        class="page"
+    >
 
+        <div class="next-chapter-content">
 
-/* =========================================================
-   CONFIGURATION
-   ========================================================= */
+            <div class="next-number">
+                NEXT CHAPTER
+            </div>
 
+            <div class="chapter-line"></div>
 
-/*
-   DIGITAL LOCK CODE
+            <h1 class="next-title">
+                Let's Wait<br>
+                For Our Next Chapter.
+            </h1>
 
-   June 03, 2026
-   First chat on Litmatch
+            <p class="next-description">
 
-   MMDDYY
-   = 060326
-*/
+                This chapter ends here,
+                but our story doesn't.
 
-const ACCESS_CODE = "060326";
+                <br><br>
 
+                There are still places to go,
+                memories to make,
+                birthdays to celebrate,
+                events to experience,
+                and countless moments
+                that we haven't written yet.
 
-/*
-   REAL YOUTUBE VIDEO
+            </p>
 
-   https://youtu.be/8lbRDzhjqeM
-*/
 
-const SONG_ID =
-    "8lbRDzhjqeM";
+            <div class="next-status">
+                STORY STATUS: TO BE CONTINUED
+            </div>
 
 
-/* =========================================================
-   GET ELEMENTS
-   ========================================================= */
+            <div class="next-year">
+                2026 → ∞
+            </div>
 
-const lockScreen =
-    document.getElementById("lock-screen");
 
+            <button
+                type="button"
+                class="close-story-button"
+                onclick="closeStory()"
+            >
+                CLOSE THIS CHAPTER
+            </button>
 
-const accessInput =
-    document.getElementById("access-code");
+        </div>
 
+    </section>
 
-const lockMessage =
-    document.getElementById("lock-message");
 
 
-const clueModal =
-    document.getElementById("clue-modal");
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
 
+    <script>
 
-const authScreen =
-    document.getElementById("auth-screen");
+        /* =========================================================
+           BASIC SETTINGS
+        ========================================================== */
 
+        const ACCESS_CODE = "060326";
 
-const authProgress =
-    document.getElementById(
-        "auth-progress-bar"
-    );
+        const SONG_ID = "8lbRDzhjqeM";
 
 
-const chapterBeginning =
-    document.getElementById(
-        "chapter-beginning"
-    );
+        /* =========================================================
+           PAGE ELEMENTS
+        ========================================================== */
 
+        const lockScreen =
+            document.getElementById("lock-screen");
 
-const letter =
-    document.getElementById(
-        "letter"
-    );
+        const authScreen =
+            document.getElementById("auth-screen");
 
+        const chapterPage =
+            document.getElementById("chapter-page");
 
-const openLetterButton =
-    document.getElementById(
-        "open-letter-button"
-    );
+        const musicPage =
+            document.getElementById("music-page");
 
+        const letterPage =
+            document.getElementById("letter-page");
 
-const youtubeContainer =
-    document.getElementById(
-        "youtube-player-container"
-    );
+        const nextChapterPage =
+            document.getElementById("next-chapter-page");
 
+        const accessCodeInput =
+            document.getElementById("access-code");
 
-const youtubePlayer =
-    document.getElementById(
-        "youtube-player"
-    );
+        const lockMessage =
+            document.getElementById("lock-message");
 
+        const clueModal =
+            document.getElementById("clue-modal");
 
-/* =========================================================
-   DIGITAL LOCK
-   ========================================================= */
+        const youtubeContainer =
+            document.getElementById(
+                "youtube-player-container"
+            );
 
-function unlockSystem() {
-
-    const enteredCode =
-        accessInput.value.trim();
-
-
-    /* EMPTY */
-
-    if (enteredCode === "") {
-
-        lockMessage.textContent =
-            "> ENTER ACCESS CODE.";
-
-        lockMessage.style.color =
-            "#ff91b8";
-
-        shakeLock();
-
-        return;
-    }
-
-
-    /* CORRECT */
-
-    if (enteredCode === ACCESS_CODE) {
-
-        lockMessage.textContent =
-            "> ACCESS CODE ACCEPTED.";
-
-        lockMessage.style.color =
-            "#8fffc1";
-
-
-        hideClue();
-
-
-        startAuthentication();
-
-
-        return;
-    }
-
-
-    /* WRONG */
-
-    lockMessage.textContent =
-        "> ACCESS DENIED // TRY AGAIN.";
-
-    lockMessage.style.color =
-        "#ff6f91";
-
-
-    accessInput.value = "";
-
-
-    shakeLock();
-
-}
-
-
-/* =========================================================
-   SHAKE
-   ========================================================= */
-
-function shakeLock() {
-
-    const container =
-        document.querySelector(
-            ".lock-container"
-        );
-
-
-    if (!container) return;
-
-
-    container.classList.remove(
-        "shake"
-    );
-
-
-    void container.offsetWidth;
-
-
-    container.classList.add(
-        "shake"
-    );
-
-
-    setTimeout(function () {
-
-        container.classList.remove(
-            "shake"
-        );
-
-    }, 500);
-
-}
-
-
-/* =========================================================
-   CLUE
-   ========================================================= */
-
-function showClue() {
-
-    clueModal.classList.add(
-        "show"
-    );
-
-}
-
-
-function hideClue() {
-
-    clueModal.classList.remove(
-        "show"
-    );
-
-}
-
-
-/* CLOSE CLUE OUTSIDE */
-
-clueModal.addEventListener(
-    "click",
-    function(event) {
-
-        if (
-            event.target ===
-            clueModal
-        ) {
-
-            hideClue();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   AUTHENTICATION
-   ========================================================= */
-
-function startAuthentication() {
-
-    authScreen.classList.add(
-        "show"
-    );
-
-
-    authProgress.style.width =
-        "0%";
-
-
-    setTimeout(function() {
-
-        authProgress.style.width =
-            "100%";
-
-    }, 100);
-
-
-    setTimeout(function() {
-
-        document
-            .getElementById("auth-line-1")
-            .classList.add("active");
-
-    }, 400);
-
-
-    setTimeout(function() {
-
-        document
-            .getElementById("auth-line-2")
-            .classList.add("active");
-
-    }, 900);
-
-
-    setTimeout(function() {
-
-        document
-            .getElementById("auth-line-3")
-            .classList.add("active");
-
-    }, 1400);
-
-
-    setTimeout(function() {
-
-        document
-            .getElementById("auth-line-4")
-            .classList.add("active");
-
-    }, 1900);
-
-
-    setTimeout(function() {
-
-        lockScreen.classList.add(
-            "unlocked"
-        );
-
-    }, 2400);
-
-
-    setTimeout(function() {
-
-        authScreen.classList.remove(
-            "show"
-        );
-
-        showBeginningChapter();
-
-    }, 3100);
-
-}
-
-
-/* =========================================================
-   CHAPTER 01
-   ========================================================= */
-
-function showBeginningChapter() {
-
-    if (!chapterBeginning) return;
-
-
-    chapterBeginning.classList.add(
-        "show"
-    );
-
-}
-
-
-/* =========================================================
-   CONTINUE TO LETTER
-   ========================================================= */
-
-function continueToLetter() {
-
-    if (!chapterBeginning) return;
-
-
-    chapterBeginning.classList.remove(
-        "show"
-    );
-
-
-    setTimeout(function() {
-
-        openLetter();
-
-    }, 900);
-
-}
-
-
-/* =========================================================
-   OPEN LETTER
-   ========================================================= */
-
-function openLetter() {
-
-    if (!letter) return;
-
-
-    letter.style.display =
-        "block";
-
-
-    if (openLetterButton) {
-
-        openLetterButton.style.display =
-            "none";
-
-    }
-
-
-    createPetals();
-
-
-    setTimeout(function() {
-
-        letter.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "start"
-
-        });
-
-    }, 200);
-
-}
-
-
-/* =========================================================
-   FALLING PETALS
-   ========================================================= */
-
-function createPetals() {
-
-    for (
-        let i = 0;
-        i < 18;
-        i++
-    ) {
-
-        const petal =
-            document.createElement(
-                "div"
+        const youtubePlayer =
+            document.getElementById(
+                "youtube-player"
             );
 
 
-        petal.className =
-            "floating-love";
+        /* =========================================================
+           PASSCODE
+        ========================================================== */
 
+        function checkPasscode() {
 
-        const symbols = [
-            "🌸",
-            "🩷",
-            "♡",
-            "✨",
-            "💗"
-        ];
+            const enteredCode =
+                accessCodeInput.value.trim();
 
+            if (enteredCode === ACCESS_CODE) {
 
-        petal.textContent =
-            symbols[
-                Math.floor(
-                    Math.random() *
-                    symbols.length
-                )
-            ];
+                lockMessage.textContent =
+                    "ACCESS GRANTED.";
 
+                startAuthentication();
 
-        petal.style.left =
-            Math.random() * 100 +
-            "vw";
+            } else {
 
+                lockMessage.textContent =
+                    "ACCESS DENIED. TRY AGAIN.";
 
-        petal.style.fontSize =
-            (10 +
-            Math.random() * 14) +
-            "px";
+                accessCodeInput.value = "";
 
+                accessCodeInput.focus();
 
-        petal.style.animationDuration =
-            (7 +
-            Math.random() * 6) +
-            "s";
+                lockScreen.animate(
+                    [
+                        {
+                            transform: "translateX(0)"
+                        },
 
+                        {
+                            transform: "translateX(-8px)"
+                        },
 
-        document.body.appendChild(
-            petal
-        );
+                        {
+                            transform: "translateX(8px)"
+                        },
 
+                        {
+                            transform: "translateX(-5px)"
+                        },
 
-        setTimeout(function() {
+                        {
+                            transform: "translateX(0)"
+                        }
+                    ],
+                    {
+                        duration: 350
+                    }
+                );
 
-            petal.remove();
-
-        }, 14000);
-
-    }
-
-}
-
-
-/* =========================================================
-   CONTINUOUS FLOATING LOVE
-   ========================================================= */
-
-function createFloatingLove() {
-
-    const love =
-        document.createElement(
-            "div"
-        );
-
-
-    const symbols = [
-        "🌸",
-        "🩷",
-        "♡",
-        "✨",
-        "💗"
-    ];
-
-
-    love.className =
-        "floating-love";
-
-
-    love.textContent =
-        symbols[
-            Math.floor(
-                Math.random() *
-                symbols.length
-            )
-        ];
-
-
-    love.style.left =
-        Math.random() * 100 +
-        "vw";
-
-
-    love.style.fontSize =
-        (10 +
-        Math.random() * 12) +
-        "px";
-
-
-    love.style.animationDuration =
-        (7 +
-        Math.random() * 6) +
-        "s";
-
-
-    document.body.appendChild(
-        love
-    );
-
-
-    setTimeout(function() {
-
-        love.remove();
-
-    }, 14000);
-
-}
-
-
-setInterval(
-    createFloatingLove,
-    1800
-);
-
-
-/* =========================================================
-   OUR SONG
-   ========================================================= */
-
-function playOurSong() {
-
-    if (
-        !youtubeContainer ||
-        !youtubePlayer
-    ) {
-
-        return;
-
-    }
-
-
-    /*
-       If player is already open,
-       scroll to it.
-    */
-
-    if (
-        youtubeContainer.classList.contains(
-            "show"
-        )
-    ) {
-
-        youtubeContainer.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "center"
-
-        });
-
-        return;
-
-    }
-
-
-    /*
-       Correct YouTube EMBED URL.
-
-       This is different from
-       the normal youtu.be link.
-    */
-
-    youtubePlayer.src =
-        "https://www.youtube.com/embed/" +
-        SONG_ID +
-        "?autoplay=1&rel=0";
-
-
-    /*
-       Reveal player.
-    */
-
-    youtubeContainer.classList.add(
-        "show"
-    );
-
-
-    /*
-       Scroll to player.
-    */
-
-    setTimeout(function() {
-
-        youtubeContainer.scrollIntoView({
-
-            behavior: "smooth",
-
-            block: "center"
-
-        });
-
-    }, 150);
-
-}
-
-
-/* =========================================================
-   ENTER KEY FOR PASSWORD
-   ========================================================= */
-
-accessInput.addEventListener(
-    "keydown",
-    function(event) {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            unlockSystem();
+            }
 
         }
 
-    }
-);
+
+        /* =========================================================
+           ENTER KEY
+        ========================================================== */
+
+        accessCodeInput.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (event.key === "Enter") {
+
+                    checkPasscode();
+
+                }
+
+            }
+        );
 
 
-/* =========================================================
-   ESCAPE KEY
-   ========================================================= */
+        /* =========================================================
+           CLUE
+        ========================================================== */
 
-document.addEventListener(
-    "keydown",
-    function(event) {
+        function openClue() {
 
-        if (
-            event.key === "Escape"
-        ) {
-
-            hideClue();
+            clueModal.classList.add("show");
 
         }
 
-    }
-);
+
+        function closeClue(event) {
+
+            if (
+                !event ||
+                event.target === clueModal
+            ) {
+
+                clueModal.classList.remove("show");
+
+            }
+
+        }
 
 
-/* =========================================================
-   INITIAL STATE
-   ========================================================= */
+        /* =========================================================
+           AUTHENTICATION
+        ========================================================== */
 
-letter.style.display =
-    "none";
+        function startAuthentication() {
+
+            lockScreen.classList.remove("active");
+
+            authScreen.classList.add("active");
+
+            setTimeout(
+                function() {
+
+                    authScreen.classList.remove("active");
+
+                    chapterPage.classList.add("active");
+
+                },
+                3200
+            );
+
+        }
 
 
-youtubeContainer.classList.remove(
-    "show"
-);
+        /* =========================================================
+           CHAPTER ONE → MUSIC
+        ========================================================== */
+
+        function goToMusic() {
+
+            chapterPage.classList.remove("active");
+
+            setTimeout(
+                function() {
+
+                    musicPage.classList.add("active");
+
+                },
+                250
+            );
+
+        }
 
 
-</script>
+        /* =========================================================
+           PLAY OUR SONG
+        ========================================================== */
 
+        function playOurSong() {
+
+            if (
+                !youtubeContainer ||
+                !youtubePlayer
+            ) {
+                return;
+            }
+
+
+            youtubePlayer.src =
+                "https://www.youtube.com/embed/" +
+                SONG_ID +
+                "?autoplay=1&rel=0";
+
+
+            youtubeContainer.classList.add("show");
+
+
+            setTimeout(
+                function() {
+
+                    youtubeContainer.scrollIntoView(
+                        {
+                            behavior: "smooth",
+                            block: "center"
+                        }
+                    );
+
+                },
+                200
+            );
+
+        }
+
+
+        /* =========================================================
+           MUSIC → LETTER
+        ========================================================== */
+
+        function openLetter() {
+
+            musicPage.classList.remove("active");
+
+            setTimeout(
+                function() {
+
+                    letterPage.classList.add("active");
+
+                    letterPage.scrollTop = 0;
+
+                },
+                250
+            );
+
+        }
+
+
+        /* =========================================================
+           LETTER → NEXT CHAPTER
+        ========================================================== */
+
+        function openNextChapter() {
+
+            letterPage.classList.remove("active");
+
+            setTimeout(
+                function() {
+
+                    nextChapterPage.classList.add("active");
+
+                },
+                350
+            );
+
+        }
+
+
+        /* =========================================================
+           CLOSE STORY
+        ========================================================== */
+
+        function closeStory() {
+
+            nextChapterPage.classList.remove("active");
+
+            setTimeout(
+                function() {
+
+                    lockScreen.classList.add("active");
+
+                    accessCodeInput.value = "";
+
+                    lockMessage.textContent = "";
+
+                },
+                400
+            );
+
+        }
+
+
+        /* =========================================================
+           FLOATING HEARTS
+        ========================================================== */
+
+        function createHeart() {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className = "heart";
+
+            heart.textContent =
+                Math.random() > 0.5
+                    ? "♡"
+                    : "♥";
+
+            heart.style.left =
+                Math.random() * 100 + "vw";
+
+            heart.style.animationDuration =
+                (6 + Math.random() * 5) + "s";
+
+            heart.style.fontSize =
+                (8 + Math.random() * 10) + "px";
+
+            document.body.appendChild(heart);
+
+
+            setTimeout(
+                function() {
+
+                    heart.remove();
+
+                },
+                11000
+            );
+
+        }
+
+
+        /* =========================================================
+           START FLOATING HEARTS
+        ========================================================== */
+
+        setInterval(
+            createHeart,
+            2200
+        );
+
+
+    </script>
 
 </body>
-
 </html>
