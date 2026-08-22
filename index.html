@@ -2644,6 +2644,62 @@ document.addEventListener(
 
 </script>
 
+    <script>
+
+/* =====================================================
+   LETTER CLICK FIX
+   Keeps the existing letter clickable
+   ===================================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /*
+       Find common clickable letter elements
+       without deleting or changing your existing code.
+    */
+
+    const letterElements = document.querySelectorAll(
+        ".letter, .letter-card, .letter-container, .envelope, #letter"
+    );
+
+    letterElements.forEach(function(letter) {
+
+        letter.style.position = "relative";
+        letter.style.zIndex = "20";
+        letter.style.pointerEvents = "auto";
+
+    });
+
+});
+<script>
+
+/* =====================================================
+   DIGITAL LOCK CLICK SAFETY
+   ===================================================== */
+
+const lockScreenFix =
+    document.getElementById("lock-screen");
+
+if (lockScreenFix) {
+
+    lockScreenFix.addEventListener(
+        "transitionend",
+        function () {
+
+            if (
+                lockScreenFix.classList.contains("unlocked")
+            ) {
+
+                lockScreenFix.style.pointerEvents = "none";
+
+            }
+
+        }
+    );
+
+}
+
+</script>
 </body>
 
 <div class="container">
