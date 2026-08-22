@@ -3683,7 +3683,17 @@ function showBeginningChapter() {
 
 }
 
+setTimeout(() => {
+    lockScreen.classList.add("unlocked");
+}, 2400);
 
+setTimeout(() => {
+    authScreen.classList.remove("show");
+}, 3100);
+
+setTimeout(() => {
+    showBeginningChapter();
+}, 3400);
 /* =====================================================
    CONTINUE TO LETTER
    ===================================================== */
