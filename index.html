@@ -7,6 +7,253 @@
 <title>For My Asawa 🩷</title>
 
 <style>
+    /* =========================
+   FANCY FLOWERY OPENING
+========================= */
+
+.flower-opening {
+    position: relative;
+    text-align: center;
+    padding: 20px 10px 10px;
+}
+
+/* Soft glow behind the flower */
+.flower-glow {
+    position: absolute;
+    width: 190px;
+    height: 190px;
+    left: 50%;
+    top: 5px;
+    transform: translateX(-50%);
+    background: radial-gradient(
+        circle,
+        rgba(255, 150, 190, 0.28) 0%,
+        rgba(255, 190, 215, 0.15) 45%,
+        transparent 72%
+    );
+    filter: blur(5px);
+    animation: flowerGlow 3s ease-in-out infinite;
+}
+
+@keyframes flowerGlow {
+    0%, 100% {
+        transform: translateX(-50%) scale(0.95);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translateX(-50%) scale(1.12);
+        opacity: 1;
+    }
+}
+
+/* Pink Lily */
+.pink-lily {
+    position: relative;
+    width: 150px;
+    height: 175px;
+    margin: 0 auto 15px;
+    z-index: 2;
+    animation: lilyFloat 4s ease-in-out infinite;
+}
+
+@keyframes lilyFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+}
+
+/* Lily flower */
+.lily-flower {
+    position: absolute;
+    width: 115px;
+    height: 105px;
+    left: 17px;
+    top: 5px;
+}
+
+/* Individual petals */
+.lily-petal {
+    position: absolute;
+    width: 48px;
+    height: 78px;
+    left: 34px;
+    top: 12px;
+    background: linear-gradient(
+        135deg,
+        #ffb4c9,
+        #f66f9b 55%,
+        #d93d70
+    );
+    border-radius: 65% 35% 65% 35%;
+    transform-origin: bottom center;
+    box-shadow:
+        inset 4px 5px 8px rgba(255,255,255,0.45),
+        0 4px 10px rgba(190,60,100,0.15);
+}
+
+/* Six petals */
+.lily-petal:nth-child(1) {
+    transform: rotate(0deg);
+}
+
+.lily-petal:nth-child(2) {
+    transform: rotate(60deg);
+}
+
+.lily-petal:nth-child(3) {
+    transform: rotate(120deg);
+}
+
+.lily-petal:nth-child(4) {
+    transform: rotate(180deg);
+}
+
+.lily-petal:nth-child(5) {
+    transform: rotate(240deg);
+}
+
+.lily-petal:nth-child(6) {
+    transform: rotate(300deg);
+}
+
+/* Lily center */
+.lily-center {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    background: radial-gradient(
+        circle,
+        #ffd76a 0%,
+        #f4a62a 45%,
+        #d87818 100%
+    );
+    border-radius: 50%;
+    left: 43px;
+    top: 51px;
+    z-index: 5;
+    box-shadow: 0 2px 8px rgba(200,120,20,0.25);
+}
+
+/* Stamens */
+.stamen {
+    position: absolute;
+    width: 5px;
+    height: 35px;
+    background: #d99227;
+    border-radius: 5px;
+    left: 55px;
+    top: 30px;
+    transform-origin: bottom;
+    z-index: 4;
+}
+
+.stamen:nth-child(2) {
+    transform: rotate(-28deg);
+}
+
+.stamen:nth-child(3) {
+    transform: rotate(28deg);
+}
+
+.stamen:nth-child(4) {
+    transform: rotate(-55deg);
+}
+
+.stamen:nth-child(5) {
+    transform: rotate(55deg);
+}
+
+/* Lily stem */
+.lily-stem {
+    position: absolute;
+    width: 8px;
+    height: 92px;
+    background: linear-gradient(
+        to right,
+        #4c963b,
+        #83c95a,
+        #397b32
+    );
+    left: 71px;
+    top: 82px;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+/* Leaves */
+.lily-leaf {
+    position: absolute;
+    width: 65px;
+    height: 25px;
+    background: linear-gradient(
+        135deg,
+        #8fd45d,
+        #4c963b
+    );
+    border-radius: 100% 0 100% 0;
+    z-index: 0;
+}
+
+.lily-leaf.left {
+    left: 13px;
+    top: 117px;
+    transform: rotate(-28deg);
+}
+
+.lily-leaf.right {
+    right: 8px;
+    top: 105px;
+    transform: scaleX(-1) rotate(-25deg);
+}
+
+/* Little flower sparkles */
+.flower-sparkle {
+    position: absolute;
+    color: #e98aaa;
+    font-size: 18px;
+    opacity: 0.7;
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+.sparkle-one {
+    left: 18%;
+    top: 20px;
+}
+
+.sparkle-two {
+    right: 18%;
+    top: 55px;
+    animation-delay: 1s;
+}
+
+.sparkle-three {
+    left: 10%;
+    top: 115px;
+    animation-delay: 1.8s;
+}
+
+.sparkle-four {
+    right: 10%;
+    top: 130px;
+    animation-delay: 0.7s;
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.25;
+        transform: scale(0.8) rotate(0deg);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.25) rotate(15deg);
+    }
+}
 * {
     box-sizing: border-box;
 }
@@ -154,7 +401,232 @@ button:active {
         font-size: 16px;
     }
 }
+    /* =========================
+   PINK LILY
+   ========================= */
+
+.pink-lily {
+    position: relative;
+    width: 180px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    animation: lilyFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 15px 20px rgba(190, 80, 120, 0.18));
+}
+
+/* Flower */
+.lily-flower {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    width: 150px;
+    height: 145px;
+    transform: translateX(-50%);
+}
+
+/* Petals */
+.lily-petal {
+    position: absolute;
+    width: 55px;
+    height: 105px;
+    left: 50%;
+    top: 20px;
+    transform-origin: 50% 90%;
+    border-radius: 55% 55% 45% 45%;
+    background:
+        radial-gradient(circle at 50% 25%, #fff8fb 0%, transparent 20%),
+        linear-gradient(
+            to bottom,
+            #ffb6c9 0%,
+            #ff91b0 45%,
+            #e95b83 100%
+        );
+    box-shadow:
+        inset 0 0 12px rgba(255,255,255,0.65),
+        0 5px 12px rgba(205,70,110,0.15);
+}
+
+/* Six lily petals */
+.lily-petal:nth-child(1) {
+    transform: translateX(-50%) rotate(0deg);
+}
+
+.lily-petal:nth-child(2) {
+    transform: translateX(-50%) rotate(60deg);
+}
+
+.lily-petal:nth-child(3) {
+    transform: translateX(-50%) rotate(120deg);
+}
+
+.lily-petal:nth-child(4) {
+    transform: translateX(-50%) rotate(180deg);
+}
+
+.lily-petal:nth-child(5) {
+    transform: translateX(-50%) rotate(240deg);
+}
+
+.lily-petal:nth-child(6) {
+    transform: translateX(-50%) rotate(300deg);
+}
+
+/* Lily center */
+.lily-center {
+    position: absolute;
+    z-index: 10;
+    width: 30px;
+    height: 30px;
+    left: 50%;
+    top: 82px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        #ffe89b 0%,
+        #f5c85b 45%,
+        #d99a32 100%
+    );
+    box-shadow:
+        0 0 15px rgba(255, 210, 100, 0.65);
+}
+
+/* Stamens */
+.stamen {
+    position: absolute;
+    z-index: 9;
+    width: 4px;
+    height: 58px;
+    left: 50%;
+    top: 42px;
+    transform-origin: 50% 100%;
+    background: linear-gradient(
+        to top,
+        #d99545,
+        #f0b45a
+    );
+    border-radius: 5px;
+}
+
+.stamen::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #d68a48;
+    box-shadow: 0 0 5px rgba(214,138,72,0.5);
+}
+
+.stamen:nth-child(7) {
+    transform: translateX(-50%) rotate(-25deg);
+}
+
+.stamen:nth-child(8) {
+    transform: translateX(-50%) rotate(-8deg);
+}
+
+.stamen:nth-child(9) {
+    transform: translateX(-50%) rotate(8deg);
+}
+
+.stamen:nth-child(10) {
+    transform: translateX(-50%) rotate(25deg);
+}
+
+/* Stem */
+.lily-stem {
+    position: absolute;
+    z-index: 2;
+    top: 145px;
+    left: 50%;
+    width: 11px;
+    height: 145px;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    background: linear-gradient(
+        to right,
+        #4f9b55,
+        #76c66d,
+        #3d8148
+    );
+    box-shadow:
+        inset 2px 0 4px rgba(255,255,255,0.3);
+}
+
+/* Leaves */
+.lily-leaf {
+    position: absolute;
+    z-index: 1;
+    width: 75px;
+    height: 30px;
+    top: 190px;
+    background: linear-gradient(
+        135deg,
+        #8bd477,
+        #438f4b
+    );
+    border-radius: 100% 0 100% 0;
+}
+
+.lily-leaf.left {
+    left: 18px;
+    transform: rotate(-25deg);
+    transform-origin: right center;
+}
+
+.lily-leaf.right {
+    right: 18px;
+    transform: rotate(25deg) scaleX(-1);
+    transform-origin: left center;
+}
+
+/* Gentle floating animation */
+@keyframes lilyFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+
+    50% {
+        transform: translateY(-8px) rotate(1deg);
+    }
+}
+
+/* Soft glow behind flower */
+.flower-glow {
+    position: absolute;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(255, 170, 200, 0.35) 0%,
+        rgba(255, 190, 215, 0.15) 35%,
+        transparent 70%
+    );
+    filter: blur(8px);
+    animation: flowerGlow 3s ease-in-out infinite;
+}
+
+@keyframes flowerGlow {
+    0%, 100% {
+        transform: scale(0.9);
+        opacity: 0.65;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 1;
+    }
+}
 </style>
+
 </head>
 
 <body>
@@ -163,7 +635,41 @@ button:active {
 
     <div class="card">
 
-        <div class="flower">🌷</div>
+        <div class="flower-opening">
+
+    <div class="flower-glow"></div>
+
+    <span class="flower-sparkle sparkle-one">✦</span>
+    <span class="flower-sparkle sparkle-two">✧</span>
+    <span class="flower-sparkle sparkle-three">✦</span>
+    <span class="flower-sparkle sparkle-four">✧</span>
+
+    <div class="pink-lily">
+
+        <div class="lily-flower">
+
+            <div class="lily-petal"></div>
+            <div class="lily-petal"></div>
+            <div class="lily-petal"></div>
+            <div class="lily-petal"></div>
+            <div class="lily-petal"></div>
+            <div class="lily-petal"></div>
+
+            <div class="stamen"></div>
+            <div class="stamen"></div>
+            <div class="stamen"></div>
+            <div class="stamen"></div>
+
+            <div class="lily-center"></div>
+
+        </div>
+
+        <div class="lily-stem"></div>
+
+        <div class="lily-leaf left"></div>
+        <div class="lily-leaf right"></div>
+
+    </div>
 
         <div class="small">
             A little something for you
