@@ -972,13 +972,13 @@ button:active {
         font-size: 28px;
     }
 }
-    /* =================================
+   /* =================================
    OUR SONG
    ================================= */
 
 .song-section {
     margin-top: 70px;
-    padding: 35px 20px;
+    padding: 40px 20px;
     text-align: center;
 }
 
@@ -990,7 +990,8 @@ button:active {
 
 .song-subtitle {
     color: #76505d;
-    font-size: 16px;
+    font-size: 15px;
+    line-height: 1.6;
     margin-bottom: 25px;
 }
 
@@ -998,32 +999,34 @@ button:active {
     max-width: 420px;
     margin: 0 auto;
     padding: 25px;
-    border-radius: 24px;
-    background: rgba(255,255,255,0.85);
-    box-shadow: 0 10px 30px rgba(150,70,100,0.15);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: 0 10px 30px rgba(150, 70, 100, 0.15);
 }
 
-.song-cover {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 18px;
-    margin-bottom: 18px;
+.song-icon {
+    font-size: 45px;
+    margin-bottom: 10px;
 }
 
 .song-name {
     font-size: 22px;
     color: #9d4f69;
-    margin: 5px 0;
+    margin: 8px 0 4px;
 }
 
 .song-artist {
     color: #76505d;
+    font-size: 14px;
     margin-bottom: 20px;
 }
 
-.song-player {
+.youtube-player {
     width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
+    border-radius: 16px;
+    display: block;
 }
 /* =================================
    FLOATING PETALS & HEARTS
@@ -1039,6 +1042,7 @@ button:active {
 }
 
 @keyframes fallingLove {
+
     0% {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
@@ -1063,7 +1067,7 @@ button:active {
 
 <body>
 
-    <script>
+  <script>
 function createFloatingLove() {
 
     const love = document.createElement("div");
@@ -1075,8 +1079,12 @@ function createFloatingLove() {
     love.textContent = symbol;
 
     love.style.left = Math.random() * 100 + "vw";
-    love.style.fontSize = (10 + Math.random() * 12) + "px";
-    love.style.animationDuration = (7 + Math.random() * 6) + "s";
+
+    love.style.fontSize =
+        (10 + Math.random() * 12) + "px";
+
+    love.style.animationDuration =
+        (7 + Math.random() * 6) + "s";
 
     document.body.appendChild(love);
 
@@ -1087,6 +1095,8 @@ function createFloatingLove() {
 
 setInterval(createFloatingLove, 1200);
 </script>
+
+</body>
 
 <div class="container">
 
@@ -1493,32 +1503,34 @@ setInterval(createFloatingLove, 1200);
     </h2>
 
     <p class="song-subtitle">
-        A little song that reminds me of you.
+        A little song that reminds me of you. 🩷
     </p>
 
     <div class="song-card">
 
-        <img
-            src="YOUR-SONG-COVER.jpg"
-            class="song-cover"
-        >
+        <div class="song-icon">
+            🎶
+        </div>
 
         <h3 class="song-name">
-            Your Song Title
+            Libu-libong buwan (uuwian)
         </h3>
 
         <p class="song-artist">
-            Artist Name
+            Kyle Raphael
         </p>
 
-        <audio controls class="song-player">
-            <source src="YOUR-SONG.mp3" type="audio/mpeg">
-        </audio>
+        <iframe
+            class="youtube-player"
+            src="https://www.youtube.com/embed/tVRfUqyDJyM"
+            title="Libu-libong buwan (uuwian) - Kyle Raphael"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+        </iframe>
 
     </div>
 
 </section>
-        </div>
 
     </div>
 
