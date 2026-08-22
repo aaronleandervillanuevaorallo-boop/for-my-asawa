@@ -3154,13 +3154,13 @@ if (lockScreenFix) {
             Kyle Raphael
         </p>
 
-        <a
-            href="https://youtu.be/tVRfUqyDJyM"
-            target="_blank"
-            class="song-button"
-        >
-            ▶ Listen to Our Song
-        </a>
+        <button
+    type="button"
+    class="song-button"
+    onclick="playOurSong()"
+>
+    ▶ Play Our Song
+</button>
 
     </div>
 
@@ -3475,8 +3475,7 @@ function startOurSong() {
         "autoplay; encrypted-media";
 
 
-    iframe.src =
-        "https://www.youtube.com/embed/tVRfUqyDJyM?enablejsapi=1&autoplay=1&loop=1&playlist=tVRfUqyDJyM&controls=0";
+    iframe.src = "https://youtu.be/8lbRDzhjqeM?si=QzOiTCVLfTDp4h9G"
 
 
     document.body.appendChild(
