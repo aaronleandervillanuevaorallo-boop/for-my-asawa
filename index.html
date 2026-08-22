@@ -625,6 +625,240 @@ button:active {
         opacity: 1;
     }
 }
+/* =================================
+   ELEGANT PINK LILY
+   ================================= */
+
+.pink-lily {
+    position: relative;
+    width: 190px;
+    height: 300px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    animation: lilySway 5s ease-in-out infinite;
+}
+
+/* Flower head */
+.lily-flower {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    width: 170px;
+    height: 160px;
+    transform: translateX(-50%);
+}
+
+/* Petals */
+.lily-petal {
+    position: absolute;
+    left: 50%;
+    top: 25px;
+
+    width: 58px;
+    height: 115px;
+
+    transform-origin: 50% 90%;
+
+    border-radius: 70% 70% 45% 45%;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 20%,
+            rgba(255,255,255,.95) 0%,
+            rgba(255,255,255,.25) 18%,
+            transparent 38%
+        ),
+        linear-gradient(
+            170deg,
+            #ffd1df 0%,
+            #ff9fbd 48%,
+            #ed6f9b 100%
+        );
+
+    box-shadow:
+        inset 0 -8px 15px rgba(190,55,100,.12),
+        0 5px 12px rgba(210,80,125,.12);
+}
+
+/* Petal arrangement */
+.lily-petal:nth-child(1) {
+    transform: translateX(-50%) rotate(0deg);
+}
+
+.lily-petal:nth-child(2) {
+    transform: translateX(-50%) rotate(60deg);
+}
+
+.lily-petal:nth-child(3) {
+    transform: translateX(-50%) rotate(120deg);
+}
+
+.lily-petal:nth-child(4) {
+    transform: translateX(-50%) rotate(180deg);
+}
+
+.lily-petal:nth-child(5) {
+    transform: translateX(-50%) rotate(240deg);
+}
+
+.lily-petal:nth-child(6) {
+    transform: translateX(-50%) rotate(300deg);
+}
+
+/* Soft center */
+.lily-center {
+    position: absolute;
+    z-index: 20;
+
+    left: 50%;
+    top: 83px;
+
+    width: 31px;
+    height: 31px;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fff8bd 0%,
+            #ffe36d 35%,
+            #efb83e 75%,
+            #d99a2f 100%
+        );
+
+    box-shadow:
+        0 0 18px rgba(255,211,90,.55);
+}
+
+/* Stamens */
+.stamen {
+    position: absolute;
+    z-index: 15;
+
+    left: 50%;
+    top: 40px;
+
+    width: 3px;
+    height: 58px;
+
+    transform-origin: 50% 100%;
+
+    background: linear-gradient(
+        to top,
+        #e3a33d,
+        #f5c45e
+    );
+
+    border-radius: 5px;
+}
+
+.stamen::after {
+    content: "";
+
+    position: absolute;
+
+    top: -5px;
+    left: 50%;
+
+    width: 8px;
+    height: 8px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: #c98535;
+}
+
+/* Individual stamens */
+.stamen:nth-child(7) {
+    transform: translateX(-50%) rotate(-28deg);
+}
+
+.stamen:nth-child(8) {
+    transform: translateX(-50%) rotate(-10deg);
+}
+
+.stamen:nth-child(9) {
+    transform: translateX(-50%) rotate(10deg);
+}
+
+.stamen:nth-child(10) {
+    transform: translateX(-50%) rotate(28deg);
+}
+
+/* Stem */
+.lily-stem {
+    position: absolute;
+    z-index: 3;
+
+    top: 140px;
+    left: 50%;
+
+    width: 9px;
+    height: 150px;
+
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        #438c4d,
+        #76c86d,
+        #4d9c54
+    );
+
+    box-shadow:
+        inset 2px 0 3px rgba(255,255,255,.3);
+}
+
+/* Leaves — move them BELOW the flower */
+.lily-leaf {
+    position: absolute;
+    z-index: 4;
+
+    width: 70px;
+    height: 27px;
+
+    top: 205px;
+
+    border-radius: 100% 0 100% 0;
+
+    background: linear-gradient(
+        135deg,
+        #8bd477,
+        #4a9b52
+    );
+
+    box-shadow:
+        inset 2px 2px 5px rgba(255,255,255,.25);
+}
+
+.lily-leaf.left {
+    left: 25px;
+    transform: rotate(-28deg);
+}
+
+.lily-leaf.right {
+    right: 25px;
+    transform: scaleX(-1) rotate(-28deg);
+}
+
+/* Gentle movement */
+@keyframes lilySway {
+    0%, 100% {
+        transform: rotate(-1deg) translateY(0);
+    }
+
+    50% {
+        transform: rotate(1deg) translateY(-5px);
+    }
+}
 </style>
 
 </head>
@@ -675,7 +909,7 @@ button:active {
             A little something for you
         </div>
 
-        <h1>For My Love 🤍</h1>
+        <h1>For My Nico 🩷</h1>
 
         <p class="subtitle">
             I made this little place on the internet
