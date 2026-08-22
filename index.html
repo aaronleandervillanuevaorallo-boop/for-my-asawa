@@ -911,33 +911,187 @@ button:active {
     <span class="flower-sparkle sparkle-three">✦</span>
     <span class="flower-sparkle sparkle-four">✧</span>
 
-    <div class="pink-lily">
+    <div class="pink-lily" style="width:260px;height:340px;margin:0 auto;position:relative;">
+    <svg viewBox="0 0 300 390"
+         width="260"
+         height="340"
+         xmlns="http://www.w3.org/2000/svg"
+         style="overflow:visible;">
 
-        <div class="lily-flower">
+        <defs>
 
-            <div class="lily-petal"></div>
-            <div class="lily-petal"></div>
-            <div class="lily-petal"></div>
-            <div class="lily-petal"></div>
-            <div class="lily-petal"></div>
-            <div class="lily-petal"></div>
+            <radialGradient id="pinkPetal" cx="45%" cy="25%">
+                <stop offset="0%" stop-color="#fff8fb"/>
+                <stop offset="22%" stop-color="#ffd7e5"/>
+                <stop offset="55%" stop-color="#ff9fbe"/>
+                <stop offset="100%" stop-color="#dc5b86"/>
+            </radialGradient>
 
-            <div class="stamen"></div>
-            <div class="stamen"></div>
-            <div class="stamen"></div>
-            <div class="stamen"></div>
-            <div class="stamen"></div>
+            <linearGradient id="stemGreen"
+                            x1="0%" y1="0%"
+                            x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#3d8b47"/>
+                <stop offset="50%" stop-color="#79c96b"/>
+                <stop offset="100%" stop-color="#438f4b"/>
+            </linearGradient>
 
-            <div class="lily-center"></div>
+            <radialGradient id="centerGold">
+                <stop offset="0%" stop-color="#fff4a8"/>
+                <stop offset="45%" stop-color="#ffd85b"/>
+                <stop offset="100%" stop-color="#e5a52f"/>
+            </radialGradient>
 
-        </div>
+            <filter id="softGlow">
+                <feGaussianBlur stdDeviation="5"/>
+            </filter>
 
-        <div class="lily-stem"></div>
+        </defs>
 
-        <div class="lily-leaf left"></div>
-        <div class="lily-leaf right"></div>
+        <!-- soft glow behind flower -->
+        <ellipse
+            cx="150"
+            cy="125"
+            rx="95"
+            ry="85"
+            fill="#ffb6d0"
+            opacity=".18"
+            filter="url(#softGlow)"
+        />
 
-    </div>
+        <!-- STEM -->
+        <path
+            d="M150 175 C148 230 151 290 150 365"
+            stroke="url(#stemGreen)"
+            stroke-width="13"
+            stroke-linecap="round"
+            fill="none"
+        />
+
+        <!-- LEFT LEAF -->
+        <path
+            d="M147 270
+               C112 245 72 252 48 282
+               C82 288 120 290 150 275 Z"
+            fill="url(#stemGreen)"
+        />
+
+        <path
+            d="M145 273
+               C105 266 77 270 53 282"
+            stroke="#9ade8b"
+            stroke-width="2"
+            opacity=".55"
+            fill="none"
+        />
+
+        <!-- RIGHT LEAF -->
+        <path
+            d="M153 300
+               C190 270 225 274 248 300
+               C214 306 180 310 150 305 Z"
+            fill="url(#stemGreen)"
+        />
+
+        <path
+            d="M155 303
+               C193 292 222 294 245 300"
+            stroke="#9ade8b"
+            stroke-width="2"
+            opacity=".55"
+            fill="none"
+        />
+
+        <!-- BACK PETALS -->
+
+        <path
+            d="M150 145
+               C105 125 72 88 84 42
+               C125 46 151 73 150 145 Z"
+            fill="url(#pinkPetal)"
+        />
+
+        <path
+            d="M150 145
+               C195 125 228 88 216 42
+               C175 46 149 73 150 145 Z"
+            fill="url(#pinkPetal)"
+        />
+
+        <!-- SIDE PETALS -->
+
+        <path
+            d="M145 150
+               C98 158 52 148 30 112
+               C67 92 111 105 145 150 Z"
+            fill="url(#pinkPetal)"
+        />
+
+        <path
+            d="M155 150
+               C202 158 248 148 270 112
+               C233 92 189 105 155 150 Z"
+            fill="url(#pinkPetal)"
+        />
+
+        <!-- FRONT PETALS -->
+
+        <path
+            d="M145 145
+               C110 170 93 211 112 244
+               C140 226 153 190 150 150 Z"
+            fill="url(#pinkPetal)"
+        />
+
+        <path
+            d="M155 145
+               C190 170 207 211 188 244
+               C160 226 147 190 150 150 Z"
+            fill="url(#pinkPetal)"
+        />
+
+        <!-- CENTER -->
+        <circle
+            cx="150"
+            cy="143"
+            r="25"
+            fill="url(#centerGold)"
+        />
+
+        <!-- STAMENS -->
+
+        <g stroke="#e5a33b"
+          stroke-width="4"
+          stroke-linecap="round">
+
+            <line x1="135" y1="130" x2="112" y2="82"/>
+            <line x1="143" y1="125" x2="132" y2="72"/>
+            <line x1="150" y1="123" x2="150" y2="68"/>
+            <line x1="157" y1="125" x2="168" y2="72"/>
+            <line x1="165" y1="130" x2="188" y2="82"/>
+
+        </g>
+
+        <!-- STAMEN TIPS -->
+
+        <g fill="#c98535">
+
+            <circle cx="112" cy="82" r="6"/>
+            <circle cx="132" cy="72" r="6"/>
+            <circle cx="150" cy="68" r="6"/>
+            <circle cx="168" cy="72" r="6"/>
+            <circle cx="188" cy="82" r="6"/>
+
+        </g>
+
+        <!-- tiny flower sparkle -->
+
+        <g fill="#fff" opacity=".75">
+            <circle cx="102" cy="73" r="3"/>
+            <circle cx="205" cy="68" r="3"/>
+        </g>
+
+    </svg>
+</div>
 
         <div class="small">
             A little something for you
