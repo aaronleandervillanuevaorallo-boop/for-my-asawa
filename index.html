@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -9,6 +10,25 @@
     >
 
     <title>For My Nico ♡</title>
+
+
+    <!-- =====================================================
+         CUTE FONTS
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
 
     <style>
 
@@ -28,13 +48,18 @@
 
         body {
             min-height: 100vh;
+
             background: #fff8fb;
+
             color: #4a2634;
+
             font-family:
+                "DM Sans",
                 -apple-system,
                 BlinkMacSystemFont,
                 "Segoe UI",
                 sans-serif;
+
             overflow-x: hidden;
         }
 
@@ -49,50 +74,50 @@
 
 
         /* =====================================================
-           GENERAL PAGE SYSTEM
+           PAGE SYSTEM
         ===================================================== */
 
-      .page {
-    position: fixed;
-    inset: 0;
+        .page {
+            position: fixed;
+            inset: 0;
 
-    width: 100%;
-    height: 100vh;
+            width: 100%;
+            height: 100vh;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
 
-    transform: scale(1.025);
-    filter: blur(4px);
+            transform: scale(1.025);
+            filter: blur(4px);
 
-    transition:
-        opacity 0.9s ease,
-        transform 1s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.9s ease,
-        visibility 0.9s ease;
+            transition:
+                opacity 0.9s ease,
+                transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+                filter 0.9s ease,
+                visibility 0.9s ease;
 
-    overflow-y: auto;
+            overflow-y: auto;
 
-    z-index: 1;
-}
+            z-index: 1;
+        }
 
-.page.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
+        .page.active {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
 
-    transform: scale(1);
-    filter: blur(0);
-}
+            transform: scale(1);
+            filter: blur(0);
+        }
 
 
         /* =====================================================
-           BACKGROUND
+           BACKGROUNDS
         ===================================================== */
 
         .pink-background {
@@ -122,20 +147,26 @@
 
 
         /* =====================================================
-           SMALL TEXT
+           TEXT
         ===================================================== */
 
         .eyebrow {
+            font-family: "DM Sans", sans-serif;
+
             font-size: 10px;
             letter-spacing: 5px;
+
             text-transform: uppercase;
+
             color: #c86d91;
+
             margin-bottom: 18px;
         }
 
         .small-text {
             font-size: 11px;
             line-height: 1.8;
+
             color: #9b7181;
         }
 
@@ -152,12 +183,14 @@
             border: 1px solid #e884aa;
 
             background: #e884aa;
+
             color: white;
 
             font-size: 10px;
             font-weight: 700;
 
             letter-spacing: 3px;
+
             text-transform: uppercase;
 
             transition:
@@ -169,6 +202,7 @@
 
         .pink-button:hover {
             background: #ffffff;
+
             color: #d96e98;
 
             transform: translateY(-2px);
@@ -185,12 +219,14 @@
             border: 1px solid #e884aa;
 
             background: transparent;
+
             color: #d96e98;
 
             font-size: 10px;
             font-weight: 700;
 
             letter-spacing: 3px;
+
             text-transform: uppercase;
 
             transition: 0.3s ease;
@@ -220,13 +256,17 @@
 
         .lock-container {
             width: min(90%, 430px);
+
             text-align: center;
         }
 
         .lock-status {
             font-size: 9px;
+
             letter-spacing: 5px;
+
             color: #c86d91;
+
             margin-bottom: 25px;
         }
 
@@ -247,6 +287,7 @@
             justify-content: center;
 
             font-size: 30px;
+
             color: #df719b;
 
             box-shadow:
@@ -254,9 +295,13 @@
         }
 
         .lock-title {
+            font-family:
+                "Playfair Display",
+                serif;
+
             font-size: clamp(34px, 9vw, 58px);
 
-            font-weight: 300;
+            font-weight: 400;
 
             letter-spacing: 7px;
 
@@ -290,6 +335,7 @@
             display: block;
 
             font-size: 9px;
+
             letter-spacing: 4px;
 
             color: #a46c80;
@@ -354,14 +400,17 @@
             margin-top: 18px;
 
             background: none;
+
             border: none;
 
             color: #a77a89;
 
             font-size: 9px;
+
             letter-spacing: 2px;
 
             text-decoration: underline;
+
             text-underline-offset: 4px;
         }
 
@@ -436,6 +485,7 @@
             color: #d96e98;
 
             font-size: 10px;
+
             letter-spacing: 4px;
 
             margin-bottom: 25px;
@@ -482,6 +532,7 @@
 
         #auth-screen {
             background: #fff8fb;
+
             z-index: 90;
         }
 
@@ -506,6 +557,7 @@
 
         .auth-progress {
             width: 100%;
+
             height: 2px;
 
             margin-top: 25px;
@@ -517,16 +569,16 @@
 
         .auth-progress-bar {
             width: 0%;
+
             height: 100%;
 
             background: #e884aa;
 
             animation:
-                progress 3.0s ease forwards;
+                progress 3s ease forwards;
         }
 
         @keyframes progress {
-
             from {
                 width: 0%;
             }
@@ -534,20 +586,17 @@
             to {
                 width: 100%;
             }
-
         }
 
         @keyframes authText {
-
             to {
                 opacity: 1;
             }
-
         }
 
 
         /* =====================================================
-           PAGE 03 — CHAPTER ONE
+           PAGE 03 — CHAPTER 01
         ===================================================== */
 
         #chapter-page {
@@ -580,6 +629,7 @@
 
         .chapter-line {
             width: 90px;
+
             height: 1px;
 
             margin: 0 auto 30px;
@@ -588,9 +638,13 @@
         }
 
         .chapter-title {
+            font-family:
+                "Playfair Display",
+                serif;
+
             font-size: clamp(38px, 9vw, 70px);
 
-            font-weight: 300;
+            font-weight: 400;
 
             line-height: 1.05;
 
@@ -639,6 +693,7 @@
 
         .chapter-button:hover {
             background: #e884aa;
+
             color: white;
         }
 
@@ -705,9 +760,13 @@
         }
 
         .music-title {
+            font-family:
+                "Playfair Display",
+                serif;
+
             font-size: clamp(32px, 8vw, 55px);
 
-            font-weight: 300;
+            font-weight: 400;
 
             color: #592c3e;
 
@@ -746,6 +805,7 @@
 
         .song-button:hover {
             background: white;
+
             color: #d96e98;
         }
 
@@ -753,6 +813,7 @@
             display: none;
 
             width: 100%;
+
             max-width: 650px;
 
             margin: 30px auto 0;
@@ -795,6 +856,7 @@
 
         #letter-page {
             position: fixed;
+
             inset: 0;
 
             z-index: 60;
@@ -810,16 +872,26 @@
             overflow-y: auto;
 
             opacity: 0;
+
             visibility: hidden;
+
             pointer-events: none;
 
-            transition: 0.8s ease;
+            transition:
+                opacity 0.9s ease,
+                filter 0.9s ease;
+
+            filter: blur(4px);
         }
 
         #letter-page.active {
             opacity: 1;
+
             visibility: visible;
+
             pointer-events: auto;
+
+            filter: blur(0);
         }
 
         .letter-wrapper {
@@ -850,9 +922,13 @@
         .letter-title {
             margin-top: 12px;
 
-            font-size: clamp(28px, 7vw, 48px);
+            font-family:
+                "Great Vibes",
+                cursive;
 
-            font-weight: 300;
+            font-size: clamp(42px, 10vw, 68px);
+
+            font-weight: 400;
 
             color: #592c3e;
         }
@@ -860,10 +936,13 @@
 
         /* =====================================================
            PINK LILY
+           
+           SAME LILY — DO NOT CHANGE
         ===================================================== */
 
         .pink-lily {
             width: 260px;
+
             height: 340px;
 
             margin: 0 auto 10px;
@@ -873,6 +952,7 @@
 
         .pink-lily svg {
             width: 260px;
+
             height: 340px;
 
             overflow: visible;
@@ -896,6 +976,11 @@
 
             box-shadow:
                 0 25px 80px rgba(180, 90, 125, 0.1);
+
+            animation:
+                letterReveal 1.2s
+                cubic-bezier(0.22, 1, 0.36, 1)
+                both;
         }
 
         .letter-card::before {
@@ -920,13 +1005,13 @@
 
         .letter-text {
             font-family:
+                "Cormorant Garamond",
                 Georgia,
-                "Trebuchet MS",
                 serif;
 
-            font-size: 16px;
+            font-size: 19px;
 
-            line-height: 2;
+            line-height: 1.85;
 
             color: #593846;
         }
@@ -938,9 +1023,11 @@
         .letter-greeting {
             color: #d96e98;
 
-            font-size: 20px;
+            font-size: 25px;
 
             margin-bottom: 30px !important;
+
+            font-weight: 500;
         }
 
         .wish-title {
@@ -949,9 +1036,7 @@
             margin-bottom: 25px;
 
             font-family:
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
+                "DM Sans",
                 sans-serif;
 
             font-size: 13px;
@@ -961,6 +1046,8 @@
             color: #d96e98;
 
             text-transform: uppercase;
+
+            font-weight: 700;
         }
 
         .wishes {
@@ -978,7 +1065,11 @@
         .signature {
             margin-top: 45px;
 
-            font-size: 18px;
+            font-family:
+                "Great Vibes",
+                cursive;
+
+            font-size: 29px;
 
             color: #d96e98;
 
@@ -993,10 +1084,10 @@
 
 
         /* =====================================================
-           PAGE 06 — NEXT CHAPTER
+           PAGE 06 — OUR STORY
         ===================================================== */
 
-        #next-chapter-page {
+        #our-story-page {
             background:
                 radial-gradient(
                     circle at center,
@@ -1006,100 +1097,359 @@
                 #ffffff;
 
             z-index: 50;
+
+            overflow-y: auto;
+
+            align-items: flex-start;
         }
 
-        .next-content {
-            width: min(90%, 700px);
+        .story-container {
+            width: min(92%, 650px);
+
+            padding:
+                70px
+                0
+                100px;
 
             text-align: center;
         }
 
-        .next-number {
+        .story-eyebrow {
             font-size: 10px;
 
             letter-spacing: 7px;
 
             color: #d96e98;
 
-            margin-bottom: 22px;
+            margin-bottom: 18px;
         }
 
-        .next-title {
-            font-size: clamp(36px, 9vw, 68px);
+        .story-title {
+            font-family:
+                "Playfair Display",
+                serif;
 
-            font-weight: 300;
+            font-size: clamp(38px, 9vw, 65px);
 
-            line-height: 1.05;
+            font-weight: 400;
 
             color: #592c3e;
+
+            margin-bottom: 12px;
         }
 
-        .next-description {
-            max-width: 540px;
-
-            margin: 30px auto;
-
-            font-size: 13px;
-
-            line-height: 2;
-
+        .story-subtitle {
             color: #9c7182;
+
+            font-size: 12px;
+
+            line-height: 1.8;
+
+            margin-bottom: 55px;
         }
 
-        .next-status {
-            display: inline-block;
 
-            padding: 14px 20px;
+        /* =====================================================
+           TIMELINE
+        ===================================================== */
 
-            border: 1px solid #efd0dd;
+        .timeline {
+            position: relative;
 
-            color: #b08495;
+            width: 100%;
 
+            padding: 10px 0;
+        }
+
+        .timeline::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            bottom: 0;
+
+            left: 50%;
+
+            width: 1px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    transparent,
+                    #e6a9bd 8%,
+                    #e6a9bd 92%,
+                    transparent
+                );
+
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+
+            width: 100%;
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-bottom: 55px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+
+            top: 28px;
+
+            left: 50%;
+
+            width: 16px;
+            height: 16px;
+
+            border-radius: 50%;
+
+            transform: translateX(-50%);
+
+            z-index: 3;
+
+            background: #ffffff;
+
+            border: 2px solid #d96e98;
+
+            box-shadow:
+                0 0 0 5px rgba(255,255,255,0.9);
+
+            transition: 0.4s ease;
+        }
+
+        .timeline-item.completed .timeline-dot {
+            background: #d96e98;
+
+            box-shadow:
+                0 0 0 5px rgba(255,255,255,0.9),
+                0 0 25px rgba(217,110,152,0.25);
+        }
+
+        .timeline-card {
+            width: min(80%, 430px);
+
+            padding: 28px 25px;
+
+            background:
+                rgba(255,255,255,0.85);
+
+            border: 1px solid #efd2de;
+
+            box-shadow:
+                0 15px 50px rgba(180,90,125,0.06);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+
+            text-align: center;
+        }
+
+        .timeline-card.clickable {
+            cursor: pointer;
+        }
+
+        .timeline-card.clickable:hover {
+            transform: translateY(-5px);
+
+            border-color: #e884aa;
+
+            box-shadow:
+                0 20px 60px rgba(180,90,125,0.13);
+        }
+
+        .timeline-chapter {
             font-size: 9px;
-
-            letter-spacing: 3px;
-
-            text-transform: uppercase;
-
-            background: rgba(255,255,255,0.7);
-        }
-
-        .next-year {
-            margin-top: 30px;
-
-            font-size: 10px;
 
             letter-spacing: 5px;
 
-            color: #c39aaa;
+            color: #d96e98;
+
+            margin-bottom: 12px;
         }
 
-        .close-story-button {
-            margin-top: 35px;
+        .timeline-year {
+            font-family:
+                "Playfair Display",
+                serif;
 
-            padding: 14px 22px;
+            font-size: 28px;
 
-            background: transparent;
+            color: #592c3e;
 
-            border: 1px solid #e7bfd0;
+            margin-bottom: 5px;
+        }
 
-            color: #a77789;
+        .timeline-name {
+            font-family:
+                "Cormorant Garamond",
+                serif;
 
-            font-size: 9px;
+            font-size: 22px;
+
+            color: #765363;
+
+            margin-bottom: 12px;
+        }
+
+        .timeline-status {
+            font-size: 8px;
 
             letter-spacing: 3px;
 
+            color: #b08495;
+
             text-transform: uppercase;
+        }
+
+        .timeline-item.completed .timeline-status {
+            color: #d96e98;
+        }
+
+        .timeline-open {
+            margin-top: 18px;
+
+            padding: 10px 18px;
+
+            border: 1px solid #e884aa;
+
+            background: transparent;
+
+            color: #d96e98;
+
+            font-size: 8px;
+
+            letter-spacing: 3px;
 
             transition: 0.3s ease;
         }
 
-        .close-story-button:hover {
-            border-color: #e884aa;
+        .timeline-open:hover {
+            background: #e884aa;
 
-            color: #d96e98;
+            color: white;
+        }
 
-            background: #fff8fb;
+        .story-footer {
+            margin-top: 25px;
+
+            color: #c39aaa;
+
+            font-size: 10px;
+
+            letter-spacing: 4px;
+        }
+
+
+        /* =====================================================
+           FUTURE CHAPTER
+        ===================================================== */
+
+        .future-card {
+            opacity: 0.75;
+        }
+
+        .future-card .timeline-chapter {
+            color: #c39aaa;
+        }
+
+        .future-card .timeline-year {
+            color: #8f7180;
+        }
+
+        .future-card .timeline-name {
+            color: #b292a0;
+        }
+
+
+        /* =====================================================
+           CINEMATIC TRANSITIONS
+        ===================================================== */
+
+        .page.active .lock-container,
+        .page.active .auth-content,
+        .page.active .chapter-content,
+        .page.active .music-content,
+        .page.active .story-container {
+
+            animation:
+                contentReveal
+                1.2s
+                cubic-bezier(0.22, 1, 0.36, 1)
+                both;
+        }
+
+        @keyframes contentReveal {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(25px)
+                    scale(0.98);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+        .pink-lily {
+            animation:
+                lilyReveal
+                1.5s
+                cubic-bezier(0.22, 1, 0.36, 1)
+                both;
+        }
+
+        @keyframes lilyReveal {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(25px)
+                    scale(0.85);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0)
+                    scale(1);
+            }
+
+        }
+
+        @keyframes letterReveal {
+
+            from {
+                opacity: 0;
+
+                transform:
+                    translateY(35px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+            }
+
         }
 
 
@@ -1112,14 +1462,18 @@
 
             bottom: -20px;
 
-            color: rgba(220, 105, 150, 0.35);
+            color:
+                rgba(220, 105, 150, 0.35);
 
             pointer-events: none;
 
             z-index: 5;
 
             animation:
-                floatHeart 8s linear forwards;
+                floatHeart
+                8s
+                linear
+                forwards;
         }
 
         @keyframes floatHeart {
@@ -1178,9 +1532,13 @@
             }
 
             .letter-text {
-                font-size: 15px;
+                font-size: 18px;
 
-                line-height: 1.9;
+                line-height: 1.8;
+            }
+
+            .letter-greeting {
+                font-size: 23px;
             }
 
             .pink-lily {
@@ -1195,200 +1553,35 @@
                 min-height: 210px;
             }
 
+            .story-container {
+                padding-top: 50px;
+            }
+
+            .timeline-card {
+                width: 78%;
+
+                padding:
+                    24px
+                    18px;
+            }
+
+            .timeline::before {
+                left: 50%;
+            }
+
         }
-/* =====================================================
-   CINEMATIC PAGE CONTENT TRANSITIONS
-===================================================== */
 
-.page.active .chapter-content,
-.page.active .music-content,
-.page.active .next-content,
-.page.active .lock-container,
-.page.active .auth-content {
-    animation:
-        contentReveal 1.2s cubic-bezier(0.22, 1, 0.36, 1)
-        both;
-}
-
-@keyframes contentReveal {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(25px)
-            scale(0.98);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-}
-
-
-/* Chapter title */
-
-.chapter-title {
-    animation-delay: 0.15s;
-}
-
-
-/* Music icon */
-
-.music-note {
-    animation:
-        musicEnter 1.2s
-        cubic-bezier(0.22, 1, 0.36, 1)
-        both,
-        musicPulse 2.5s
-        ease-in-out
-        1.2s
-        infinite;
-}
-
-@keyframes musicEnter {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(25px)
-            scale(0.7);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-}
-
-
-/* Letter */
-
-.letter-card {
-    animation:
-        letterReveal 1.2s
-        cubic-bezier(0.22, 1, 0.36, 1)
-        both;
-}
-
-@keyframes letterReveal {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(35px);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0);
-    }
-
-}
-
-
-/* Lily */
-
-.pink-lily {
-    animation:
-        lilyReveal 1.5s
-        cubic-bezier(0.22, 1, 0.36, 1)
-        both;
-}
-
-@keyframes lilyReveal {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(25px)
-            scale(0.85);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-    }
-
-}
-
-
-/* Letter title */
-
-.letter-title {
-    animation:
-        titleReveal 1.3s
-        0.25s
-        cubic-bezier(0.22, 1, 0.36, 1)
-        both;
-}
-
-@keyframes titleReveal {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(15px);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0);
-    }
-
-}
-        /* =====================================================
-   NEXT CHAPTER CINEMATIC REVEAL
-===================================================== */
-
-#next-chapter-page.active .next-content {
-    animation:
-        nextChapterReveal 1.4s
-        cubic-bezier(0.22, 1, 0.36, 1)
-        both;
-}
-
-@keyframes nextChapterReveal {
-
-    from {
-        opacity: 0;
-        transform:
-            translateY(40px)
-            scale(0.96);
-        filter: blur(6px);
-    }
-
-    to {
-        opacity: 1;
-        transform:
-            translateY(0)
-            scale(1);
-        filter: blur(0);
-    }
-
-}
-        
     </style>
+
 </head>
 
 
 <body>
 
 
-    <!-- =========================================================
-         PAGE 01
-         PASSCODE
-    ========================================================== -->
+    <!-- =====================================================
+         PAGE 01 — PASSCODE
+    ====================================================== -->
 
     <section
         id="lock-screen"
@@ -1465,9 +1658,9 @@
 
 
 
-    <!-- =========================================================
-         CLUE
-    ========================================================== -->
+    <!-- =====================================================
+         CLUE MODAL
+    ====================================================== -->
 
     <div
         id="clue-modal"
@@ -1520,10 +1713,9 @@
 
 
 
-    <!-- =========================================================
-         PAGE 02
-         AUTHENTICATION
-    ========================================================== -->
+    <!-- =====================================================
+         PAGE 02 — AUTHENTICATION
+    ====================================================== -->
 
     <section
         id="auth-screen"
@@ -1564,10 +1756,9 @@
 
 
 
-    <!-- =========================================================
-         PAGE 03
-         CHAPTER ONE
-    ========================================================== -->
+    <!-- =====================================================
+         PAGE 03 — CHAPTER 01
+    ====================================================== -->
 
     <section
         id="chapter-page"
@@ -1610,10 +1801,9 @@
 
 
 
-    <!-- =========================================================
-         PAGE 04
-         MUSIC
-    ========================================================== -->
+    <!-- =====================================================
+         PAGE 04 — MUSIC
+    ====================================================== -->
 
     <section
         id="music-page"
@@ -1688,14 +1878,11 @@
 
 
 
-    <!-- =========================================================
-         PAGE 05
-         YOUR LETTER
-    ========================================================== -->
+    <!-- =====================================================
+         PAGE 05 — YOUR LETTER
+    ====================================================== -->
 
-    <section
-        id="letter-page"
-    >
+    <section id="letter-page">
 
         <div class="letter-wrapper">
 
@@ -1707,7 +1894,7 @@
 
 
                 <!-- =================================================
-                     PINK LILY
+                     PINK LILY — SAME ORIGINAL SVG
                 ================================================== -->
 
                 <div class="pink-lily">
@@ -2014,7 +2201,7 @@
 
 
             <!-- =====================================================
-                 YOUR EXACT MESSAGE
+                 YOUR LETTER — KEPT
             ====================================================== -->
 
             <article class="letter-card">
@@ -2243,7 +2430,7 @@
                             sa mga kinakain mo because of convience and 
                             acceessibility of foods. Also yung sleep mo na
                             rin. Iniinom mo palagi and yung kidney stones 
-                            mo dati nung bata ka pa
+                            mo dati nung bata ka
                         </li>
 
                         <li>
@@ -2373,9 +2560,9 @@
                 <button
                     type="button"
                     class="pink-button"
-                    onclick="openNextChapter()"
+                    onclick="openOurStory()"
                 >
-                    CONTINUE TO OUR NEXT CHAPTER →
+                    CONTINUE TO OUR STORY →
                 </button>
 
             </div>
@@ -2386,73 +2573,180 @@
 
 
 
-    <!-- =========================================================
-         PAGE 06
-         NEXT CHAPTER
-         
-         THIS IS THE PAGE WE CAN UPDATE IN THE FUTURE.
-    ========================================================== -->
+    <!-- =====================================================
+         PAGE 06 — OUR STORY
+    ====================================================== -->
 
     <section
-        id="next-chapter-page"
+        id="our-story-page"
         class="page"
     >
 
-        <div class="next-content">
+        <div class="story-container">
 
-            <div class="next-number">
-                NEXT CHAPTER
+            <div class="story-eyebrow">
+                OUR STORY
             </div>
 
-            <div class="chapter-line"></div>
-
-            <h1 class="next-title">
-                Let's Wait<br>
-                For Our Next Chapter.
+            <h1 class="story-title">
+                Our Story
             </h1>
 
-            <p class="next-description">
-
-                This chapter ends here,
-                but our story doesn't.
-
-                <br><br>
-
-                There are still more memories
-                waiting for us.
-
-                More plans. 
-                More places to go.
-                More moments to celebrate.
-                More stories to tell.
-
-                <br><br>
-
-                And whenever the next chapter
-                of our story comes,
-                this little website will be here
-                waiting for it.
-
+            <p class="story-subtitle">
+                One chapter at a time.<br>
+                And hopefully, a story that never ends.
             </p>
 
 
-            <div class="next-status">
-                STORY STATUS: TO BE CONTINUED
+            <!-- =================================================
+                 TIMELINE
+            ================================================== -->
+
+            <div class="timeline">
+
+
+                <!-- =============================================
+                     CHAPTER 01
+                ============================================== -->
+
+                <div class="timeline-item completed">
+
+                    <div class="timeline-dot"></div>
+
+                    <div
+                        class="timeline-card clickable"
+                        onclick="openChapter01()"
+                    >
+
+                        <div class="timeline-chapter">
+                            CHAPTER 01
+                        </div>
+
+                        <div class="timeline-year">
+                            2026
+                        </div>
+
+                        <div class="timeline-name">
+                            The Beginning of Us.
+                        </div>
+
+                        <div class="timeline-status">
+                            COMPLETED
+                        </div>
+
+                        <button
+                            type="button"
+                            class="timeline-open"
+                        >
+                            OPEN CHAPTER
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     CHAPTER 02
+                ============================================== -->
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-card future-card">
+
+                        <div class="timeline-chapter">
+                            CHAPTER 02
+                        </div>
+
+                        <div class="timeline-year">
+                            2027
+                        </div>
+
+                        <div class="timeline-name">
+                            To Be Written...
+                        </div>
+
+                        <div class="timeline-status">
+                            WAITING FOR OUR NEXT CHAPTER
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     CHAPTER 03
+                ============================================== -->
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-card future-card">
+
+                        <div class="timeline-chapter">
+                            CHAPTER 03
+                        </div>
+
+                        <div class="timeline-year">
+                            2028
+                        </div>
+
+                        <div class="timeline-name">
+                            To Be Written...
+                        </div>
+
+                        <div class="timeline-status">
+                            WAITING FOR OUR NEXT CHAPTER
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =============================================
+                     CHAPTER 04
+                ============================================== -->
+
+                <div class="timeline-item">
+
+                    <div class="timeline-dot"></div>
+
+                    <div class="timeline-card future-card">
+
+                        <div class="timeline-chapter">
+                            CHAPTER 04
+                        </div>
+
+                        <div class="timeline-year">
+                            2029
+                        </div>
+
+                        <div class="timeline-name">
+                            To Be Written...
+                        </div>
+
+                        <div class="timeline-status">
+                            WAITING FOR OUR NEXT CHAPTER
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
 
-            <div class="next-year">
+            <div class="story-footer">
                 2026 → ∞
             </div>
-
-
-            <button
-                type="button"
-                class="close-story-button"
-                onclick="closeStory()"
-            >
-                CLOSE THIS CHAPTER
-            </button>
 
         </div>
 
@@ -2460,14 +2754,17 @@
 
 
 
-    <!-- =========================================================
+    <!-- =====================================================
          JAVASCRIPT
-    ========================================================== -->
+    ====================================================== -->
 
     <script>
 
+
         /* =====================================================
-           SETTINGS YOU CAN EASILY CHANGE IN THE FUTURE
+           SETTINGS
+           
+           CHANGE THESE ONLY IF NEEDED
         ===================================================== */
 
         const ACCESS_CODE = "060326";
@@ -2494,8 +2791,8 @@
         const letterPage =
             document.getElementById("letter-page");
 
-        const nextChapterPage =
-            document.getElementById("next-chapter-page");
+        const ourStoryPage =
+            document.getElementById("our-story-page");
 
         const accessCodeInput =
             document.getElementById("access-code");
@@ -2526,6 +2823,7 @@
             const enteredCode =
                 accessCodeInput.value.trim();
 
+
             if (enteredCode === ACCESS_CODE) {
 
                 lockMessage.textContent =
@@ -2546,23 +2844,28 @@
                 lockScreen.animate(
                     [
                         {
-                            transform: "translateX(0)"
+                            transform:
+                                "translateX(0)"
                         },
 
                         {
-                            transform: "translateX(-8px)"
+                            transform:
+                                "translateX(-8px)"
                         },
 
                         {
-                            transform: "translateX(8px)"
+                            transform:
+                                "translateX(8px)"
                         },
 
                         {
-                            transform: "translateX(-5px)"
+                            transform:
+                                "translateX(-5px)"
                         },
 
                         {
-                            transform: "translateX(0)"
+                            transform:
+                                "translateX(0)"
                         }
                     ],
                     {
@@ -2644,7 +2947,7 @@
 
 
         /* =====================================================
-           CHAPTER ONE → MUSIC
+           CHAPTER 01 → MUSIC
         ===================================================== */
 
         function goToMusic() {
@@ -2728,10 +3031,10 @@
 
 
         /* =====================================================
-           LETTER → NEXT CHAPTER
+           LETTER → OUR STORY
         ===================================================== */
 
-        function openNextChapter() {
+        function openOurStory() {
 
             letterPage.classList.remove("active");
 
@@ -2739,7 +3042,9 @@
             setTimeout(
                 function() {
 
-                    nextChapterPage.classList.add("active");
+                    ourStoryPage.classList.add("active");
+
+                    ourStoryPage.scrollTop = 0;
 
                 },
                 350
@@ -2749,25 +3054,23 @@
 
 
         /* =====================================================
-           CLOSE STORY
+           OUR STORY → CHAPTER 01
         ===================================================== */
 
-        function closeStory() {
+        function openChapter01() {
 
-            nextChapterPage.classList.remove("active");
+            ourStoryPage.classList.remove("active");
 
 
             setTimeout(
                 function() {
 
-                    lockScreen.classList.add("active");
+                    letterPage.classList.add("active");
 
-                    accessCodeInput.value = "";
-
-                    lockMessage.textContent = "";
+                    letterPage.scrollTop = 0;
 
                 },
-                400
+                350
             );
 
         }
@@ -2783,6 +3086,7 @@
                 document.createElement("div");
 
             heart.className = "heart";
+
 
             heart.textContent =
                 Math.random() > 0.5
@@ -2825,6 +3129,7 @@
             createHeart,
             2200
         );
+
 
     </script>
 
