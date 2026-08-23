@@ -1656,17 +1656,6 @@
     flex: none !important;
 }
 
-.drive-video-container video.drive-video {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    border: 0 !important;
-    background: #000 !important;
-    object-fit: contain !important;
-}
 
 .drive-video-label {
     position: relative !important;
@@ -1706,9 +1695,6 @@
         margin-top: 30px !important;
     }
 
-    .drive-video-container video.drive-video {
-        object-fit: contain !important;
-    }
 
     .drive-video-label {
         width: 90%;
@@ -1728,8 +1714,11 @@
 <script>
 (function () {
 
-    const DRIVE_VIDEO_ID =
-        "178Nfxo4i4VpvNsGlGQiC3TXfpe0qEQn3";
+    /*
+        KEEP GOOGLE DRIVE'S NATIVE EMBED PLAYER.
+        The previous HTML5 conversion caused the new video's
+        mobile frame to show excessive black space.
+    */
 
     const videoContainer =
         document.querySelector(".drive-video-container");
@@ -1738,100 +1727,25 @@
         return;
     }
 
-    /*
-        Replace the Google Drive iframe with a
-        native HTML5 video player.
-
-        This keeps the video inside the website
-        instead of opening Google Drive.
-    */
-
-    const oldIframe =
-        videoContainer.querySelector("iframe.drive-video");
-
-    if (oldIframe) {
-
-        const video =
-            document.createElement("video");
-
-        video.className = "drive-video";
-
-        video.controls = true;
-        video.playsInline = true;
-        video.preload = "metadata";
-
-        video.setAttribute(
-            "controlsList",
-            "nodownload"
-        );
-
-        video.setAttribute(
-            "webkit-playsinline",
-            ""
-        );
-
-        video.setAttribute(
-            "disablePictureInPicture",
-            ""
-        );
-
-        const source =
-            document.createElement("source");
-
-        source.src =
-            "https://drive.google.com/uc?export=download&id=" +
-            DRIVE_VIDEO_ID;
-
-        source.type = "video/mp4";
-
-        video.appendChild(source);
-
-        oldIframe.replaceWith(video);
-    }
-
-
-    /*
-        Make sure the Continue button remains
-        reachable after the video.
-    */
-
     const continueArea =
         document.querySelector(".intro-continue");
 
     if (continueArea) {
-
         continueArea.style.position = "relative";
         continueArea.style.zIndex = "20";
         continueArea.style.pointerEvents = "auto";
-
     }
-
-
-    /*
-        Prevent the video from creating a
-        weird page-sized iframe area.
-    */
 
     videoContainer.style.overflow = "hidden";
     videoContainer.style.height = "auto";
 
-
-    /*
-        Replace the old showThemeSong behavior
-        with a safer mobile scroll.
-    */
-
     window.showThemeSong = function () {
 
         const section =
-            document.getElementById(
-                "theme-song-section"
-            );
+            document.getElementById("theme-song-section");
 
         const page =
-            document.getElementById(
-                "music-page"
-            );
+            document.getElementById("music-page");
 
         if (!section || !page) {
             return;
@@ -1841,8 +1755,7 @@
 
         setTimeout(function () {
 
-            const target =
-                section.offsetTop - 25;
+            const target = section.offsetTop - 25;
 
             page.scrollTo({
                 top: Math.max(0, target),
@@ -1852,7 +1765,6 @@
         }, 150);
 
     };
-
 
 })();
 </script>
