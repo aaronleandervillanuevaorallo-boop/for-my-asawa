@@ -728,7 +728,7 @@
                 0
                 110px;
 
-            min-height: 100%;
+            min-height: max-content;
         }
 
         .music-note {
@@ -826,8 +826,10 @@
         ===================================================== */
 
         .drive-video-container {
+            position: relative;
             width: 100%;
             max-width: 650px;
+            aspect-ratio: 16 / 9;
             margin: 35px auto 0;
 
             overflow: hidden;
@@ -836,13 +838,16 @@
 
             box-shadow:
                 0 20px 55px rgba(180, 90, 125, 0.10);
+
+            flex: 0 0 auto;
         }
 
         .drive-video {
+            position: absolute;
+            inset: 0;
             display: block;
             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
+            height: 100%;
             border: 0;
             background: #000;
         }
@@ -857,7 +862,16 @@
         }
 
         .intro-continue {
+            position: relative;
+            z-index: 5;
             margin-top: 28px;
+            margin-bottom: 20px;
+        }
+
+        .intro-continue .chapter-button {
+            position: relative;
+            z-index: 6;
+            touch-action: manipulation;
         }
 
         .youtube-player-container {
@@ -1611,8 +1625,14 @@
                 width: 100%;
             }
 
+            .drive-video-container {
+                aspect-ratio: 16 / 9;
+                min-height: 0;
+            }
+
             .drive-video {
-                min-height: 210px;
+                width: 100%;
+                height: 100%;
             }
 
             .youtube-player {
@@ -1638,137 +1658,7 @@
         }
 
     </style>
-<style>
-/* FIX GOOGLE DRIVE VIDEO — MOBILE SAFE */
 
-.drive-video-container {
-    position: relative !important;
-    width: 100% !important;
-    max-width: 650px !important;
-    aspect-ratio: 16 / 9 !important;
-    height: auto !important;
-    min-height: 0 !important;
-    margin: 35px auto 0 !important;
-    overflow: hidden !important;
-    border: 1px solid #f0cedb !important;
-    background: #000 !important;
-    box-shadow: 0 20px 55px rgba(180, 90, 125, 0.10) !important;
-    flex: none !important;
-}
-
-
-.drive-video-label {
-    position: relative !important;
-    z-index: 2 !important;
-    margin-top: 14px !important;
-}
-
-.intro-continue {
-    position: relative !important;
-    z-index: 20 !important;
-    display: block !important;
-    margin-top: 28px !important;
-    margin-bottom: 20px !important;
-    pointer-events: auto !important;
-}
-
-.intro-continue .chapter-button {
-    position: relative !important;
-    z-index: 21 !important;
-    pointer-events: auto !important;
-    touch-action: manipulation !important;
-    -webkit-tap-highlight-color: transparent;
-}
-
-#theme-song-section {
-    position: relative;
-    z-index: 10;
-    padding-bottom: 100px;
-}
-
-@media (max-width: 600px) {
-
-    .drive-video-container {
-        width: 92% !important;
-        max-width: none !important;
-        aspect-ratio: 9 / 16 !important;
-        margin-top: 30px !important;
-    }
-
-
-    .drive-video-label {
-        width: 90%;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .intro-continue {
-        width: 92%;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-}
-</style>
-
-<script>
-(function () {
-
-    /*
-        KEEP GOOGLE DRIVE'S NATIVE EMBED PLAYER.
-        The previous HTML5 conversion caused the new video's
-        mobile frame to show excessive black space.
-    */
-
-    const videoContainer =
-        document.querySelector(".drive-video-container");
-
-    if (!videoContainer) {
-        return;
-    }
-
-    const continueArea =
-        document.querySelector(".intro-continue");
-
-    if (continueArea) {
-        continueArea.style.position = "relative";
-        continueArea.style.zIndex = "20";
-        continueArea.style.pointerEvents = "auto";
-    }
-
-    videoContainer.style.overflow = "hidden";
-    videoContainer.style.height = "auto";
-
-    window.showThemeSong = function () {
-
-        const section =
-            document.getElementById("theme-song-section");
-
-        const page =
-            document.getElementById("music-page");
-
-        if (!section || !page) {
-            return;
-        }
-
-        section.style.display = "block";
-
-        setTimeout(function () {
-
-            const target = section.offsetTop - 25;
-
-            page.scrollTo({
-                top: Math.max(0, target),
-                behavior: "smooth"
-            });
-
-        }, 150);
-
-    };
-
-})();
-</script>
-    
 </head>
 
 
@@ -2034,7 +1924,7 @@
 
                 <iframe
                     class="drive-video"
-                    src="https://drive.google.com/file/d/178Nfxo4i4VpvNsGlGQiC3TXfpe0qEQn3/preview"
+                    src="https://drive.google.com/file/d/1j8gAk7QxjpanM--lUf4ul-PLrVDInBub/preview"
                     title="A Little Something"
                     allow="autoplay; fullscreen"
                     allowfullscreen
@@ -3318,9 +3208,9 @@
             setTimeout(
                 function() {
 
-                    themeSongSection.scrollIntoView({
-                        behavior: "smooth",
-                        block: "start"
+                    musicPage.scrollTo({
+                        top: themeSongSection.offsetTop - 20,
+                        behavior: "smooth"
                     });
 
                 },
