@@ -826,23 +826,23 @@
         ===================================================== */
 
         .drive-video-container {
+            position: relative;
             width: 100%;
             max-width: 650px;
+            aspect-ratio: 16 / 9;
             margin: 35px auto 0;
-
             overflow: hidden;
             border: 1px solid #f0cedb;
             background: #000;
-
-            box-shadow:
-                0 20px 55px rgba(180, 90, 125, 0.10);
+            box-shadow: 0 20px 55px rgba(180, 90, 125, 0.10);
         }
 
         .drive-video {
+            position: absolute;
+            inset: 0;
             display: block;
             width: 100%;
-            height: auto;
-            aspect-ratio: 16 / 9;
+            height: 100%;
             border: 0;
             background: #000;
         }
@@ -1611,8 +1611,11 @@
                 width: 100%;
             }
 
-            .drive-video {
-                min-height: 210px;
+            .drive-video-container {
+                width: 92%;
+                max-width: none;
+                aspect-ratio: 9 / 16;
+                margin-top: 30px;
             }
 
             .youtube-player {
@@ -1638,224 +1641,9 @@
         }
 
     </style>
-<style>
-/* FIX GOOGLE DRIVE VIDEO — MOBILE SAFE */
-
-.drive-video-container {
-    position: relative !important;
-    width: 100% !important;
-    max-width: 650px !important;
-    aspect-ratio: 16 / 9 !important;
-    height: auto !important;
-    min-height: 0 !important;
-    margin: 35px auto 0 !important;
-    overflow: hidden !important;
-    border: 1px solid #f0cedb !important;
-    background: #000 !important;
-    box-shadow: 0 20px 55px rgba(180, 90, 125, 0.10) !important;
-    flex: none !important;
-}
-
-.drive-video-container video.drive-video {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    max-width: 100% !important;
-    border: 0 !important;
-    background: #000 !important;
-    object-fit: contain !important;
-}
-
-.drive-video-label {
-    position: relative !important;
-    z-index: 2 !important;
-    margin-top: 14px !important;
-}
-
-.intro-continue {
-    position: relative !important;
-    z-index: 20 !important;
-    display: block !important;
-    margin-top: 28px !important;
-    margin-bottom: 20px !important;
-    pointer-events: auto !important;
-}
-
-.intro-continue .chapter-button {
-    position: relative !important;
-    z-index: 21 !important;
-    pointer-events: auto !important;
-    touch-action: manipulation !important;
-    -webkit-tap-highlight-color: transparent;
-}
-
-#theme-song-section {
-    position: relative;
-    z-index: 10;
-    padding-bottom: 100px;
-}
-
-@media (max-width: 600px) {
-
-    .drive-video-container {
-        width: 92% !important;
-        max-width: none !important;
-        aspect-ratio: 9 / 16 !important;
-        margin-top: 30px !important;
-    }
-
-    .drive-video-container video.drive-video {
-        object-fit: contain !important;
-    }
-
-    .drive-video-label {
-        width: 90%;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-    .intro-continue {
-        width: 92%;
-        margin-left: auto !important;
-        margin-right: auto !important;
-    }
-
-}
-</style>
-
-<script>
-(function () {
-
-    const DRIVE_VIDEO_ID =
-        "1j8gAk7QxjpanM--lUf4ul-PLrVDInBub";
-
-    const videoContainer =
-        document.querySelector(".drive-video-container");
-
-    if (!videoContainer) {
-        return;
-    }
-
-    /*
-        Replace the Google Drive iframe with a
-        native HTML5 video player.
-
-        This keeps the video inside the website
-        instead of opening Google Drive.
-    */
-
-    const oldIframe =
-        videoContainer.querySelector("iframe.drive-video");
-
-    if (oldIframe) {
-
-        const video =
-            document.createElement("video");
-
-        video.className = "drive-video";
-
-        video.controls = true;
-        video.playsInline = true;
-        video.preload = "metadata";
-
-        video.setAttribute(
-            "controlsList",
-            "nodownload"
-        );
-
-        video.setAttribute(
-            "webkit-playsinline",
-            ""
-        );
-
-        video.setAttribute(
-            "disablePictureInPicture",
-            ""
-        );
-
-        const source =
-            document.createElement("source");
-
-        source.src =
-            "https://drive.google.com/uc?export=download&id=" +
-            DRIVE_VIDEO_ID;
-
-        source.type = "video/mp4";
-
-        video.appendChild(source);
-
-        oldIframe.replaceWith(video);
-    }
 
 
-    /*
-        Make sure the Continue button remains
-        reachable after the video.
-    */
 
-    const continueArea =
-        document.querySelector(".intro-continue");
-
-    if (continueArea) {
-
-        continueArea.style.position = "relative";
-        continueArea.style.zIndex = "20";
-        continueArea.style.pointerEvents = "auto";
-
-    }
-
-
-    /*
-        Prevent the video from creating a
-        weird page-sized iframe area.
-    */
-
-    videoContainer.style.overflow = "hidden";
-    videoContainer.style.height = "auto";
-
-
-    /*
-        Replace the old showThemeSong behavior
-        with a safer mobile scroll.
-    */
-
-    window.showThemeSong = function () {
-
-        const section =
-            document.getElementById(
-                "theme-song-section"
-            );
-
-        const page =
-            document.getElementById(
-                "music-page"
-            );
-
-        if (!section || !page) {
-            return;
-        }
-
-        section.style.display = "block";
-
-        setTimeout(function () {
-
-            const target =
-                section.offsetTop - 25;
-
-            page.scrollTo({
-                top: Math.max(0, target),
-                behavior: "smooth"
-            });
-
-        }, 150);
-
-    };
-
-
-})();
-</script>
     
 </head>
 
@@ -2124,7 +1912,7 @@
                     class="drive-video"
                     src="https://drive.google.com/file/d/1j8gAk7QxjpanM--lUf4ul-PLrVDInBub/preview"
                     title="A Little Something"
-                    allow="autoplay; fullscreen"
+                    allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
                     allowfullscreen
                 ></iframe>
 
@@ -2563,7 +2351,7 @@
                         BOIII!!!
                     </p>
 
-                    </p>
+                    <p>
                         Marami akong sasabihin dito kaya sana ma-process 
                         at ma-comprehend mo ito lahat. 
                     </p>
@@ -2572,9 +2360,9 @@
                     <p>
                         Thank you so much for being the strongest soldier
                         in this relationship. Thank you for being my
-                        inspiration me every gising (may naka smile na sasalubong
+                        inspiration every gising (may naka smile na sasalubong
                         sayo), every sipag ko sa mga gawain bahay (TBH
-                        ikaw lang naman din dahilan kubg bakit hind na ako
+                        ikaw lang naman din dahilan kung bakit hindi na ako
                         nagrereklamon kila kuya, mami, at dadi), every
                         pasok sa school (kung alam mo lang), 
                         every pag uwi kung saan man ako galing. 
@@ -2586,10 +2374,10 @@
 
                     <p>
                         Thank you sa mga araw na kailangan ko ng pahinga,
-                        comfort, feeling na loved, apprciated, seen by people
+                        comfort, feeling na loved, appreciated, seen by people
                         nandiyan ka para akin. Salamat sa mga lessons in life
                         na minsan hindi ka aware na marami na rin akong 
-                        natututunan sayo (esp, sa hygine). Thank you dahil 
+                        natututunan sayo (esp, sa hygiene). Thank you dahil 
                         sayo mas minahal ko, mas inalagaan ko, mas iningatan ko,
                         at mas tinanggap ko sarili ko. Kung sino ba talaga ako 
                         at ano nga ba talaga ako. 
@@ -2780,7 +2568,7 @@
                         still, meron at meron naman me maibibigay. not
                         exactly on your birthday, but i’m sure na meron at
                         meron ka parin naman gifts mula sa akin. and sana
-                        magustohan mo siya kahit very cheap and simple lang
+                        magustuhan mo siya kahit very cheap and simple lang
                         sya. AND also pinaghirapan ko rin itong website na ito
                         so please, sana wag kanang malungkot and mag tampo sa
                         akin. SUPER DUPER EXCITED AKO SA GIFTS KO SAYO. 
@@ -2829,20 +2617,20 @@
                             inaasahan. PLEASE, wag mo nang sasaktan 
                             sarili mo. may OTHER ways to release that, 
                             so yeah. BUT, we will make sure this will 
-                            never happenn,,
+                            never happen.
                         </li>
 
                         <li>
                             wish ko, na wag mo i-pressure sarili mo in any
-                            case or reason u have. at least give yourself 
-                            a piece of mind to enjoy every moments of 
+                            case or reason you have. at least give yourself 
+                            a peace of mind to enjoy every moments of 
                             your/our life. 
                         </li>
 
                         <li>
                             wish ko, yung kabutihan ng health mo, despite 
                             sa mga kinakain mo because of convience and 
-                            acceessibility of foods. Also yung sleep mo na
+                            accessibility of foods. Also yung sleep mo na
                             rin. Iniinom mo palagi and yung kidney stones 
                             mo dati nung bata ka
                         </li>
@@ -2911,7 +2699,7 @@
 
                         <li>
                             wish ko, ikaw na ang una at huli kong
-                            mahahalin. THIS IS ACTULLY FOR ME, but gusto 
+                            mahahalin. THIS IS ACTUALLY FOR ME, but gusto 
                             ko syang hilingin sa bday mo, cuz why not. 
                             GAANON KITA KA MAHAL, BOI!
                         </li>
@@ -2956,9 +2744,10 @@
                         but i'm sure na same lang din sayo)
                     </p>
                            
-                   </p> ANYWAYS, Again, happy happy happy birthday to my future
+                    <p>
+                        ANYWAYS, Again, happy happy happy birthday to my future
                         asawa. mahal na mahal kita palagi. nandito ako,
-                        hinding-hindi kita iiwan, mamahilin kitang BUONG BUO,
+                        hinding-hindi kita iiwan, mamahalin kitang BUONG BUO,
                         susuporta sayo hanggang dulo. I love you, baby!
                         Enjoy your day kahit may pasok ka hehehe
                     </p>
