@@ -1638,7 +1638,225 @@
         }
 
     </style>
+<style>
+/* FIX GOOGLE DRIVE VIDEO — MOBILE SAFE */
 
+.drive-video-container {
+    position: relative !important;
+    width: 100% !important;
+    max-width: 650px !important;
+    aspect-ratio: 16 / 9 !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 35px auto 0 !important;
+    overflow: hidden !important;
+    border: 1px solid #f0cedb !important;
+    background: #000 !important;
+    box-shadow: 0 20px 55px rgba(180, 90, 125, 0.10) !important;
+    flex: none !important;
+}
+
+.drive-video-container video.drive-video {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    border: 0 !important;
+    background: #000 !important;
+    object-fit: contain !important;
+}
+
+.drive-video-label {
+    position: relative !important;
+    z-index: 2 !important;
+    margin-top: 14px !important;
+}
+
+.intro-continue {
+    position: relative !important;
+    z-index: 20 !important;
+    display: block !important;
+    margin-top: 28px !important;
+    margin-bottom: 20px !important;
+    pointer-events: auto !important;
+}
+
+.intro-continue .chapter-button {
+    position: relative !important;
+    z-index: 21 !important;
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: transparent;
+}
+
+#theme-song-section {
+    position: relative;
+    z-index: 10;
+    padding-bottom: 100px;
+}
+
+@media (max-width: 600px) {
+
+    .drive-video-container {
+        width: 92% !important;
+        max-width: none !important;
+        aspect-ratio: 9 / 16 !important;
+        margin-top: 30px !important;
+    }
+
+    .drive-video-container video.drive-video {
+        object-fit: contain !important;
+    }
+
+    .drive-video-label {
+        width: 90%;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .intro-continue {
+        width: 92%;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+}
+</style>
+
+<script>
+(function () {
+
+    const DRIVE_VIDEO_ID =
+        "1j8gAk7QxjpanM--lUf4ul-PLrVDInBub";
+
+    const videoContainer =
+        document.querySelector(".drive-video-container");
+
+    if (!videoContainer) {
+        return;
+    }
+
+    /*
+        Replace the Google Drive iframe with a
+        native HTML5 video player.
+
+        This keeps the video inside the website
+        instead of opening Google Drive.
+    */
+
+    const oldIframe =
+        videoContainer.querySelector("iframe.drive-video");
+
+    if (oldIframe) {
+
+        const video =
+            document.createElement("video");
+
+        video.className = "drive-video";
+
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = "metadata";
+
+        video.setAttribute(
+            "controlsList",
+            "nodownload"
+        );
+
+        video.setAttribute(
+            "webkit-playsinline",
+            ""
+        );
+
+        video.setAttribute(
+            "disablePictureInPicture",
+            ""
+        );
+
+        const source =
+            document.createElement("source");
+
+        source.src =
+            "https://drive.google.com/uc?export=download&id=" +
+            DRIVE_VIDEO_ID;
+
+        source.type = "video/mp4";
+
+        video.appendChild(source);
+
+        oldIframe.replaceWith(video);
+    }
+
+
+    /*
+        Make sure the Continue button remains
+        reachable after the video.
+    */
+
+    const continueArea =
+        document.querySelector(".intro-continue");
+
+    if (continueArea) {
+
+        continueArea.style.position = "relative";
+        continueArea.style.zIndex = "20";
+        continueArea.style.pointerEvents = "auto";
+
+    }
+
+
+    /*
+        Prevent the video from creating a
+        weird page-sized iframe area.
+    */
+
+    videoContainer.style.overflow = "hidden";
+    videoContainer.style.height = "auto";
+
+
+    /*
+        Replace the old showThemeSong behavior
+        with a safer mobile scroll.
+    */
+
+    window.showThemeSong = function () {
+
+        const section =
+            document.getElementById(
+                "theme-song-section"
+            );
+
+        const page =
+            document.getElementById(
+                "music-page"
+            );
+
+        if (!section || !page) {
+            return;
+        }
+
+        section.style.display = "block";
+
+        setTimeout(function () {
+
+            const target =
+                section.offsetTop - 25;
+
+            page.scrollTo({
+                top: Math.max(0, target),
+                behavior: "smooth"
+            });
+
+        }, 150);
+
+    };
+
+
+})();
+</script>
+    
 </head>
 
 
